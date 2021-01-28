@@ -172,9 +172,10 @@ Distributed under the GNU GPLv3 License.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
+[contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
+[contributors-url]: https://github.com/chas-academy/u05-imdb-clon-grupp1/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
+[forks-url]: https://github.com/chas-academy/u05-imdb-clon-grupp1/network/members
+[issues-shield]: https://img.shields.io/github/issues/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
+[issues-url]: https://github.com/chas-academy/u05-imdb-clon-grupp1/issues
+
