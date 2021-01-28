@@ -1,180 +1,63 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Issues][issues-shield]][issues-url]
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-
-<br />
 <p align="center">
-  <h3 align="center">u05</h3>
-
-  <p align="center">
-    Description...
-  </p>
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a>
-            <ul>
-                <li><a href="#built-with">Built With</a></li>
-                <li><a href="#code-standards">Code Standards</a></li>
-            </ul>
-    </li>  
-    <li>
-        <a href="#goals-and-context">Goals And Context</a>
-            <ul>
-                <li><a href="#project-solves">Project Solves?</a></li>
-                <li><a href="#our-vision">Our Vision?</a></li>
-            </ul>
-    </li>
-   <li>
-        <a href="#getting-started">Getting Started</a>
-            <ul>
-                <li><a href="#installation">Installation</a></li>
-                <li><a href="#code-example">Code Example</a></li>
-            </ul>
-   </li>
-    <li><a href="#user-Personas">User Personas</a></li>
-    <li><a href="#user-stories">User Stories</a></li>
-    <li><a href="#sitemap">Sitemap</a></li>
-    <li><a href="#wireframes">Wireframes</a></li>
-    <li><a href="#page-and-route-descriptions">Page And Route Descriptions</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
+## About Laravel
 
-<!-- ABOUT THE PROJECT -->
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## About The Project
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-<!--[![](Image link)-->
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-### Built With
+## Learning Laravel
 
-* [Bootstrap](https://getbootstrap.com)
-* [Sass](https://sass-lang.com)
-* [Laravel](https://laravel.com)
-* [Nova](https://nova.laravel.com)
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-### Code Standards
-* [Psr-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
-* [Psr-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
-* [Airbnb](https://github.com/airbnb/javascript)
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+## Laravel Sponsors
 
-## Goals and Context
-Our goal is to create a competent and smart website that gathers all relevant information about, and around movies.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Project Solves?
-At present, information about movies and managing lists of movies that one would like to see is too cumbersome for many competitors. By creating a more user-focused experience, this process can be facilitated and thus attract more visitors. With an increased interest in the service can also publish and administer film content
+### Premium Partners
 
-### Our Vision?
-By creating a modern user experience, there is the opportunity to enter the market and thus get a large number of users. This in turn can in the long run create opportunities for advertising campaigns from various stakeholders such as product companies that offer sales of film-related products as well as service providers who may be interested in behavioral patterns and trends. Creating an exceptional experience, on mobile as well as in the browser can potentially create a viral reception of users.
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/)**
+- **[OP.GG](https://op.gg)**
 
+## Contributing
 
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-<!-- GETTING STARTED -->
-## Getting Started
+## Code of Conduct
 
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-### Installation
-<!--Insert Installation example. ex, npm install... -->
+## Security Vulnerabilities
 
-
-### Code Example
-<!--Insert small code example-->
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
-```
-
-## User Personas
-
-| Data        | Description |
-| ----------- | ----------- |
-| Usertype    |Johan Ahlbor |
-| Name        | Power User  |
-| Gender      | Male        |
-| Age         | 24          |
-| Education   | College     |
-| City        | Jönköping   |
-| Goal        | Johan is a film enthusiast and is specifically interested in Japanese films. Johan wants to be able to easily and quickly search and filter films based on his interests. He also wants to be able to create lists of movies that he is interested in watching that are saved when he creates an account.   |
-
-
-
-## User Stories
-
-### Website Users
-As a Website User, I am busy and have little time to find information about movies. I want to be able to find information about movies quickly and painlessly. Ideally with as few clicks as possible.
-
-As a Website User, finding the correct movie is vital. I want to see different results of movies in a clear and concise manner so that I can easily know which movies I should watch, or learn more about.
-
-###    Website Registered Users
-As a Registered Website User, I am concerned with keeping track of what movies I want to watch, what movies I’m reviewing, have reviewed or am planning to review. I want to have the possibility to manage several lists of movies I want to watch, as well as movies I am currently reviewing or have planned to review.
-
-### Website Admin
-As a Admin, I want to be able to add new movies and information about movies in a ordered way. I need to have the possibility to separate movies into different categories and provide additional metadata about each movie, as well as linking them to actors, directors and so on.
-
-As a Admin, I want to be able to track what users of the website are doing in terms of reviewing movies and putting in their watchlists. I’d also want to be able to grant and remove roles to different users, granting them access to specific functionality as either an admin or restricting them to a regular user.
-
-
-
-## Sitemap
-
-<!--Insert Sitemap-->
-
-
-
-## Wireframes
-
-### Wireframe
-<!--Insert wire Image-->
-### Prototype
-<!--Insert Adobe XD file download-->
-<!--Insert prototype Image-->
-
-
-
-## Page and Route Descriptions
-
-| Page        | Items       |
-| ----------- | ----------- |
-| **Landing page** <br /> <br /> /  | 1. Movies & Reviews Section <br /> 2. Browse Categories for movies <br /> 3. Search form |
-| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
-| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/lists <br /> /user/{user_id}/settings | Routes related to the user  |
-| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews <br /> /title/{title_id}/photos <br /> /title/{title_id}/trailers <br /> /title/{title_id}/episodes | Routes related to movies and TV-shows |
-| **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre |
-| **Top rated** <br /> <br /> /chart/top | Top rated movies and/or TV-shows |
-| **Admin** <br /> <br /> /admin/login <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
-
-
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-Distributed under the GNU GPLv3 License. 
-
-
-
-## Team Linkedin/GitHub
-<!--Insert team members-->
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# u05-imdb-clon-grupp1
