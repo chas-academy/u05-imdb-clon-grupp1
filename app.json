@@ -8,7 +8,7 @@
         }
     ],
     "env": {
-        "APP_NAME": "my-laravel-app",
+        "APP_NAME": "Laravel",
         "APP_ENV": "review",
         "APP_DEBUG": "true",
         "DB_CONNECTION": "pgsql"
