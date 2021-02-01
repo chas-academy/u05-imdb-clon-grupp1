@@ -104,13 +104,15 @@ By creating a modern user experience, there is the opportunity to enter the mark
 
 | Data        | Description |
 | ----------- | ----------- |
-| Usertype    | Johan Ahlbor |
-| Name        | Power User  |
+| Usertype    | David Hult |
+| Name        | Active User  |
 | Gender      | Male        |
-| Age         | 24          |
-| Education   | College     |
-| City        | Jönköping   |
-| Goal        | Johan is a film enthusiast and is specifically interested in Japanese films. Johan wants to be able to easily and quickly search and filter films based on his interests. He also wants to be able to create lists of movies that he is interested in watching that are saved when he creates an account.   |
+| Age         | 20          |
+| Education   | Stockholms University of the Arts|
+| City        | Stockholm   |
+| Goal        | David is an active user on IMDb and mainly uses it to search for movie 
+information and heavily relies on the search filter function. David would also 
+love to see an improved trailer watching experience with a genre filter.|
 
 
 
