@@ -153,14 +153,14 @@ As a Admin, I want to be able to track what users of the website are doing in te
 
 | Page        | Items       |
 | ----------- | ----------- |
-| **Landing page** <br /> <br /> /  | 1. Movies & Reviews Section <br /> 2. Browse Categories for movies <br /> 3. Search form |
+| **Landing page** <br /> <br /> /  | 1. Search <br /> 2. New releases <br /> 3. Top movies |  <br /> 4. Coming soon |
 | **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
-| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/lists <br /> /user/{user_id}/settings | Routes related to the user  |
-| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews <br /> /title/{title_id}/photos <br /> /title/{title_id}/trailers <br /> /title/{title_id}/episodes | Routes related to movies and TV-shows |
-| **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre |
-| **Top rated** <br /> <br /> /chart/top | Top rated movies and/or TV-shows |
-| **Admin** <br /> <br /> /admin/login <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
+| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/reviewlists <br /> /user/{user_id}/settings | Routes related to the user  |
+| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews <br /> /title/{title_id}/photos <br /> | Routes related to movies |
+| **Top rated** <br /> <br /> /chart/top <br /> /chart/new| Top rated movies |
+| **Admin** <br /> <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
 
+<!-- | **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre | -->
 
 
 ## License
