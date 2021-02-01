@@ -136,7 +136,7 @@ As a Admin, I want to be able to track what users of the website are doing in te
 ## Sitemap
 
 <!--Insert Sitemap-->
-
+![Sitemap](/assets/Sitemap.png?raw=true)
 
 
 ## Wireframes
