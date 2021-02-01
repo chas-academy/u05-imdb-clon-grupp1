@@ -11,6 +11,9 @@
         "APP_NAME": "Laravel",
         "APP_ENV": "review",
         "APP_DEBUG": "true",
-        "DB_CONNECTION": "pgsql"
+        "DB_CONNECTION": "pgsql",
+        "APP_KEY": {
+            "generator": "secret"
+        }
     }
 }
