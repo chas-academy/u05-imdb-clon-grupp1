@@ -53,10 +53,8 @@
 
 ### Built With
 
-* [Bootstrap](https://getbootstrap.com)
 * [Sass](https://sass-lang.com)
 * [Laravel](https://laravel.com)
-* [Nova](https://nova.laravel.com)
 
 ### Code Standards
 * [Psr-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
