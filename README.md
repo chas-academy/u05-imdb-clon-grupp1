@@ -108,9 +108,7 @@ By creating a modern user experience, there is the opportunity to enter the mark
 | Age         | 20          |
 | Education   | Stockholms University of the Arts|
 | City        | Stockholm   |
-| Goal        | David is an active user on IMDb and mainly uses it to search for movie 
-information and heavily relies on the search filter function. David would also 
-love to see an improved trailer watching experience with a genre filter.|
+| Goal        | David is an active user on IMDb and mainly uses it to search for movie information and heavily relies on the search filter function. David would also love to see an improved trailer watching experience with a genre filter.|
 
 
 
