@@ -38,7 +38,12 @@
    </li>
     <li><a href="#user-Personas">User Personas</a></li>
     <li><a href="#user-stories">User Stories</a></li>
-    <li><a href="#sitemap">Sitemap</a></li>
+    <li>
+        <a href="#sitemap">Sitemap</a> 
+            <ul>
+                <li><a href="#er-diagram">ER-diagram</a></li>
+            </ul>
+    </li>
     <li><a href="#wireframes">Wireframes</a></li>
     <li><a href="#page-and-route-descriptions">Page And Route Descriptions</a></li>
     <li><a href="#license">License</a></li>
@@ -134,6 +139,8 @@ As a Admin, I want to be able to track what users of the website are doing in te
 <!--Insert Sitemap-->
 ![Sitemap](/assets/Sitemap.png?raw=true)
 
+### ER-diagram
+![Er-diagram](/assets/ERdiagram.png?raw=true)
 
 ## Wireframes
 
