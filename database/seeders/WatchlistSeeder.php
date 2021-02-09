@@ -16,15 +16,10 @@ class WatchlistSeeder extends Seeder
 
     public function run()
     {
-
-        for ($a = 0; $a < 10; $a++) {
-            $watchlist[] = [
+        foreach ((range(1, 10)) as $index) {
+            Watchlist::create([
                 'user_id' => rand(1, 10), 'movie_id' => rand(1, 10)
-            ];
-        }
-
-        foreach ($watchlist as $a) {
-            Watchlist::create($a);
+            ]);
         }
     }
 }

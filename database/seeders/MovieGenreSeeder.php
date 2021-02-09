@@ -17,14 +17,13 @@ class MovieGenreSeeder extends Seeder
         // $movieIDs = DB::table('movies')->pluck('id');
         // $movieIDs = DB::table('movies')->pluck('id');
 
-        for ($a = 0; $a < 10; $a++) {
-            $moviegenre[] = [
-                'movie_id' => rand(1, 10), 'movie_id' => rand(1, 10), 'genre_id' => rand(1, 10), 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")
-            ];
-        }
 
-        foreach ($moviegenre as $a) {
-            DB::table('movie_genre')->insert($a);
+        foreach ((range(1, 10)) as $index) {
+            DB::table('movie_genre')->insert(
+                [
+                    'movie_id' => rand(1, 10), 'movie_id' => rand(1, 10), 'genre_id' => rand(1, 10), 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")
+                ]
+            );
         }
     }
 }
