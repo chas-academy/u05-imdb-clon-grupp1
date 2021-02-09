@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Movie;
+use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Database\Seeder;
 
@@ -18,7 +20,7 @@ class WatchlistSeeder extends Seeder
     {
         foreach ((range(1, 10)) as $index) {
             Watchlist::create([
-                'user_id' => rand(1, 10), 'movie_id' => rand(1, 10)
+                'user_id' => User::inRandomOrder()->value('id'), 'movie_id' => Movie::inRandomOrder()->value('id')
             ]);
         }
     }

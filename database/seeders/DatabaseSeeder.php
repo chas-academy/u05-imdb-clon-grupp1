@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // DB::statement kolla foreign_key avstängd medans seeders körs
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         User::factory(10)->create();
         Movie::factory(10)->create();
         $this->call(GenreSeeder::class);
@@ -32,6 +31,5 @@ class DatabaseSeeder extends Seeder
         // Watchlist::factory(10)->create();
 
         // DB::statement aktivt igen
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
