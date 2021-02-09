@@ -19,7 +19,7 @@ class MovieGenreSeeder extends Seeder
         foreach ((range(1, 10)) as $index) {
             DB::table('movie_genre')->insert(
                 [
-                    'movie_id' => Movie::inRandomOrder()->value('id'), 'genre_id' => Genre::inRandomOrder()->value('id') //'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")
+                    'movie_id' => Movie::inRandomOrder()->value('id'), 'genre_id' => Genre::inRandomOrder()->value('id'), 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")
                 ]
             );
         }
