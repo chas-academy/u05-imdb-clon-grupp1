@@ -18,6 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -40,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function watchlist()
+    {
+        return $this->hasOne(Watchlist::class);
+    }
+    public function review()
+    {
+        return $this->belongsToMany(Review::class);
+    }
 }
