@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\WatchlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,19 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/reviews/create', [ReviewController::class, 'create']);
+Route::get('/reviews', [ReviewController::class, 'index']);
+Route::get('/reviews/{review}', [ReviewController::class, 'show']);
+Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit']);
+Route::post('/reviews', [ReviewController::class, 'store']);
+Route::patch('/reviews', [ReviewController::class, 'update']);
+Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
+
+
+Route::get('/watchlists', [WatchlistController::class, 'index']);
+Route::get('/watchlists/{watchlist}', [WatchlistController::class, 'show']);
+Route::get('/watchlists/{watchlist}/edit', [WatchlistController::class, 'edit']);
+Route::post('/watchlists', [WatchlistController::class, 'store']);
+Route::patch('/watchlists', [WatchlistController::class, 'update']);
+Route::delete('/watchlists/{watchlist}', [WatchlistController::class, 'delete']);
