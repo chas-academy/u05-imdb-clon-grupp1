@@ -10,9 +10,17 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
-        return view('movies.index');
+        $movies = Movie::latest()->paginate(20);
+
+        return view('movies.index', compact('movies'));
     }
 
     public function show(Genre $genre, Movie $movie, Review $review, User $user)

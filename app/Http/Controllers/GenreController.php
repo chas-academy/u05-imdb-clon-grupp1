@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
-        return view('genres.index');
+        $genres = Genre::latest()->paginate(20);
+
+        return view('genres.index', compact('genres'));
     }
 
     public function show(Genre $genre, Movie $movie)
