@@ -1,1 +1,0 @@
-<h1>polla de pollo</h1>
