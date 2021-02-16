@@ -1,6 +1,6 @@
 <div>
     <h1> Add new movie </h1>
-    <form action="" method="POST">
+    <form action="/movies" method="POST">
         @csrf
         <label for="title">Title</label>
         <input type="text" id="title" name="title">
