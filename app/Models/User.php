@@ -46,7 +46,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Watchlist::class);
     }
-    public function review()
+    public function reviews()
     {
         return $this->belongsToMany(Review::class);
     }

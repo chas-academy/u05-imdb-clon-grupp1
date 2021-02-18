@@ -10,16 +10,17 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     use HasFactory;
+    // protected $guarded = [];
 
-    public function genre()
+    public function genres()
     {
         return $this->hasMany(Genre::class);
     }
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
-    public function watchlist()
+    public function watchlists()
     {
         return $this->hasMany(Watchlist::class);
     }

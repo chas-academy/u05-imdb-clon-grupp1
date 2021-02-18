@@ -16,7 +16,7 @@ class Watchlist extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function movie()
+    public function movies()
     {
         return $this->hasMany(Movie::class);
     }
