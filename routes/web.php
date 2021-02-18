@@ -18,18 +18,10 @@ use App\Http\Controllers\WatchlistController;
 |
 */
 
-Route::get('/', [ReviewController::class, 'index']);
-Route::get('/show/{movie}', [ReviewController::class, 'show']);
-/*
-Route::get('/create', function () {
-    return view('create');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/edit', function () {
-    return view('edit');
-});*/
-
-/*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
 Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
@@ -45,7 +37,7 @@ Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movi
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
 Route::patch('/movies', [MovieController::class, 'update'])->name('movies.update');
 Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
-*/
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -53,7 +45,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-/*
+
 Route::get('/reviews/create', [ReviewController::class, 'create']);
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/reviews/{review}', [ReviewController::class, 'show']);
@@ -69,4 +61,3 @@ Route::get('/watchlists/{watchlist}/edit', [WatchlistController::class, 'edit'])
 Route::post('/watchlists', [WatchlistController::class, 'store']);
 Route::patch('/watchlists', [WatchlistController::class, 'update']);
 Route::delete('/watchlists/{watchlist}', [WatchlistController::class, 'delete']);
-*/
