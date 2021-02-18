@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WatchlistController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 //REMOVE LATER//
 Route::get('/user', function () {
