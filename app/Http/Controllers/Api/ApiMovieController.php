@@ -38,6 +38,7 @@ class ApiMovieController extends Controller
         $movie->img_path = $request->img_path;
         $movie->trailer_path = $request->trailer_path;
         $movie->top_rating = $request->top_rating;
+        $movie->genres_id = $request->genres_id;
 
         $movie->save();
 
@@ -75,6 +76,7 @@ class ApiMovieController extends Controller
         $movie->img_path = $request->img_path;
         $movie->trailer_path = $request->trailer_path;
         $movie->top_rating = $request->top_rating;
+        $movie->genres_id = $request->genres_id;
 
         $movie->save();
 

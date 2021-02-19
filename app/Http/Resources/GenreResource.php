@@ -16,7 +16,7 @@ class GenreResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'genre_name' => $this->genre_name,
+            'name' => $this->name,
         ];
     }
 }

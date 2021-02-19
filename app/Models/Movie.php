@@ -11,18 +11,18 @@ class Movie extends Model
 {
     use HasFactory;
 
-    public function genre()
+    public function genres()
     {
-        return $this->hasMany(Genre::class);
+        return $this->belongsToMany(Genre::class);
     }
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    public function profile()
+    public function profiles()
     {
-        return $this->belongsToMany(Profile::class, 'profile_pivots', 'movies_id', 'profiles_id');
+        return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'profiles_id', 'movies_id');
     }
 }

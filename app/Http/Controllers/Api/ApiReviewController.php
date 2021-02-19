@@ -32,6 +32,8 @@ class ApiReviewController extends Controller
         $review = new Review;
         $review->review = $request->review;
         $review->rating = $request->rating;
+        $review->user_id = $request->user_id;
+        $review->movies_id = $request->movies_id;
 
         Log::info("Review ID {$request->id} created successfully.");
 
@@ -64,6 +66,8 @@ class ApiReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->review = $request->review;
         $review->rating = $request->rating;
+        $review->user_id = $request->user_id;
+        $review->movies_id = $request->movies_id;
 
         $review->save();
 

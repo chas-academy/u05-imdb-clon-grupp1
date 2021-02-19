@@ -25,9 +25,9 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => function () {
-                return User::factory()->create();
-            },
+            'title' => $this->faker->title,
+            'image' => 'img/test.jpg',
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

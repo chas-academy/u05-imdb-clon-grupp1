@@ -20,7 +20,7 @@ class ApiGenreController extends Controller
     public function store(Request $request)
     {
         $genre = new Genre;
-        $genre->genre_name = $request->genre_name;
+        $genre->name = $request->name;
         $genre->save();
 
         // Log::info("Genre ID {$genre->id} created successfully.");
@@ -50,7 +50,7 @@ class ApiGenreController extends Controller
     public function update(Request $request, $id)
     {
         $genre = Genre::findOrFail($id);
-        $genre->genre_name = $request->genre_name;
+        $genre->name = $request->name;
         $genre->save();
 
         // Log::info("Genre ID {$genre->id} update successfully.");

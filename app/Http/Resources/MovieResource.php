@@ -26,4 +26,11 @@ class MovieResource extends JsonResource
             'top_rating' => $this->top_rating,
         ];
     }
+    public function with($request)
+    {
+        return [
+            'genres' => new GenreResource($this->genres()),
+            'reviews' => new ReviewResource($this->reviews())
+        ];
+    }
 }

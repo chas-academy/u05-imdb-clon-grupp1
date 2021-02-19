@@ -10,14 +10,21 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function profileImage()
+    {
+        $imagePath = ($this->image) ? $this->image : 'profile/noimage.png';
+        return '/storage/' . $imagePath;
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function movie()
+    public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'profile_pivots', 'movies_id', 'profiles_id');
+        return $this->belongsToMany(Movie::class, 'watchlist_pivot', 'profiles_id', 'movies_id');
     }
 }
