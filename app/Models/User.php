@@ -10,6 +10,17 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    protected $guarded = [];
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function review()
+    {
+        return $this->hasMany(Review::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -41,13 +52,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function watchlist()
-    {
-        return $this->hasOne(Watchlist::class);
-    }
-    public function reviews()
-    {
-        return $this->belongsToMany(Review::class);
-    }
 }

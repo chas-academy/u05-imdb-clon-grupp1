@@ -11,7 +11,7 @@ class Genre extends Model
 {
     use HasFactory;
 
-    public function movies()
+    public function movie()
     {
         return $this->hasMany(Movie::class);
     }

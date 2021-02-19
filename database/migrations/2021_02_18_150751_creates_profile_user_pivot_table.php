@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRatingsAndReviewsTable extends Migration
+class CreatesProfileUserPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateRatingsAndReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ratings_and_reviews', function (Blueprint $table) {
+        Schema::create('profile_pivots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->text('review');
-            $table->integer('rating');
+            $table->foreignId('profiles_id')->constrained();
+            $table->foreignId('movies_id')->constrained();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateRatingsAndReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratings_and_reviews');
+        Schema::dropIfExists('profile_pivots');
     }
 }

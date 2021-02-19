@@ -10,18 +10,19 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     use HasFactory;
-    // protected $guarded = [];
 
-    public function genres()
+    public function genre()
     {
         return $this->hasMany(Genre::class);
     }
-    public function reviews()
+
+    public function review()
     {
         return $this->hasMany(Review::class);
     }
-    public function watchlists()
+
+    public function profile()
     {
-        return $this->hasMany(Watchlist::class);
+        return $this->belongsToMany(Profile::class, 'profile_pivots', 'movies_id', 'profiles_id');
     }
 }

@@ -2,9 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Movie;
 use App\Models\Profile;
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class ProfileSeeder extends Seeder
 {
@@ -15,10 +19,13 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        foreach ((range(1, 10)) as $index) {
-            Profile::create([
-                'user_id' => User::inRandomOrder()->value('id')
-            ]);
-        }
+        // Schema::disableForeignKeyConstraints();
+
+        // DB::table('cities')->truncate();
+
+        // Factory(City::class, 10)->create();
+
+        // Schema::enableForeignKeyConstraints();
+
     }
 }

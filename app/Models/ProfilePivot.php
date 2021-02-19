@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 // En watchlist har en User och många filmer
 
-class Watchlist extends Model
+class ProfilePivot extends Model
 {
     use HasFactory;
-    protected $table = 'watchlist_item';
 
-    public function user()
+    public function profile()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Profile::class);
     }
-    public function movies()
+
+    public function movie()
     {
         return $this->hasMany(Movie::class);
     }

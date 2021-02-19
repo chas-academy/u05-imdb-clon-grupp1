@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserWatchlistPivot extends Migration
+class CreateMovieGenrePivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class UserWatchlistPivot extends Migration
      */
     public function up()
     {
-        Schema::create('user_watchlist_pivot', function (Blueprint $table) {
+        Schema::create('movie_genre', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('watchlist_id')->constrained();
+            $table->foreignId('movies_id')->constrained();
+            $table->foreignId('genre_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class UserWatchlistPivot extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_watchlist_pivot');
+        Schema::dropIfExists('movie_genre');
     }
 }

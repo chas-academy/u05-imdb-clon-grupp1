@@ -41,7 +41,7 @@ class ReviewController extends Controller
         return view('reviews.create');
     }
 
-    /*
+
     public function store()
     {
         return redirect('/reviews');
@@ -64,5 +64,5 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->delete();
         return redirect('/reviews');
-    } */
+    }
 }
