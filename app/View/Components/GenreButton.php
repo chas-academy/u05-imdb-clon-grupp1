@@ -22,9 +22,8 @@ class GenreButton extends Component
         $this->link = $link;
     }
 
-    public function randomColor(){
-
-
+    public function randomColor()
+    {
         return $randomColor = $this->color[array_rand($this->color, 1)];
     }
 
