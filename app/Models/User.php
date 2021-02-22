@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -42,12 +43,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function watchlist()
+    protected static function boot()
     {
-        return $this->hasOne(Watchlist::class);
+        parent::boot();
+
+        static::created(
+            function ($user) {
+                $user->profile()->create([
+                    'title' => $user->username,
+                    // 'movies_id' => rand(1, 10),
+                ]);
+
+                // Mail::to($user->email)->send(new NewUserWelcomeMail());
+            }
+        );
     }
-    public function review()
+
+    public function profile()
     {
-        return $this->belongsToMany(Review::class);
+        return $this->hasOne(Profile::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

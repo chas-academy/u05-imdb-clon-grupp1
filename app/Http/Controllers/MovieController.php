@@ -23,9 +23,9 @@ class MovieController extends Controller
         return view('movies.index', compact('movies'));
     }
 
-    public function show(Genre $genre, Movie $movie, Review $review, User $user)
+    public function show(Movie $movie)
     {
-        return view('movies.show', compact('genre', 'movie', 'review', 'user'));
+        return view('show', compact('genre', 'movie', 'review', 'user'));
     }
 
     public function create()
@@ -33,8 +33,20 @@ class MovieController extends Controller
         return view('movies.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $movie = new Movie();
+
+        $movie->title = $request->title;
+        $movie->description = $request->description;
+        $movie->actors = $request->actors;
+        $movie->language = $request->language;
+        $movie->release_date = $request->release_date;
+        $movie->img_path = $request->img_path;
+        $movie->trailer_path = $request->trailer_path;
+
+        $movie->save();
+
         return redirect('/movies');
     }
 
@@ -57,5 +69,4 @@ class MovieController extends Controller
 
         return redirect('/movies');
     }
-
 }

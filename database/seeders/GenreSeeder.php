@@ -16,15 +16,15 @@ class GenreSeeder extends Seeder
     public function run()
     {
         $genre = [
-            ['genre_name' => 'Comedy'],
-            ['genre_name' => 'Action'],
-            ['genre_name' => 'Drama'],
-            ['genre_name' => 'Fantasy'],
-            ['genre_name' => 'Horror'],
-            ['genre_name' => 'Mystery'],
-            ['genre_name' => 'Romance'],
-            ['genre_name' => 'Thriller'],
-            ['genre_name' => 'Sci-fi'],
+            ['name' => 'Comedy'],
+            ['name' => 'Action'],
+            ['name' => 'Drama'],
+            ['name' => 'Fantasy'],
+            ['name' => 'Horror'],
+            ['name' => 'Mystery'],
+            ['name' => 'Romance'],
+            ['name' => 'Thriller'],
+            ['name' => 'Sci-fi'],
         ];
 
         foreach ($genre as $a) {

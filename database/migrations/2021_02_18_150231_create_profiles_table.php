@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWatchlistItemTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateWatchlistItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('watchlist_item', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->string('title')->nullable();
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateWatchlistItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('watchlist_item');
+        Schema::dropIfExists('profiles');
     }
 }

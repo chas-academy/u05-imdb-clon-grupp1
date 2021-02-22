@@ -20,7 +20,7 @@ class ReviewSeeder extends Seeder
     {
         foreach ((range(1, 10)) as $index) {
             Review::create([
-                'user_id' => User::inRandomOrder()->value('id'), 'movie_id' => Movie::inRandomOrder()->value('id'), 'review' => Str::random(10), 'rating' => rand(1, 10)
+                'user_id' => User::inRandomOrder()->value('id'), 'movies_id' => Movie::inRandomOrder()->value('id'), 'review' => Str::random(10), 'rating' => rand(1, 10)
             ]);
         }
     }

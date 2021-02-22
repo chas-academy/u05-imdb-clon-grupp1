@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\ApiMovieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
@@ -16,6 +18,8 @@ Route::get('/user', function () {
 })->name('user');
 //END REMOVE LATER//
 
+Route::get('/profile/{user}', [UserController::class, 'show'])->name('user.show');
+/*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
 Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
@@ -49,3 +53,4 @@ Route::get('/watchlists/{watchlist}/edit', [WatchlistController::class, 'edit'])
 Route::post('/watchlists', [WatchlistController::class, 'store']);
 Route::patch('/watchlists', [WatchlistController::class, 'update']);
 Route::delete('/watchlists/{watchlist}', [WatchlistController::class, 'delete']);
+*/
