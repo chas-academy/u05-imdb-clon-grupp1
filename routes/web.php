@@ -12,13 +12,8 @@ use App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
-//REMOVE LATER//
-Route::get('/user', function () {
-    return view('user');
-})->name('user');
-//END REMOVE LATER//
-
 Route::get('/profile/{user}', [UserController::class, 'show'])->name('user.show');
+
 /*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
@@ -45,7 +40,6 @@ Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 Route::patch('/reviews', [ReviewController::class, 'update']);
 Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
-
 
 Route::get('/watchlists', [WatchlistController::class, 'index']);
 Route::get('/watchlists/{watchlist}', [WatchlistController::class, 'show']);
