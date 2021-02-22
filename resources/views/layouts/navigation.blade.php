@@ -16,7 +16,7 @@
                 </x-nav-link>
                 @if (Route::has('login'))
                 @auth
-                <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
+                <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                     {{ __(Auth::user()->name) }}
                 </x-nav-link>
                 @else
@@ -52,7 +52,7 @@
             </x-responsive-nav-link>
             @if (Route::has('login'))
             @auth
-            <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
+            <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
                 {{ __(Auth::user()->name) }}
             </x-responsive-nav-link>
             @else
