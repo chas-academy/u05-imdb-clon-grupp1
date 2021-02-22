@@ -5,21 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WatchlistController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//REMOVE LATER//
+Route::get('/user', function () {
+    return view('user');
+})->name('user');
+//END REMOVE LATER//
 
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
@@ -36,11 +31,6 @@ Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movi
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
 Route::patch('/movies', [MovieController::class, 'update'])->name('movies.update');
 Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
