@@ -438,7 +438,7 @@
                                 @foreach($reviews as $review)
                                 {{ $review->review }}
                                 @endforeach
-                                <!--test-->
+
                             </div>
                         </div>
                     </div>
