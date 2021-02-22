@@ -2,17 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Watchlist;
+use App\Models\Movie;
+use App\Models\Profile;
+use App\Models\Profile_user;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class WatchlistFactory extends Factory
+class ProfileFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Watchlist::class;
+    protected $model = Profile::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +25,9 @@ class WatchlistFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->randomDigit,
-            'movie_id' => $this->faker->randomDigit
+            'title' => $this->faker->title,
+            'image' => 'img/test.jpg',
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

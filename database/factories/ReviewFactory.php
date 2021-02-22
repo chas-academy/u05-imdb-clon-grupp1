@@ -23,7 +23,7 @@ class ReviewFactory extends Factory
     {
         return [
             'user_id' => $this->faker->randomDigit,
-            'movie_id' => $this->faker->randomDigit,
+            'movies_id' => $this->faker->randomDigit,
             'review' => $this->faker->paragraph,
             'rating' => $this->faker->numberBetween(1, 10)
         ];

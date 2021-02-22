@@ -23,9 +23,9 @@ class MovieController extends Controller
         return view('movies.index', compact('movies'));
     }
 
-    public function show(Genre $genre, Movie $movie, Review $review, User $user)
+    public function show(Movie $movie)
     {
-        return view('movies.show', compact('genre', 'movie', 'review', 'user'));
+        return view('show', compact('genre', 'movie', 'review', 'user'));
     }
 
     public function create()
@@ -57,5 +57,4 @@ class MovieController extends Controller
 
         return redirect('/movies');
     }
-
 }

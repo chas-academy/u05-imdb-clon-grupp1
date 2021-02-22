@@ -33,4 +33,3 @@ class MovieFactory extends Factory
         ];
     }
 }
-// $faker->unique()->numberBetween(1,20)

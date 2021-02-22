@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    protected $table = 'ratings_and_reviews';
 
     public function movie()
     {
         return $this->hasOne(Movie::class);
     }
+
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }
