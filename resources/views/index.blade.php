@@ -6,7 +6,9 @@
     </div>
 
      {{-- Move to user.blade --}}
-  <form method="POST" action="{{ route('logout') }}">
+     @if (Route::has('login'))
+     @auth
+    <form method="POST" action="{{ route('logout') }}">
         @csrf
         <x-dropdown-link :href="route('logout')"
                 onclick="event.preventDefault();
@@ -14,5 +16,7 @@
             {{ __('Logout') }}
         </x-dropdown-link>
     </form>
+    @endauth
+    @endif
 
 </x-app-layout>

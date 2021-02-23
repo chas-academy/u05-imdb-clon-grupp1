@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    // Start Temporarily
+    // Start temporary
     public function index()
     {
         $genres = Genre::all();
@@ -16,5 +16,5 @@ class IndexController extends Controller
 
         return view('index', compact('genres', 'movies'));
     }
-    // End Temporarily
+    // End temporary
 }
