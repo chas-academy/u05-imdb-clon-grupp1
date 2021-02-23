@@ -20,12 +20,12 @@ class MovieController extends Controller
     {
         $movies = Movie::latest()->paginate(20);
 
-        return view('movies.index', compact('movies'));
+        return view('movlies.index', compact('movies'));
     }
 
-    public function show(Movie $movie)
+    public function show(Movie $movie, Review $review, User $user)
     {
-        return view('show', compact('genre', 'movie', 'review', 'user'));
+        return view('movies.show', compact('movie', 'review', 'user'));
     }
 
     public function create()
@@ -35,6 +35,16 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'actors' => 'required',
+            'language' => 'required',
+            'release_date' => 'required',
+            'img_path' => 'required', // add correct path later
+            'trailer_path' => 'required',
+        ]);
+
         $movie = new Movie();
 
         $movie->title = $request->title;
@@ -57,9 +67,31 @@ class MovieController extends Controller
         return view('movies.edit', compact('movie'));
     }
 
-    public function update(Movie $movie)
+    public function update(Request $request, $id)
     {
-        return redirect("/movies/{$movie->id}");
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'actors' => 'required',
+            'language' => 'required',
+            'release_date' => 'required',
+            'img_path' => 'required', // add correct path later
+            'trailer_path' => 'required', 
+        ]);
+
+        $movie = Movie::findOrFail($id);
+        
+        $movie->title = $request->title;
+        $movie->description = $request->description;
+        $movie->actors = $request->actors;
+        $movie->language = $request->language;
+        $movie->release_date = $request->release_date;
+        $movie->img_path = $request->img_path;
+        $movie->trailer_path = $request->trailer_path;
+
+        $movie->save();
+
+        return redirect("/movies");
     }
 
     public function destroy($id)

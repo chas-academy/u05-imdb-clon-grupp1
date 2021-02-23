@@ -23,7 +23,12 @@ Route::get('/', function () {
 });
 Route::get('/', [ReviewController::class, 'index'])->name('welcome');
 
-Route::get('/profile/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::resource('movies', MovieController::class);
+
 /*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');

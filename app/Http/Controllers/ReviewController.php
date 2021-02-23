@@ -42,24 +42,35 @@ class ReviewController extends Controller
     }
 
 
-    public function store()
+    public function store(Request $request)
     {
+
+        $review = new Review;
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+        $review->user_id = $request->user_id;
+        $review->movies_id = $request->movies_id;
+
+        // Log::info("Review ID {$request->id} created successfully.");
+
+        $review->save();
+
         return redirect('/reviews');
     }
 
-    public function edit(Review $review)
+    public function edit(Review $review, $id)
     {
         return view('reviews.edit', [
             'review' => Review::findOrFail($id)
         ], compact('review'));
     }
 
-    public function update(Review $review)
+    public function update(Review $review, $id)
     {
         return redirect("/reviews/{$review->$id}");
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         $review = Review::findOrFail($id);
         $review->delete();
