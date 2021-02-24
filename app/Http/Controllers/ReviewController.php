@@ -23,11 +23,12 @@ class ReviewController extends Controller
 
     public function index()
     {
-        $reviews = new ReviewCollection(Review::all());
-        $genres = new GenreCollection(Genre::all());
-        $movies = new MovieCollection(Movie::all());
-        $users = User::all();
-        return view('welcome', compact('reviews', 'genres', 'movies', 'users'));
+        // $reviews = new ReviewCollection(Review::all());
+        // $genres = new GenreCollection(Genre::all());
+        // $movies = new MovieCollection(Movie::all());
+        // $users = User::all();
+        // return view('welcome', compact('reviews', 'genres', 'movies', 'users'));
+
     }
 
     public function show(Movie $movie)
@@ -36,28 +37,33 @@ class ReviewController extends Controller
     }
 
 
-    public function create()
+    public function create($id)
     {
-        return view('reviews.create');
+        $movie = Movie::findOrFail($id);
+
+        return view('reviews.create', compact('movie'));
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $movie = Movie::findOrFail($id);
 
         $review = new Review;
         $review->review = $request->review;
         $review->rating = $request->rating;
-        $review->user_id = $request->user_id;
-        $review->movies_id = $request->movies_id;
+        $review->user_id = auth()->user()->id;
+        $review->movies_id = $movie->id;
 
         // Log::info("Review ID {$request->id} created successfully.");
 
         $review->save();
 
-        return redirect('/reviews');
+        return redirect("/movies/{$movie->id}");
     }
 
+
+    // Kolla på edit för reviews, samt auth för reviews så den som skapat den kan ta bort den.
     public function edit(Review $review, $id)
     {
         return view('reviews.edit', [
@@ -74,6 +80,6 @@ class ReviewController extends Controller
     {
         $review = Review::findOrFail($id);
         $review->delete();
-        return redirect('/reviews');
+        return back();
     }
 }

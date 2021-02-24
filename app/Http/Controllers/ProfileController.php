@@ -8,24 +8,32 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     // public function index()
     // {
 
     // }
 
-    public function show(User $user)
+    public function show(Profile $profile, User $user)
     {
-        return view('profile.show', compact('user'));
+        return view('profile.show', compact('user', 'profile'));
     }
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user->profile);
+
         return view('profile.edit', compact('user'));
     }
 
-    // Not working!!
-    public function update(User $user, Request $request, $id)
+    public function update(Request $request, $id)
     {
+        
+
         $this->validate($request, [
             'title' => 'required|max:255'
         ]);
@@ -33,6 +41,11 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id);
         $profile->title = $request->title;
         // $profile->image = $request->image; //Lägg till senare
+
+        $profile->save();
+        
+        $user = User::findOrFail($id);
+        
 
         return redirect("/profile/{$user->profile->id}");
     }
