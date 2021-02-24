@@ -20,7 +20,7 @@ class MovieController extends Controller
     {
         $movies = Movie::latest()->paginate(20);
 
-        return view('movlies.index', compact('movies'));
+        return view('movies.index', compact('movies'));
     }
 
     public function show(Movie $movie, Review $review, User $user)
