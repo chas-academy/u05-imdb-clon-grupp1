@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Cache as FacadesCache;
 
 class ReviewController extends Controller
 {
-    /*
+
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-    } */
+    }
 
     public function index()
     {
@@ -29,11 +29,14 @@ class ReviewController extends Controller
         // $users = User::all();
         // return view('welcome', compact('reviews', 'genres', 'movies', 'users'));
 
+        $reviews = Review::all();
+
+        return view('reviews.index', compact('reviews'));
     }
 
-    public function show(Movie $movie)
+    public function show(Review $review)
     {
-        return view('show', compact('movie'));
+        return view('reviews.show', compact('review'));
     }
 
 
@@ -47,6 +50,11 @@ class ReviewController extends Controller
 
     public function store(Request $request, $id)
     {
+        $this->validate($request, [
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
         $movie = Movie::findOrFail($id);
 
         $review = new Review;
@@ -63,17 +71,30 @@ class ReviewController extends Controller
     }
 
 
-    // Kolla på edit för reviews, samt auth för reviews så den som skapat den kan ta bort den.
-    public function edit(Review $review, $id)
+    public function edit($id)
     {
-        return view('reviews.edit', [
-            'review' => Review::findOrFail($id)
-        ], compact('review'));
+        $review = Review::findOrFail($id);
+        
+
+        return view('reviews.edit', compact('review'));
     }
 
-    public function update(Review $review, $id)
+    // Not redirecting or updating database
+    public function update(Request $request, $id)
     {
-        return redirect("/reviews/{$review->$id}");
+        $this->validate($request, [
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        $review = Review::findOrFail($id);
+
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+
+
+        $review->save();
+        return redirect("/movies/{$review->movies_id}");
     }
 
     public function destroy($id)
