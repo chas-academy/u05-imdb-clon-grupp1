@@ -1,6 +1,6 @@
 <h1>
     Create review
-    <h1>
+</h1>
 
 
      <form action="/movies/{{$movie->id}}" method="POST">
