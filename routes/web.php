@@ -29,9 +29,13 @@ Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('pro
 
 Route::resource('movies', MovieController::class);
 
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
 Route::post('/movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
 Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
 Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
 
 /*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
