@@ -1,5 +1,5 @@
     <h1>Edit review</h1>
-    <form action="/movies/{{$review->movies_id}}" method="POST">
+    <form action="/movies/{{$review->id}}" method="POST">
         @csrf
         @method('PATCH')
         <label for="review">Review edit</label>
