@@ -34,7 +34,7 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, [
+        $data = request()->validate([
             'title' => 'required|max:255',
             'image' => ''
         ]);
@@ -44,13 +44,16 @@ class ProfileController extends Controller
             $imagePath = request('image')->store('profile', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(1000, 1000); //Intervention Image Package
             $imageArray = ['image' => $imagePath];
+            $image->save();
         }
 
         $profile = Profile::findOrFail($id);
-        $profile->title = $request->title;
         // $profile->image = $request->image; //Lägg till senare
-
-        $profile->save();
+        
+        $profile->update(array_merge(
+            $data,
+            $imageArray ?? [],
+        ));
 
 
 
