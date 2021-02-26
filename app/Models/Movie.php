@@ -23,6 +23,6 @@ class Movie extends Model
 
     public function profiles()
     {
-        return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'profiles_id', 'movies_id');
+        return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'movies_id', 'profile_id');
     }
 }

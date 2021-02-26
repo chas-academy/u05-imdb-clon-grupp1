@@ -15,8 +15,10 @@
 @endif
 
 @foreach ($movie->reviews as $review)
+<img src="{{$review->user->profile->profileImage()}}" width="100px">
     {{ $review->review }}<br>
     {{ $review->rating }}<br>
+    By {{$review->user->username}}
     @can('update', $review)
     <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
     @endcan
