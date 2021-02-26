@@ -18,11 +18,11 @@ class Movie extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'movies_id');
     }
 
     public function profiles()
     {
-        return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'profiles_id', 'movies_id');
+        return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'movies_id', 'profile_id');
     }
 }

@@ -15,54 +15,92 @@ use Illuminate\Support\Facades\Cache as FacadesCache;
 
 class ReviewController extends Controller
 {
-    /*
+
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-    } */
+    }
 
     public function index()
     {
-        $reviews = new ReviewCollection(Review::all());
-        $genres = new GenreCollection(Genre::all());
-        $movies = new MovieCollection(Movie::all());
-        $users = User::all();
-        return view('welcome', compact('reviews', 'genres', 'movies', 'users'));
+        // $reviews = new ReviewCollection(Review::all());
+        // $genres = new GenreCollection(Genre::all());
+        // $movies = new MovieCollection(Movie::all());
+        // $users = User::all();
+        // return view('welcome', compact('reviews', 'genres', 'movies', 'users'));
+
+        $reviews = Review::all();
+
+        return view('reviews.index', compact('reviews'));
     }
 
-    public function show(Movie $movie)
+    public function show(Review $review)
     {
-        return view('show', compact('movie'));
+        return view('reviews.show', compact('review'));
     }
 
 
-    public function create()
+    public function create($id)
     {
-        return view('reviews.create');
+        $movie = Movie::findOrFail($id);
+
+        return view('reviews.create', compact('movie'));
     }
 
 
-    public function store()
+    public function store(Request $request, $id)
     {
-        return redirect('/reviews');
+        $this->validate($request, [
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        $movie = Movie::findOrFail($id);
+
+        $review = new Review;
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+        $review->user_id = auth()->user()->id;
+        $review->movies_id = $movie->id;
+
+        // Log::info("Review ID {$request->id} created successfully.");
+
+        $review->save();
+
+        return redirect("/movies/{$movie->id}");
     }
 
-    public function edit(Review $review)
+
+    public function edit($id)
     {
-        return view('reviews.edit', [
-            'review' => Review::findOrFail($id)
-        ], compact('review'));
+        $review = Review::findOrFail($id);
+        
+
+        return view('reviews.edit', compact('review'));
     }
 
-    public function update(Review $review)
+    // Not redirecting or updating database
+    public function update(Request $request, $id)
     {
-        return redirect("/reviews/{$review->$id}");
+        $this->validate($request, [
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        $review = Review::findOrFail($id);
+
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+
+
+        $review->save();
+        return redirect("/movies/{$review->movies_id}");
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         $review = Review::findOrFail($id);
         $review->delete();
-        return redirect('/reviews');
+        return back();
     }
 }

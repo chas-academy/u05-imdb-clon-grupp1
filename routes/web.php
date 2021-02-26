@@ -19,37 +19,37 @@ Route::get('/admin', function()
 })->middleware('admin');
 // End Test Route
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/profile/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
-// Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
-// Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
-// Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
-// Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
-// Route::get('/genres/{genre}/edit', [GenreController::class, 'edit'])->name('genres.edit');
-// Route::patch('/genres', [GenreController::class, 'update'])->name('genres.update');
-// Route::delete('/genres/{genre}', [GenreController::class, 'destroy'])->name('genres.destroy');
+Route::resource('movies', MovieController::class);
 
-// Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
-// Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
-// Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
-// Route::get('/movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
-// Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
-// Route::patch('/movies', [MovieController::class, 'update'])->name('movies.update');
-// Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+Route::get('/reviews/{review}', [ReviewController::class, 'show'])->name('reviews.show');
+Route::post('/movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
+Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
 
-// Route::get('/reviews', [ReviewController::class, 'index']);
-// Route::get('/reviews/create', [ReviewController::class, 'create']);
-// Route::post('/reviews', [ReviewController::class, 'store']);
-// Route::get('/reviews/{review}', [ReviewController::class, 'show']);
-// Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit']);
-// Route::patch('/reviews', [ReviewController::class, 'update']);
-// Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
+/*
+Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
+*/
+Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
+Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
+/*
+Route::get('/genres/{genre}/edit', [GenreController::class, 'edit'])->name('genres.edit');
+Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
+Route::patch('/genres', [GenreController::class, 'update'])->name('genres.update');
+Route::delete('/genres/{genre}', [GenreController::class, 'destroy'])->name('genres.destroy');
 
-// Route::get('/watchlists', [WatchlistController::class, 'index']);
-// Route::post('/watchlists', [WatchlistController::class, 'store']);
-// Route::get('/watchlists/{watchlist}', [WatchlistController::class, 'show']);
-// Route::get('/watchlists/{watchlist}/edit', [WatchlistController::class, 'edit']);
-// Route::patch('/watchlists', [WatchlistController::class, 'update']);
-// Route::delete('/watchlists/{watchlist}', [WatchlistController::class, 'delete']);
+Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
+Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
+Route::get('/movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
+Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
+Route::patch('/movies', [MovieController::class, 'update'])->name('movies.update');
+Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
+*/
