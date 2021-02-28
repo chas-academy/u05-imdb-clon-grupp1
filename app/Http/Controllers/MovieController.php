@@ -23,9 +23,10 @@ class MovieController extends Controller
         return view('movies.index', compact('movies'));
     }
 
-    public function show(Movie $movie, Review $review, User $user)
+    public function show(Movie $movie, User $user)
     {
-        return view('movies.show', compact('movie', 'review', 'user'));
+        $reviews = $movie->reviews()->paginate(3);
+        return view('movies.show', compact('movie', 'reviews', 'user'));
     }
 
     public function create()
@@ -97,6 +98,7 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
+        $movie->reviews()->delete();
         $movie->delete();
 
         return redirect('/movies');
