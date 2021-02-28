@@ -1,9 +1,14 @@
 <h1>{{$movie->title}}</h1>
 <a href="/movies">Back</a><br>
 
-{{ $movie->title }}
+{{ $movie->title }}<br>
 {{ $movie->description }}
 <br>
+
+<h4>Genres</h4>
+@foreach ($movie->genres as $genre)
+    {{$genre->name}}<br>
+@endforeach
 
 @if (Route::has('login'))
     @auth
