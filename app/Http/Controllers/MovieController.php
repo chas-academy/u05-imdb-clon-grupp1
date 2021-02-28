@@ -69,6 +69,10 @@ class MovieController extends Controller
 
         $movie->save();
 
+        // Add movie genre to pivot
+        $genre_id = $request->genres;
+        $movie->genres()->attach($genre_id);
+
         return redirect('/movies');
     }
 
@@ -110,6 +114,7 @@ class MovieController extends Controller
     {
         $movie = Movie::findOrFail($id);
         $movie->reviews()->delete();
+        $movie->genres()->detach();
         $movie->delete();
 
         return redirect('/movies');
