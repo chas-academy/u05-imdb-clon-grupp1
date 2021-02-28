@@ -14,11 +14,11 @@
     @endauth
 @endif
 
-@foreach ($movie->reviews as $review)
-<img src="{{$review->user->profile->profileImage()}}" width="100px">
+@foreach ($reviews as $review)
+<img src="{{$review->user->profile->profileImage()}}" width="50px">
     {{ $review->review }}<br>
     {{ $review->rating }}<br>
-    By {{$review->user->username}}
+    By {{$review->user->username}}<br>
     @can('update', $review)
     <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
     @endcan
@@ -33,3 +33,4 @@
         </form>
     @endcan
 @endforeach
+{!! $reviews->links() !!}
