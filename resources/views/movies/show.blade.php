@@ -1,13 +1,19 @@
-<h1>Movies</h1>
+<h1>{{$movie->title}}</h1>
 <a href="/movies">Back</a><br>
 
 {{ $movie->title }}
 {{ $movie->description }}
 <br>
 
-{{-- På denna sida tänkt att man kan föra in reviews --}}
 @if (Route::has('login'))
     @auth
+<form method="post" action="{{ route('movies.watchlist', $movie->id) }}">
+    @csrf
+    <button type="submit" name="delete">Add to watchlist
+
+        </button>
+</form><br>
+
         <a href="/reviews/{{ $movie->id }}/create">Add review</a><br>
     @else
         <p>Please <a href="/login">login</a> to add a review</p><br>
