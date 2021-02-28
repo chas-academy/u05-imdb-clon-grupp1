@@ -6,6 +6,7 @@ use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -27,6 +28,16 @@ class MovieController extends Controller
     {
         $reviews = $movie->reviews()->paginate(3);
         return view('movies.show', compact('movie', 'reviews', 'user'));
+    }
+
+    public function addToWatchlist($id) 
+    {
+        $movie_id = Movie::findOrFail($id);
+
+        $profile = Profile::findOrFail($id);
+        $profile->movies()->attach($movie_id);
+
+        return back();
     }
 
     public function create()
