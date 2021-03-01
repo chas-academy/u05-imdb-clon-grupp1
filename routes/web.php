@@ -19,6 +19,7 @@ Route::get('/admin', function()
 })->middleware('admin');
 // End Test Route
 
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
