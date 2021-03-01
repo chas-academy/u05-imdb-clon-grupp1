@@ -14,14 +14,14 @@ class MovieController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('admin')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index(User $user)
     {
         $movies = Movie::latest()->paginate(20);
 
-        return view('movies.index', compact('movies'));
+        return view('movies.index', compact('movies', 'user'));
     }
 
     public function show(Movie $movie, User $user)
@@ -30,7 +30,7 @@ class MovieController extends Controller
         return view('movies.show', compact('movie', 'reviews', 'user'));
     }
 
-    public function addToWatchlist($id) 
+    public function addToWatchlist($id)
     {
         $movie_id = Movie::findOrFail($id);
 
@@ -42,7 +42,9 @@ class MovieController extends Controller
 
     public function create()
     {
-        return view('movies.create');
+        $genres = Genre::all();
+
+        return view('movies.create', compact('genres'));
     }
 
     public function store(Request $request)
@@ -55,6 +57,7 @@ class MovieController extends Controller
             'release_date' => 'required',
             'img_path' => 'required', // add correct path later
             'trailer_path' => 'required',
+            'genres' => 'required',
         ]);
 
         $movie = new Movie();
@@ -69,18 +72,17 @@ class MovieController extends Controller
 
         $movie->save();
 
-        // Add movie genre to pivot
-        $genre_id = $request->genres;
-        $movie->genres()->attach($genre_id);
+        $movie->genres()->attach($request->genres);
 
-        return redirect('/movies');
+        return redirect("/movies");
     }
 
     public function edit($id)
     {
+        $genres = Genre::all();
         $movie = Movie::findOrFail($id);
 
-        return view('movies.edit', compact('movie'));
+        return view('movies.edit', compact('movie', 'genres'));
     }
 
     public function update(Request $request, $id)
@@ -92,11 +94,14 @@ class MovieController extends Controller
             'language' => 'required',
             'release_date' => 'required',
             'img_path' => 'required', // add correct path later
-            'trailer_path' => 'required', 
+            'trailer_path' => 'required',
+            'genres' => 'required',
         ]);
 
         $movie = Movie::findOrFail($id);
-        
+
+        $movie->genres()->detach();
+
         $movie->title = $request->title;
         $movie->description = $request->description;
         $movie->actors = $request->actors;
@@ -106,6 +111,8 @@ class MovieController extends Controller
         $movie->trailer_path = $request->trailer_path;
 
         $movie->save();
+
+        $movie->genres()->attach($request->genres);
 
         return redirect("/movies");
     }
