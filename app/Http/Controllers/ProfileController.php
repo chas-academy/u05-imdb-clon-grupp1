@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
@@ -31,14 +32,21 @@ class ProfileController extends Controller
         return view('profile.edit', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update($id)
     {
+        $profile = Profile::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $data = request()->validate([
             'title' => 'required|max:255',
             'image' => ''
         ]);
 
+        if ($user->profile->image) {
+            if (File::exists("storage/{$user->profile->image}")) {
+            File::delete("storage/{$user->profile->image}");
+          }
+        }
             
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
@@ -47,7 +55,7 @@ class ProfileController extends Controller
             $image->save();
         }
 
-        $profile = Profile::findOrFail($id);
+        
         // $profile->image = $request->image; //Lägg till senare
         
         $profile->update(array_merge(

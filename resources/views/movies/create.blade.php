@@ -57,7 +57,18 @@
             <strong>{{ $errors->first('trailer_path') }}</strong>
         </span>
     @endif
-    
+    <select name="genres" multiple="">
+        <option hidden value="">Select genres</option>
+        <option value="1">Comedy</option>
+        <option value="2">Action</option>
+        <option value="3">Drama</option>
+        <option value="4">Fantasy</option>
+        <option value="5">Horror</option>
+        <option value="6">Mystery</option>
+        <option value="7">Romance</option>
+        <option value="8">Thriller</option>
+        <option value="9">Sci-fi</option>
+    </select><br>
         <input type="submit">
     </form>
 
