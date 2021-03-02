@@ -20,8 +20,6 @@ Route::get('/admin', function () {
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
-
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
