@@ -14,7 +14,7 @@ class MovieController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show']);
+        $this->middleware('admin')->except(['index', 'show', 'addToWatchlist']);
     }
 
     public function index(User $user)
