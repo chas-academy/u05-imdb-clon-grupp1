@@ -23,6 +23,8 @@ window.Vue = require('vue').default;
 Vue.component('watchlist-button', require('./components/WatchlistButton.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('moviestar-component', require('./components/MovieStarComponent.vue').default);
+Vue.component('review-component', require('./components/ReviewComponent.vue').default);
+Vue.component('review-list', require('./components/ReviewListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
