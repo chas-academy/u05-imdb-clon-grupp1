@@ -10,11 +10,10 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\IndexController;
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Middleware Test Route
-Route::get('/admin', function()
-{
+Route::get('/admin', function () {
     return view('admin.admin');
 })->middleware('admin');
 // End Test Route
@@ -35,6 +34,8 @@ Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('re
 
 Route::resource('movies', MovieController::class);
 Route::post('/movies/{movie}', [MovieController::class, 'addToWatchlist'])->name('movies.watchlist');
+
+Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
 
 /*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
