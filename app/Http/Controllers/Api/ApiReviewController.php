@@ -20,7 +20,6 @@ class ApiReviewController extends Controller
     {
         return new ReviewCollection(Review::all());
     }
-
     /**
      * Store a newly created resource in storage.
      *
