@@ -14,7 +14,7 @@ class MovieController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show']);
+        $this->middleware('admin')->except(['index', 'show', 'addToWatchlist']);
     }
 
     public function index(User $user)
@@ -26,18 +26,15 @@ class MovieController extends Controller
 
     public function show(Movie $movie, User $user)
     {
+        $watchlistStatus = (auth()->user() ? auth()->user()->profile->movies->contains($movie->id) : false);
+
         $reviews = $movie->reviews()->paginate(3);
-        return view('movies.show', compact('movie', 'reviews', 'user'));
+        return view('movies.show', compact('movie', 'reviews', 'user', 'watchlistStatus'));
     }
 
-    public function addToWatchlist($id)
+    public function addToWatchlist(Movie $movie)
     {
-        $movie_id = Movie::findOrFail($id);
-
-        $profile = Profile::findOrFail($id);
-        $profile->movies()->attach($movie_id);
-
-        return back();
+        return auth()->user()->profile->movies()->toggle($movie);
     }
 
     public function create()

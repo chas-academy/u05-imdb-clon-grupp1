@@ -37,6 +37,8 @@ Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('re
 Route::resource('movies', MovieController::class);
 Route::post('/movies/{movie}', [MovieController::class, 'addToWatchlist'])->name('movies.watchlist');
 
+Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
+
 Route::apiResource('review-api', ApiReviewController::class);
 Route::apiResource('movie-api', ApiMovieController::class);
 Route::apiResource('genre-api', ApiGenreController::class);
