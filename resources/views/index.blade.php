@@ -17,6 +17,5 @@
     </form>
     @endauth
     @endif
-    <moviestar-component>
-    </moviestar-component>
+
 </x-app-layout>

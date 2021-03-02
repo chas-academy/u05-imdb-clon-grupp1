@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\GenreCollection;
 use App\Http\Resources\MovieCollection;
+use App\Http\Resources\MovieResource;
 use App\Http\Resources\ReviewCollection;
+use App\Http\Resources\ReviewResource;
 use App\Models\Review;
 use App\Models\Movie;
 use App\Models\User;
@@ -74,7 +76,6 @@ class ReviewController extends Controller
     public function edit($id)
     {
         $review = Review::findOrFail($id);
-        
 
         return view('reviews.edit', compact('review'));
     }

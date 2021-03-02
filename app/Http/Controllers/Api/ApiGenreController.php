@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Log;
 
 class ApiGenreController extends Controller
 {
+    public function index()
+    {
+        return new GenreCollection(Genre::all());
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -3843,13 +3843,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     StarRating: (vue_star_rating__WEBPACK_IMPORTED_MODULE_0___default())
   },
+  data: function data() {
+    return {
+      rating: this.rating,
+      loading: true,
+      errored: false
+    };
+  },
   mounted: function mounted() {
-    console.log("Component mounted.");
+    var _this = this;
+
+    axios.get("/review-api/" + window.location.pathname.split("/")[2]).then(function (response) {
+      _this.rating = response.data.data["rating"];
+      console.log(_this.rating);
+    })["catch"](function (error) {
+      console.log(error);
+      _this.errored = true;
+    })["finally"](function () {
+      return _this.loading = false;
+    });
   }
 });
 

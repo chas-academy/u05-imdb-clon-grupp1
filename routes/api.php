@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function () {
-    Route::resource('genre-api', ApiGenreController::class)->shallow();
-    Route::resource('movie-api', ApiMovieController::class)->shallow();
-    Route::resource('review-api', ApiReviewController::class)->shallow();
-});
+/*
+Route::middleware('auth:api')->get('/admin', function () {
+    Route::apiResource('review-api', ApiReviewController::class);
+    Route::apiResource('movie-api', ApiMovieController::class);
+    Route::apiResource('genre-api', ApiGenreController::class);
+}); */

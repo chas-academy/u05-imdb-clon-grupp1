@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\ApiGenreController;
 use App\Http\Controllers\Api\ApiMovieController;
+use App\Http\Controllers\Api\ApiReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WatchlistController;
@@ -10,18 +12,17 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\IndexController;
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Middleware Test Route
-Route::get('/admin', function()
-{
+Route::get('/admin', function () {
     return view('admin.admin');
 })->middleware('admin');
 // End Test Route
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,6 +37,9 @@ Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('re
 Route::resource('movies', MovieController::class);
 Route::post('/movies/{movie}', [MovieController::class, 'addToWatchlist'])->name('movies.watchlist');
 
+Route::apiResource('review-api', ApiReviewController::class);
+Route::apiResource('movie-api', ApiMovieController::class);
+Route::apiResource('genre-api', ApiGenreController::class);
 /*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 */
