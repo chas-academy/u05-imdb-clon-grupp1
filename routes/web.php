@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\ApiGenreController;
 use App\Http\Controllers\Api\ApiMovieController;
+use App\Http\Controllers\Api\ApiReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WatchlistController;
@@ -20,6 +22,8 @@ Route::get('/admin', function () {
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
+
+
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
@@ -35,6 +39,9 @@ Route::post('/movies/{movie}', [MovieController::class, 'addToWatchlist'])->name
 
 Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
 
+Route::apiResource('review-api', ApiReviewController::class);
+Route::apiResource('movie-api', ApiMovieController::class);
+Route::apiResource('genre-api', ApiGenreController::class);
 /*
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
 */
