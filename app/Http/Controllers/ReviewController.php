@@ -52,24 +52,26 @@ class ReviewController extends Controller
 
     public function store(Request $request, $id)
     {
-        $this->validate($request, [
-            'review' => 'required',
-            'rating' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'review' => 'required',
+        //     'rating' => 'required',
+        // ]);
 
-        $movie = Movie::findOrFail($id);
+        // $movie = Movie::findOrFail($id);
 
-        $review = new Review;
-        $review->review = $request->review;
-        $review->rating = $request->rating;
-        $review->user_id = auth()->user()->id;
-        $review->movies_id = $movie->id;
+        // $review = new Review;
+        // $review->review = $request->review;
+        // $review->rating = $request->rating;
+        // $review->user_id = auth()->user()->id;
+        // $review->movies_id = $movie->id;
 
-        // Log::info("Review ID {$request->id} created successfully.");
+        // // Log::info("Review ID {$request->id} created successfully.");
 
-        $review->save();
+        // $review->save();
+        
+        Review::create($request->all());
 
-        return redirect("/movies/{$movie->id}");
+        return (['message' => 'Reivew added']);
     }
 
 
