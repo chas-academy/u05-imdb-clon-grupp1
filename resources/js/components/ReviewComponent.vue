@@ -1,5 +1,5 @@
 <template>
-    
+    <div>
         <form method="post" @submit.prevent="addReview">
         <label for="title">Review</label>
 
@@ -19,6 +19,12 @@
         
         <button type="submit">Add review</button>
         </form>
+        <p v-if="errors.length">
+            <b v-for="error in errors" :key="error.id">
+                {{error}}
+            </b>
+        </p>
+        </div>
 </template>
 
 <script>
@@ -35,11 +41,16 @@ export default {
             review: '',
             movies_id: this.movieId,
             user_id: this.userId,
+            errors: '',
         }
     },
 
     methods: {
         addReview() {
+            this.errors = [];
+            if (!this.review) {
+            this.errors.push('Please write a review.');
+      }
             axios.post('/review-api', {
                 review:this.review,
                 movies_id: this.movies_id,
@@ -47,8 +58,13 @@ export default {
                 })
             .then(response => {
                 console.log(response)
+                this.review = ''
             })
-            
+            Event.$emit('reviewAdded', {
+                review:this.review,
+                movies_id: this.movies_id,
+                user_id: this.user_id,
+                })
         }
     }
 }
