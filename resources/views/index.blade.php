@@ -5,6 +5,10 @@
         @endforeach
     </div>
 
+
+
+    <movie-slider />
+
     {{-- Move to user.blade --}}
     @if (Route::has('login'))
     @auth
