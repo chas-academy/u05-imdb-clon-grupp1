@@ -30,25 +30,26 @@
             <p>Please <a href="/login">login</a> to add a review</p><br>
         @endauth
     @endif
-    {{-- {{-- @foreach ($reviews as $review)
+     {{-- @foreach ($reviews as $review)
         <img src="{{ $review->user->profile->profileImage() }}" width="50px">
         {{ $review->review }}<br>
         {{ $review->rating }}<br>
         By {{ $review->user->username }}<br>
         @can('update', $review)
             <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
-        @endcan
+        @endcan --}}
 
-        @can('update', $review)
+        {{-- @can('update', $review) --}}
             {{-- <form action="{{ route('reviews.destroy', $review->id) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit" name="delete">Delete
 
                     review</button>
-            </form> 
-        @endcan
-    @endforeach
-    {!! $reviews->links() !!} --}}
+            </form> --}}
+        {{-- @endcan --}}
+        
+    {{-- @endforeach  --}}
+    {{-- {!! $reviews->links() !!} --}}
     <review-list movie-id="{{ $movie->id }}"></review-list>
 </x-app-layout>
