@@ -8,6 +8,7 @@ require('./bootstrap');
 require('alpinejs');
 
 window.Vue = require('vue').default;
+window.Event = new Vue();
 
 /**
  * The following block of code may be used to automatically register your
