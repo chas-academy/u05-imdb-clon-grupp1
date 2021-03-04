@@ -1,8 +1,8 @@
 <template>
-    <div id="root" data-server-rendered="true">
+    <div id="root" data-server-rendered="true" v-if="loading !== true && errored !== true">
         <flicking
             class="h-80 my-5"
-            :options="{gap: 15, circular: true,  moveType: 'snap'}"
+           :options="{ gap: 15, circular: true, moveType: { type: 'snap', count: 10 } }"
             :tag="'div'"
             :viewportTag="'div'"
             :cameraTag="'div'"
@@ -24,6 +24,8 @@ import { Flicking } from "@egjs/vue-flicking";
         data() {
             return {
                 movies: this.movies,
+                loading: true,
+                errored: false,
             };
         },
         mounted() {
@@ -31,12 +33,18 @@ import { Flicking } from "@egjs/vue-flicking";
             .then(response => {
                 this.movies = response.data.data.slice().reverse();
             })
+             .catch((error) => {
+                console.log(error);
+                this.errored = true;
+            })
+            .finally(() => (this.loading = false));
         },
         methods: {
             user: function (e) {
                 const nextURL = `http://127.0.0.1:8000/movies/${this.movies[e.index].id}`;
+
+                return window.location.assign(nextURL);
             }
         }
     };
-
 </script>

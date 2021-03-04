@@ -17893,7 +17893,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      movies: this.movies
+      movies: this.movies,
+      loading: true,
+      errored: false
     };
   },
   mounted: function mounted() {
@@ -17901,11 +17903,17 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/movie-api').then(function (response) {
       _this.movies = response.data.data.slice().reverse();
+    })["catch"](function (error) {
+      console.log(error);
+      _this.errored = true;
+    })["finally"](function () {
+      return _this.loading = false;
     });
   },
   methods: {
     user: function user(e) {
       var nextURL = "http://127.0.0.1:8000/movies/".concat(this.movies[e.index].id);
+      return window.location.assign(nextURL);
     }
   }
 });
@@ -54556,53 +54564,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "root", "data-server-rendered": "true" } },
-    [
-      _c(
-        "flicking",
-        {
-          staticClass: "h-80 my-5",
-          attrs: {
-            options: { gap: 15, circular: true, moveType: "snap" },
-            tag: "div",
-            viewportTag: "div",
-            cameraTag: "div"
-          },
-          on: {
-            select: function(e) {
-              return _vm.user(e)
-            }
-          }
-        },
-        _vm._l(_vm.movies, function(movie) {
-          return _c(
-            "div",
-            { staticClass: "h-80 w-56 relative panel text-white" },
-            [
-              _c("img", {
-                staticClass:
-                  "h-full w-full rounded-3xl cursor-pointer object-cover",
-                attrs: { src: "/storage/" + movie.img_path }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "absolute top-4 right-4 bg-white w-6 h-6 text-gray-900 "
+  return _vm.loading !== true && _vm.errored !== true
+    ? _c(
+        "div",
+        { attrs: { id: "root", "data-server-rendered": "true" } },
+        [
+          _c(
+            "flicking",
+            {
+              staticClass: "h-80 my-5",
+              attrs: {
+                options: {
+                  gap: 15,
+                  circular: true,
+                  moveType: { type: "snap", count: 10 }
                 },
-                [_vm._v(_vm._s(movie.id))]
+                tag: "div",
+                viewportTag: "div",
+                cameraTag: "div"
+              },
+              on: {
+                select: function(e) {
+                  return _vm.user(e)
+                }
+              }
+            },
+            _vm._l(_vm.movies, function(movie) {
+              return _c(
+                "div",
+                { staticClass: "h-80 w-56 relative panel text-white" },
+                [
+                  _c("img", {
+                    staticClass:
+                      "h-full w-full rounded-3xl cursor-pointer object-cover",
+                    attrs: { src: "/storage/" + movie.img_path }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "absolute top-4 right-4 bg-white w-6 h-6 text-gray-900 "
+                    },
+                    [_vm._v(_vm._s(movie.id))]
+                  )
+                ]
               )
-            ]
+            }),
+            0
           )
-        }),
-        0
+        ],
+        1
       )
-    ],
-    1
-  )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
