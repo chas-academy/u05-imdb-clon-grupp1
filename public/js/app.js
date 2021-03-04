@@ -17886,6 +17886,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -17902,18 +17905,16 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/movie-api').then(function (response) {
-      _this.movies = response.data.data.slice().reverse();
+      return _this.movies = response.data.data.slice().reverse();
     })["catch"](function (error) {
-      console.log(error);
-      _this.errored = true;
+      return _this.errored = true;
     })["finally"](function () {
       return _this.loading = false;
     });
   },
   methods: {
     user: function user(e) {
-      var nextURL = "http://127.0.0.1:8000/movies/".concat(this.movies[e.index].id);
-      return window.location.assign(nextURL);
+      window.location.assign("http://127.0.0.1:8000/movies/".concat(this.movies[e.index].id));
     }
   }
 });
@@ -54567,7 +54568,6 @@ var render = function() {
   return _vm.loading !== true && _vm.errored !== true
     ? _c(
         "div",
-        { attrs: { id: "root", "data-server-rendered": "true" } },
         [
           _c(
             "flicking",
@@ -54578,10 +54578,7 @@ var render = function() {
                   gap: 15,
                   circular: true,
                   moveType: { type: "snap", count: 10 }
-                },
-                tag: "div",
-                viewportTag: "div",
-                cameraTag: "div"
+                }
               },
               on: {
                 select: function(e) {
