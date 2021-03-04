@@ -1,6 +1,6 @@
 <x-app-layout>
-    <h1>{{ $movie->title }}</h1>
-    <a href="/movies">Back</a><br>
+    <h1 class="text-white">{{ $movie->title }}</h1>
+    <a class="text-white" href="/movies">Back</a><br>
 
     {{ $movie->title }}<br>
     {{ $movie->description }}

@@ -1,11 +1,15 @@
 <template>
-    <div>
+    <div id="root" data-server-rendered="true">
         <flicking
-            class="flicking h-80 my-5"
-            :options="{gap: 15, circular: true, moveType: 'freeScroll' }">
-                <div v-for="movie in movies"  class="h-80 w-56 relative">
-                    <img  :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover">
-                    <button class="absolute top-4 right-4 bg-white w-6 h-6 rounded-full scale-100 transform hover:opacity-70 hover:scale-110"></button>
+            class="h-80 my-5"
+            :options="{gap: 15, circular: true,  moveType: 'snap'}"
+            :tag="'div'"
+            :viewportTag="'div'"
+            :cameraTag="'div'"
+            @select="e => user(e)">
+                <div v-for="movie in movies" class="h-80 w-56 relative panel text-white">
+                   <img  :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover">
+                    <button class="absolute top-4 right-4 bg-white w-6 h-6 text-gray-900 ">{{movie.id}}</button>
                 </div>
         </flicking>
     </div>
@@ -28,7 +32,11 @@ import { Flicking } from "@egjs/vue-flicking";
                 this.movies = response.data.data.slice().reverse();
             })
         },
+        methods: {
+            user: function (e) {
+                const nextURL = `http://127.0.0.1:8000/movies/${this.movies[e.index].id}`;
+            }
+        }
     };
 
 </script>
-
