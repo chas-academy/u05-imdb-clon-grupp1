@@ -17882,7 +17882,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -17890,22 +17889,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      movies: this.movies,
-      loading: true,
-      errored: false
+      movies: this.movies
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get('/movie-api').then(function (response) {
-      _this.movies = response.data.data[0].img_path;
-      console.log(_this.movies);
-    })["catch"](function (error) {
-      console.log(error);
-      _this.errored = true;
-    })["finally"](function () {
-      return _this.loading = false;
+      _this.movies = response.data.data.slice().reverse();
     });
   }
 });
@@ -54562,19 +54553,26 @@ var render = function() {
       _c(
         "flicking",
         {
-          staticClass: "flicking flicking0 h-96",
+          staticClass: "flicking h-80 my-5",
           attrs: {
-            options: { gap: 10, circular: true, moveType: "freeScroll" }
+            options: { gap: 15, circular: true, moveType: "freeScroll" }
           }
         },
-        [
-          _c("div", { staticClass: "panel h-96" }, [
+        _vm._l(_vm.movies, function(movie) {
+          return _c("div", { staticClass: "h-80 w-56 relative" }, [
             _c("img", {
-              staticClass: "w-48 rounded-3xl ",
-              attrs: { src: "/storage/" + _vm.movies }
+              staticClass:
+                "h-full w-full rounded-3xl cursor-pointer object-cover",
+              attrs: { src: "/storage/" + movie.img_path }
+            }),
+            _vm._v(" "),
+            _c("button", {
+              staticClass:
+                "absolute top-4 right-4 bg-white w-6 h-6 rounded-full scale-100 transform hover:opacity-70 hover:scale-110"
             })
           ])
-        ]
+        }),
+        0
       )
     ],
     1
