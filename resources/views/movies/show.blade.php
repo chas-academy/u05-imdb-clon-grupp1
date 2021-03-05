@@ -1,7 +1,15 @@
+<head>
+    <style>
+        body {
+            color: white;
+        }
+        </style>
+
+</head>
 <x-app-layout>
     <h1>{{ $movie->title }}</h1>
     <a href="/movies">Back</a><br>
-
+    <img src="{{$movie->moviePoster()}}" width="300px"/>
     {{ $movie->title }}<br>
     {{ $movie->description }}
     <br>
@@ -30,14 +38,14 @@
             <p>Please <a href="/login">login</a> to add a review</p><br>
         @endauth
     @endif
-     {{-- @foreach ($reviews as $review)
+     @foreach ($reviews as $review)
         <img src="{{ $review->user->profile->profileImage() }}" width="50px">
         {{ $review->review }}<br>
         {{ $review->rating }}<br>
         By {{ $review->user->username }}<br>
         @can('update', $review)
             <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
-        @endcan --}}
+        @endcan
 
         {{-- @can('update', $review) --}}
             {{-- <form action="{{ route('reviews.destroy', $review->id) }}" method="post">
@@ -49,7 +57,7 @@
             </form> --}}
         {{-- @endcan --}}
         
-    {{-- @endforeach  --}}
-    {{-- {!! $reviews->links() !!} --}}
-    <review-list movie-id="{{ $movie->id }}"></review-list>
+  @endforeach  
+    {!! $reviews->links() !!}
+   
 </x-app-layout>
