@@ -17886,9 +17886,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -17905,7 +17902,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/movie-api').then(function (response) {
-      return _this.movies = response.data.data.slice().reverse();
+      _this.movies = response.data.data.slice().reverse();
+      console.log(_this.movies);
     })["catch"](function (error) {
       return _this.errored = true;
     })["finally"](function () {
@@ -17914,7 +17912,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     user: function user(e) {
-      window.location.assign("http://127.0.0.1:8000/movies/".concat(this.movies[e.index].id));
+      window.location.assign("/movies/".concat(this.movies[e.index].id));
     }
   }
 });
@@ -54573,13 +54571,7 @@ var render = function() {
             "flicking",
             {
               staticClass: "h-80 my-5",
-              attrs: {
-                options: {
-                  gap: 15,
-                  circular: true,
-                  moveType: { type: "snap", count: 10 }
-                }
-              },
+              attrs: { options: { circular: true, moveType: "freeScroll" } },
               on: {
                 select: function(e) {
                   return _vm.user(e)
@@ -54589,7 +54581,10 @@ var render = function() {
             _vm._l(_vm.movies, function(movie) {
               return _c(
                 "div",
-                { staticClass: "h-80 w-56 relative panel text-white" },
+                {
+                  staticClass:
+                    "h-80 w-56 p-2 relative panel text-white bg-red-500"
+                },
                 [
                   _c("img", {
                     staticClass:
@@ -54601,7 +54596,7 @@ var render = function() {
                     "button",
                     {
                       staticClass:
-                        "absolute top-4 right-4 bg-white w-6 h-6 text-gray-900 "
+                        "absolute top-5 right-5 rounded-full bg-white w-6 h-6 text-gray-900 "
                     },
                     [_vm._v(_vm._s(movie.id))]
                   )
