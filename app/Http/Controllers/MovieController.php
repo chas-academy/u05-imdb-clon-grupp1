@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class MovieController extends Controller
 {
@@ -96,36 +97,50 @@ class MovieController extends Controller
         return view('movies.edit', compact('movie', 'genres'));
     }
 
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $this->validate($request, [
+        $movie = Movie::findOrFail($id);
+
+        $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
             'actors' => 'required',
             'language' => 'required',
             'release_date' => 'required',
-            'img_path' => '', // add correct path later
+            'img_path' => '',
             'trailer_path' => 'required',
-            'genres' => 'required',
+            
         ]);
 
-        $movie = Movie::findOrFail($id);
+        $genres = request()->validate([
+            'genres' => 'required'
+        ]);
 
         $movie->genres()->detach();
 
-        $movie->title = $request->title;
-        $movie->description = $request->description;
-        $movie->actors = $request->actors;
-        $movie->language = $request->language;
-        $movie->release_date = $request->release_date;
-        $movie->img_path = $request->img_path;
-        $movie->trailer_path = $request->trailer_path;
+        if ($movie->img_path) {
+            if (File::exists("storage/{$movie->img_path}")) {
+            File::delete("storage/{$movie->img_path}");
+          }
+        }
 
-        $movie->save();
+        if (request('img_path')) {
+            $imagePath = request('img_path')->store('movieposter', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(1000, 1000);
+            $imageArray = ['img_path' => $imagePath];
+            $image->save();
+        }
 
-        $movie->genres()->attach($request->genres);
+        
 
-        return redirect("/movies");
+        $movie->update(array_merge(
+            $data,
+            $imageArray ?? [],
+        ));
+       
+        $movie->genres()->attach($genres['genres']);
+
+        return redirect("/movies/{$movie->id}");
     }
 
     public function destroy($id)
