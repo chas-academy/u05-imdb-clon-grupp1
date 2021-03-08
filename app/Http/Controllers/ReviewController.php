@@ -72,6 +72,13 @@ class ReviewController extends Controller
         return redirect("/movies/{$movie->id}");
     }
 
+    public function addRating(Request $request, $id)
+    {
+        $review = Review::findOrFail($id);
+        $review->rating = $request->rating;
+        $review->save();
+    }
+
 
     public function edit($id)
     {

@@ -53,6 +53,7 @@ class ApiReviewController extends Controller
         return new ReviewResource(Review::FindOrFail($id));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
