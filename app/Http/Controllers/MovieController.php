@@ -126,7 +126,7 @@ class MovieController extends Controller
 
         if (request('img_path')) {
             $imagePath = request('img_path')->store('movieposter', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(1000, 1000);
+            $image = Image::make(public_path("storage/{$imagePath}"));
             $imageArray = ['img_path' => $imagePath];
             $image->save();
         }
