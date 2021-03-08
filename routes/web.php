@@ -38,7 +38,10 @@ Route::resource('movies', MovieController::class);
 Route::post('/movies/{movie}', [MovieController::class, 'addToWatchlist'])->name('movies.watchlist');
 
 Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
-Route::post('rating/{id}', [ReviewController::class, 'addRating']);
+
+Route::post('rating/{id}/update', [ReviewController::class, 'updateRating']);
+Route::post('rating/{id}/create', [ReviewController::class, 'createReview']);
+Route::post('rating/{id}', [ReviewController::class, 'updateReview']);
 
 Route::apiResource('review-api', ApiReviewController::class);
 Route::apiResource('movie-api', ApiMovieController::class);

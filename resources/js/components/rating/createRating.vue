@@ -6,6 +6,7 @@
           <!-- <star-rating @rating-selected="create" v-model="rating"></star-rating>-->
           <div v-for="(review, index) in reviews" :key="review.rating">
             <star-rating
+              :show-rating="false"
               @rating-selected="store(review.rating)"
               v-model="review.rating"
             ></star-rating>
@@ -25,7 +26,10 @@ export default {
   components: {
     StarRating,
   },
-  props: ["reviewId"],
+
+  props: {
+    id: {},
+  },
 
   data() {
     return {
@@ -35,7 +39,7 @@ export default {
 
   mounted() {
     // this.$forceUpdate();
-    let uri = `/review-api/${this.reviewId}`;
+    let uri = `/review-api/${this.id}`;
     axios.get(uri).then((response) => {
       this.reviews = response.data;
     });
@@ -43,7 +47,7 @@ export default {
 
   methods: {
     store(rating) {
-      let uri = `/rating/${this.reviewId}`;
+      let uri = `/rating/${this.id}`;
       axios
         .post(uri, {
           rating,

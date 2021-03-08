@@ -72,9 +72,35 @@ class ReviewController extends Controller
         return redirect("/movies/{$movie->id}");
     }
 
-    public function addRating(Request $request, $id)
+    public function updateRating(Request $request, $id)
     {
         $review = Review::findOrFail($id);
+        $review->rating = $request->rating;
+        $review->save();
+    }
+
+    public function createReview(Request $request, $id)
+    {
+        $this->validate($request, [
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        $review = Review::findOrFail($id);
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+        $review->save();
+    }
+
+    public function updateReview(Request $request, $id)
+    {
+        $this->validate($request, [
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        $review = Review::findOrFail($id);
+        $review->review = $request->review;
         $review->rating = $request->rating;
         $review->save();
     }
