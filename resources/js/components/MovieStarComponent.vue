@@ -3,7 +3,14 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <star-rating v-model="rating"></star-rating>
+          <!-- <star-rating @rating-selected="create" v-model="rating"></star-rating>-->
+          <div v-for="(review, index) in reviews" :key="review.rating">
+            <star-rating
+              @rating-selected="store(review.rating)"
+              v-model="review.rating"
+            ></star-rating>
+            {{ review.review }}
+          </div>
         </div>
       </div>
     </div>
@@ -14,76 +21,37 @@
 
 <script>
 import StarRating from "vue-star-rating";
-
 export default {
   components: {
     StarRating,
   },
+  props: ["reviewId"],
+
   data() {
     return {
-      rating: this.rating,
-      loading: true,
-      errored: false,
+      reviews: {},
     };
   },
+
   mounted() {
-    axios
-      .get("/review-api/" + window.location.pathname.split("/")[2])
-      .then((response) => {
-        this.rating = response.data.data["rating"];
-        console.log(this.rating);
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      })
-      .finally(() => (this.loading = false));
+    // this.$forceUpdate();
+    let uri = `/review-api/${this.reviewId}`;
+    axios.get(uri).then((response) => {
+      this.reviews = response.data;
+    });
   },
-};
-</script>
 
-<!--
-<script>
-import StarRating from "vue-star-rating";
-
-export default {
-  props: ["movieId", "rating"],
-  components: {
-    StarRating,
-  },
-  data() {
-    return {
-      rating: 0,
-    };
-  },
   methods: {
-    setRating() {
-      axios.post("/api-review/store", {
-        ratings: this.rating,
-      });
+    store(rating) {
+      let uri = `/rating/${this.reviewId}`;
+      axios
+        .post(uri, {
+          rating,
+        })
+        .then((response) => {
+          console.log(response.data);
+        });
     },
   },
-  mounted() {
-    console.log("Component mounted.");
-    axios
-      .get("/review-api/1")
-      .then((response) => {
-        this.rating = response.data.data;
-        console.log(this.rating);
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      })
-      .finally(() => (this.loading = false));
-  },
-  data: function () {
-    return {
-      status: this.rating,
-      loading: true,
-      errored: false,
-    };
-  },
 };
 </script>
--->
