@@ -8,7 +8,6 @@ require('./bootstrap');
 require('alpinejs');
 
 window.Vue = require('vue').default;
-window.Event = new Vue();
 
 /**
  * The following block of code may be used to automatically register your
@@ -25,7 +24,6 @@ Vue.component('watchlist-button', require('./components/WatchlistButton.vue').de
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('moviestar-component', require('./components/MovieStarComponent.vue').default);
 Vue.component('review-component', require('./components/ReviewComponent.vue').default);
-Vue.component('review-list', require('./components/ReviewListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
