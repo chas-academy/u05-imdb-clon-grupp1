@@ -36,9 +36,6 @@ Route::post('movies/{movie}', [ReviewController::class, 'store'])->name('reviews
 Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
 Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
 
-Route::get('review', [ApiReviewController::class , 'reviews'])->name('api.review');
-
-
 Route::resource('movies', MovieController::class);
 
 Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
