@@ -54,10 +54,9 @@
 @if (Route::has('login'))
 @auth
 
-    {{-- <a href="/reviews/{{ $movie->id }}/create">Add review</a><br> --}}
+    <a href="/reviews/{{ $movie->id }}/create">Add review</a><br>
    
       
-    <review-component user-id="{{auth()->user()->id}}" movie-id="{{ $movie->id }}"></review-component>
     
 @else
     <p>Please <a href="/login">login</a> to add a review</p><br>

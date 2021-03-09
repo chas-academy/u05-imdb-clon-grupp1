@@ -8,7 +8,6 @@ use App\Http\Resources\ReviewResource;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\Movie;
 
 class ApiReviewController extends Controller
 {
@@ -31,6 +30,7 @@ class ApiReviewController extends Controller
     {
         $review = new Review;
         $review->review = $request->review;
+        $review->rating = $request->rating;
         $review->user_id = $request->user_id;
         $review->movies_id = $request->movies_id;
 
@@ -48,19 +48,9 @@ class ApiReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie, $id)
+    public function show($id)
     {
-        $reviews = $movie->reviews()->paginate(3);
-
-        return new ReviewResource(Review::FindOrFail($id), compact('reviews'));
-    }
-
-    public function reviews() 
-    {
-        $reviews = Review::with('user')->get();
-        return response()->json([
-            'reviews' => $reviews
-        ]);
+        return new ReviewResource(Review::FindOrFail($id));
     }
 
     /**
