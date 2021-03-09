@@ -1,8 +1,7 @@
 <template>
   <div>
-    <button @click="addToWatchlist" v-text="buttonText"></button>
     <img
-      class="bookmark"
+      class="bookmark w-12"
       @click="addToWatchlist"
       v-bind:src="'/storage/' + img_path"
     />
@@ -21,14 +20,15 @@ export default {
       axios.post("/watchlist/" + this.movieId).then((response) => {
         console.log(response.data);
         this.status = !this.status;
+        if(this.status) {
+          alert("Movie added to Watchlist")
+        } else {
+          alert("Movie removed from Watchlist")
+        }
       });
     },
   },
   computed: {
-    buttonText() {
-      return this.status ? "Remove from Watchlist" : "Add to Watchlist";
-    },
-
     img_path() {
       return this.status ? "bookmark_filled.png" : "bookmark.png";
     },

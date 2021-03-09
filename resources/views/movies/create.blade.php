@@ -1,6 +1,6 @@
 <div>
     <h1> Add new movie </h1>
-    <form action="/movies" method="POST">
+    <form action="/movies" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="title">Title</label>
         <input type="text" id="title" value="{{ old('title') }}" name="title"><br>
@@ -43,7 +43,7 @@
         @endif
 
         <label for="img_path">Add movie image url</label>
-        <input type="url" id="img_path" value="{{ old('img_path') }}" name="img_path"><br>
+        <input type="file" id="img_path" name="img_path"><br>
         @if ($errors->has('img_path'))
             <span class="text-red-600" role="alert">
                 <strong>{{ $errors->first('img_path') }}</strong>
