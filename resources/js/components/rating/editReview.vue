@@ -8,11 +8,11 @@
           <form
             action="#"
             v-for="(review, index) in reviews"
-            :key="review"
+            :key="index"
             @submit.prevent="store(review.review, review.rating)"
           >
-            <input type="text" v-model="review.review" />
             <star-rating v-model="review.rating" :increment="0.5"></star-rating>
+            <input type="text" v-model="review.review" />
             <button type="submit">Submit</button>
           </form>
         </div>

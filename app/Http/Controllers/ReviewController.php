@@ -109,8 +109,12 @@ class ReviewController extends Controller
     public function edit($id)
     {
         $review = Review::findOrFail($id);
+        $movie = Movie::findOrFail($id);
+        $user = User::findOrFail($id);
+    
 
-        return view('reviews.edit', compact('review'));
+
+        return view('reviews.edit', compact('review', 'movie', 'user'));
     }
 
     // Not redirecting or updating database
