@@ -2,7 +2,6 @@
 
     <movie-slider></movie-slider>
 
-    <h3 class="text-white">Genre</h3>
 
     <div class=" flex flex-wrap max-w-xl mx-auto">
         @foreach ($genres as $genre)

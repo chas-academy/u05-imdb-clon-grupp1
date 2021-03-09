@@ -17893,26 +17893,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      movies: this.movies,
-      loading: true,
-      errored: false
+      movies: this.movies
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get('/movie-api').then(function (response) {
-      _this.movies = response.data.data.slice().reverse();
-      console.log(_this.movies);
-    })["catch"](function (error) {
-      return _this.errored = true;
-    })["finally"](function () {
-      return _this.loading = false;
+      return _this.movies = response.data.data.slice().reverse();
     });
+
+    if (localStorage.getItem('reloaded')) {
+      localStorage.removeItem('reloaded');
+    } else {
+      localStorage.setItem('reloaded', '1');
+      location.reload();
+    }
   },
   methods: {
     user: function user(e) {
-      window.location.assign("/movies/".concat(this.movies[e.index].id));
+      window.location.assign("/movies/" + this.movies[e.index].id);
     }
   }
 });
@@ -54563,52 +54563,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.loading !== true && _vm.errored !== true
-    ? _c(
-        "div",
-        [
-          _c(
-            "flicking",
+  return _c(
+    "div",
+    [
+      _c(
+        "flicking",
+        {
+          staticClass: "h-80 my-5",
+          attrs: { options: { circular: true, moveType: "freeScroll" } },
+          on: {
+            select: function(e) {
+              return _vm.user(e)
+            }
+          }
+        },
+        _vm._l(_vm.movies, function(movie, index) {
+          return _c(
+            "div",
             {
-              staticClass: "h-80 my-5",
-              attrs: { options: { circular: true, moveType: "freeScroll" } },
-              on: {
-                select: function(e) {
-                  return _vm.user(e)
-                }
-              }
+              key: movie.id,
+              staticClass: "h-80 w-56 p-2 relative panel text-white"
             },
-            _vm._l(_vm.movies, function(movie) {
-              return _c(
-                "div",
+            [
+              _c("img", {
+                staticClass:
+                  "h-full w-full rounded-3xl cursor-pointer object-cover",
+                attrs: { src: "/storage/" + movie.img_path }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
                 {
                   staticClass:
-                    "h-80 w-56 p-2 relative panel text-white bg-red-500"
+                    "absolute top-5 right-5 rounded-full bg-white w-6 h-6 text-gray-900 transform hover:scale-110 hover:opacity-80"
                 },
-                [
-                  _c("img", {
-                    staticClass:
-                      "h-full w-full rounded-3xl cursor-pointer object-cover",
-                    attrs: { src: "/storage/" + movie.img_path }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "absolute top-5 right-5 rounded-full bg-white w-6 h-6 text-gray-900 "
-                    },
-                    [_vm._v(_vm._s(movie.id))]
-                  )
-                ]
+                [_vm._v(_vm._s(movie.id))]
               )
-            }),
-            0
+            ]
           )
-        ],
-        1
+        }),
+        0
       )
-    : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
