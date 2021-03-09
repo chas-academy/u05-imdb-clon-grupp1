@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\Movie;
 use App\Models\User;
 use App\Models\Genre;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache as FacadesCache;
@@ -111,10 +112,11 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $movie = Movie::findOrFail($id);
         $user = User::findOrFail($id);
+        $profile = Profile::findOrFail($id);
     
 
 
-        return view('reviews.edit', compact('review', 'movie', 'user'));
+        return view('reviews.edit', compact('review', 'movie', 'user', 'profile'));
     }
 
     // Not redirecting or updating database

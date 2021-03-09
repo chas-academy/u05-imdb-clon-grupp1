@@ -4004,6 +4004,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -4033,8 +4050,12 @@ __webpack_require__.r(__webpack_exports__);
         review: review,
         rating: rating
       }).then(function (response) {
+        document.querySelector("#success").style.visibility = "visible";
         console.log(response.data);
       });
+    },
+    hideSuccess: function hideSuccess() {
+      document.querySelector("#success").style.visibility = "hidden";
     }
   }
 });
@@ -40627,8 +40648,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("h1", [_vm._v("Edit review")]),
-    _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c(
@@ -40639,7 +40658,7 @@ var render = function() {
               "form",
               {
                 key: index,
-                attrs: { action: "#" },
+                attrs: { action: "/movies" },
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
@@ -40648,18 +40667,22 @@ var render = function() {
                 }
               },
               [
-                _c("star-rating", {
-                  attrs: { increment: 0.5 },
-                  model: {
-                    value: review.rating,
-                    callback: function($$v) {
-                      _vm.$set(review, "rating", $$v)
-                    },
-                    expression: "review.rating"
-                  }
-                }),
+                _c(
+                  "star-rating",
+                  {
+                    attrs: { increment: 0.5, "star-size": 30 },
+                    model: {
+                      value: review.rating,
+                      callback: function($$v) {
+                        _vm.$set(review, "rating", $$v)
+                      },
+                      expression: "review.rating"
+                    }
+                  },
+                  [_vm._v(' class="text-white">')]
+                ),
                 _vm._v(" "),
-                _c("input", {
+                _c("textarea", {
                   directives: [
                     {
                       name: "model",
@@ -40668,7 +40691,15 @@ var render = function() {
                       expression: "review.review"
                     }
                   ],
-                  attrs: { type: "text" },
+                  staticClass: "mt-5",
+                  staticStyle: { resize: "none" },
+                  attrs: {
+                    type: "text",
+                    placeholder: "Maximum 200 characters",
+                    rows: "4",
+                    cols: "50",
+                    maxlength: "200"
+                  },
                   domProps: { value: review.review },
                   on: {
                     input: function($event) {
@@ -40680,7 +40711,67 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("button", { attrs: { type: "submit" } }, [_vm._v("Submit")])
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-4 rounded-lg block mt-5",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Submit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex justify-center items-center mt-5 font-medium py-1 px-2 bg-white rounded-md text-green-100 bg-green-700 border border-green-700 ",
+                    staticStyle: { visibility: "hidden" },
+                    attrs: { id: "success" }
+                  },
+                  [
+                    _vm._m(0, true),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "flex flex-auto flex-row-reverse",
+                        on: { click: _vm.hideSuccess }
+                      },
+                      [
+                        _c("div", [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "feather feather-x cursor-pointer hover:text-green-400 rounded-full w-5 h-5 ml-2",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "100%",
+                                height: "100%",
+                                fill: "none",
+                                viewBox: "0 0 24 24",
+                                stroke: "currentColor",
+                                "stroke-width": "2",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            },
+                            [
+                              _c("line", {
+                                attrs: { x1: "18", y1: "6", x2: "6", y2: "18" }
+                              }),
+                              _vm._v(" "),
+                              _c("line", {
+                                attrs: { x1: "6", y1: "6", x2: "18", y2: "18" }
+                              })
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                )
               ],
               1
             )
@@ -40691,7 +40782,25 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-xl font-normal  max-w-full flex-initial" },
+      [
+        _c("div", { staticClass: "py-2" }, [
+          _vm._v("\n                    Success!\n                    "),
+          _c("div", { staticClass: "text-sm font-base" }, [
+            _vm._v("Your review is now updated!")
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
