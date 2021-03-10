@@ -10,8 +10,8 @@
             :key="index"
             @submit.prevent="store(review.review, review.rating)"
           >
-            <star-rating v-model="review.rating" :increment="0.5" v-bind:star-size="30"> class="text-white"></star-rating>
-            <textarea type="text" style="resize: none;" placeholder="Maximum 200 characters" rows="4" cols="50" maxlength="200" v-model="review.review" class="mt-5" >
+            <star-rating v-model="review.rating" :increment="0.5" v-bind:star-size="30" class="text-white"></star-rating>
+            <textarea type="text" style="resize: none;" placeholder="Maximum 200 characters" rows="4" cols="30" maxlength="200" v-model="review.review" class="mt-5" >
             </textarea>
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-light py-2 px-4 rounded-lg block mt-5">Submit</button>
 

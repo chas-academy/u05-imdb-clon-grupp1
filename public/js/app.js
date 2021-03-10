@@ -3917,24 +3917,22 @@ __webpack_require__.r(__webpack_exports__);
       reviews: {}
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    // this.$forceUpdate();
-    var uri = "/review-api/".concat(this.id);
-    axios.get(uri).then(function (response) {
-      _this.reviews = response.data;
-    });
+  mounted: function mounted() {// this.$forceUpdate();
+    // let uri = `/review-api/${this.id}`;
+    // axios.get(uri).then((response) => {
+    //   this.reviews = response.data;
+    // });
   },
-  methods: {
-    store: function store(rating) {
-      var uri = "/rating/".concat(this.id);
-      axios.post(uri, {
-        rating: rating
-      }).then(function (response) {
-        console.log(response.data);
-      });
-    }
+  methods: {// store(rating) {
+    //   let uri = `/rating/${this.id}`;
+    //   axios
+    //     .post(uri, {
+    //       rating,
+    //     })
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     });
+    // },
   }
 });
 
@@ -40667,20 +40665,17 @@ var render = function() {
                 }
               },
               [
-                _c(
-                  "star-rating",
-                  {
-                    attrs: { increment: 0.5, "star-size": 30 },
-                    model: {
-                      value: review.rating,
-                      callback: function($$v) {
-                        _vm.$set(review, "rating", $$v)
-                      },
-                      expression: "review.rating"
-                    }
-                  },
-                  [_vm._v(' class="text-white">')]
-                ),
+                _c("star-rating", {
+                  staticClass: "text-white",
+                  attrs: { increment: 0.5, "star-size": 30 },
+                  model: {
+                    value: review.rating,
+                    callback: function($$v) {
+                      _vm.$set(review, "rating", $$v)
+                    },
+                    expression: "review.rating"
+                  }
+                }),
                 _vm._v(" "),
                 _c("textarea", {
                   directives: [
@@ -40697,7 +40692,7 @@ var render = function() {
                     type: "text",
                     placeholder: "Maximum 200 characters",
                     rows: "4",
-                    cols: "50",
+                    cols: "30",
                     maxlength: "200"
                   },
                   domProps: { value: review.review },

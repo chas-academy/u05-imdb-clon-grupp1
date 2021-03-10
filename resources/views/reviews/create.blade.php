@@ -1,5 +1,5 @@
-   <x-app-layout>
+<x-app-layout>
 
-       <create-review></create-review>
+<create-rating></create-rating>
 
-   </x-app-layout>
+</x-app-layout>

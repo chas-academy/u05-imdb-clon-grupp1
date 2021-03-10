@@ -26,36 +26,32 @@ export default {
   components: {
     StarRating,
   },
-
   props: {
     id: {},
   },
-
   data() {
     return {
       reviews: {},
     };
   },
-
   mounted() {
     // this.$forceUpdate();
-    let uri = `/review-api/${this.id}`;
-    axios.get(uri).then((response) => {
-      this.reviews = response.data;
-    });
+    // let uri = `/review-api/${this.id}`;
+    // axios.get(uri).then((response) => {
+    //   this.reviews = response.data;
+    // });
   },
-
   methods: {
-    store(rating) {
-      let uri = `/rating/${this.id}`;
-      axios
-        .post(uri, {
-          rating,
-        })
-        .then((response) => {
-          console.log(response.data);
-        });
-    },
+    // store(rating) {
+    //   let uri = `/rating/${this.id}`;
+    //   axios
+    //     .post(uri, {
+    //       rating,
+    //     })
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     });
+    // },
   },
 };
 </script>
