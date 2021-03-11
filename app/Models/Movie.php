@@ -11,6 +11,14 @@ class Movie extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    public function moviePoster()
+    {
+        $imagePath = ($this->img_path) ? $this->img_path : 'profile/noimage.png';
+        return '/storage/' . $imagePath;
+    }
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class, 'genre_movies_pivot', 'movies_id', 'genres_id');

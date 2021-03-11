@@ -1,6 +1,6 @@
 <div>
     <h1> Edit movie </h1>
-    <form action="/movies/{{ $movie->id }}" method="post">
+    <form action="/movies/{{ $movie->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
@@ -47,7 +47,7 @@
         @endif
 
         <label for="img_path">Add movie image url</label>
-        <input type="url" id="img_path" name="img_path" value="{{ old('img_path') ?? $movie->img_path }}"><br>
+        <input type="file" id="img_path" name="img_path"><br>
         @if ($errors->has('img_path'))
             <span class="text-red-600" role="alert">
                 <strong>{{ $errors->first('img_path') }}</strong>

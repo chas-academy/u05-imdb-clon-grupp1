@@ -12,6 +12,8 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\IndexController;
 
+
+
 require __DIR__ . '/auth.php';
 
 // Middleware Test Route
@@ -28,14 +30,13 @@ Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
-Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
-Route::post('/movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
-Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
 Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
+Route::post('movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
 
 Route::resource('movies', MovieController::class);
-Route::post('/movies/{movie}', [MovieController::class, 'addToWatchlist'])->name('movies.watchlist');
 
 Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
 
