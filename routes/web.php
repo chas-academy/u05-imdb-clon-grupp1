@@ -19,7 +19,11 @@ require __DIR__ . '/auth.php';
 // Middleware Test Route
 Route::get('/admin', function () {
     return view('admin.admin');
-})->middleware('admin');
+});
+
+Route::get('/styles', function () {
+    return view('styles');
+});
 // End Test Route
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
