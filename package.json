@@ -30,6 +30,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@egjs/vue-flicking": "^3.6.0",
+        "@splidejs/vue-splide": "^0.3.5",
         "vue-star-rating": "^1.7.0"
     }
 }
