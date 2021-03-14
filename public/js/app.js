@@ -3853,6 +3853,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3874,8 +3881,12 @@ __webpack_require__.r(__webpack_exports__);
       _this.moviesPrint = response.data.data.slice().reverse().slice(0, 20);
       _this.moviesList = response.data.data;
     });
+    window.addEventListener("resize", this.resize);
   },
   methods: {
+    resize: function resize() {
+      console.log(window.innerWidth);
+    },
     search: function search() {
       if (this.$refs.carousel.isSliding) event.preventDefault();
     },

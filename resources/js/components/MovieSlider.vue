@@ -11,7 +11,14 @@
             </form>
         </div>
 
-        <hooper :itemsToShow="5" :infiniteScroll="true" style="height: 300px" class="focus:outline-none h-80 my-5" ref="carousel">
+        <hooper
+        class="focus:outline-none h-80 my-5"
+        :itemsToShow="5"
+        :infiniteScroll="true"
+        style="height: 300px"
+        ref="carousel"
+        >
+
             <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative">
                 <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover p-2"></a>
                 <button class="absolute top-5 right-5 rounded-full bg-white w-5 h-5 text-gray-900 transform hover:scale-110 hover:opacity-80"></button>
@@ -42,8 +49,10 @@
                 this.moviesPrint = response.data.data.slice().reverse().slice(0,20);
                 this.moviesList = response.data.data;
             });
+            window.addEventListener("resize", this.resize);
         },
         methods: {
+            resize: function() { console.log(window.innerWidth) },
             search: function () { if (this.$refs.carousel.isSliding)  event.preventDefault() },
             scoreMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.top_rating - b.top_rating).slice().reverse().slice(0,20) },
             newMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.id - b.id).slice().reverse().slice(0,20)},
