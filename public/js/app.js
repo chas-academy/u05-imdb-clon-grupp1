@@ -3860,6 +3860,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3871,22 +3872,50 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       moviesPrint: this.moviesPrint,
-      moviesList: this.movieslist
+      moviesList: this.movieslist,
+      hooperSettings: {
+        breakpoints: {
+          1500: {
+            itemsToShow: 8
+          },
+          1300: {
+            itemsToShow: 7
+          },
+          1100: {
+            itemsToShow: 6
+          },
+          900: {
+            itemsToShow: 5
+          },
+          700: {
+            itemsToShow: 4
+          },
+          500: {
+            itemsToShow: 3.1
+          },
+          300: {
+            itemsToShow: 2.1
+          },
+          100: {
+            itemsToShow: 1.1
+          }
+        }
+      }
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get('/movie-api').then(function (response) {
-      _this.moviesPrint = response.data.data.slice().reverse().slice(0, 20);
+      _this.moviesPrint = response.data.data.sort(function (a, b) {
+        return a.id - b.id;
+      }).filter(function (movie) {
+        return movie.release_date < new Date().getFullYear();
+      }).slice().reverse().slice(0, 20);
       _this.moviesList = response.data.data;
     });
-    window.addEventListener("resize", this.resize);
   },
   methods: {
-    resize: function resize() {
-      console.log(window.innerWidth);
-    },
     search: function search() {
       if (this.$refs.carousel.isSliding) event.preventDefault();
     },
@@ -3898,6 +3927,8 @@ __webpack_require__.r(__webpack_exports__);
     newMovies: function newMovies(e) {
       this.moviesPrint = e.sort(function (a, b) {
         return a.id - b.id;
+      }).filter(function (movie) {
+        return movie.release_date < new Date().getFullYear();
       }).slice().reverse().slice(0, 20);
     },
     commingMovies: function commingMovies(e) {
@@ -8587,7 +8618,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=radio] + label {\ndisplay: inline-block;\nbackground-color: #3730A3;\nline-height: 40px;\nwidth: 100px;\nheight: 40px;\n\ntransition: width 0.3s;\nmargin: 5px;\n}\ninput[type=radio]:checked + label { width: 150px;\n}\ninput[type=radio]:checked + .score { background: linear-gradient(142deg, rgba(116,167,255,1) 0%, rgba(30,43,255,1) 100%);\n}\ninput[type=radio]:checked + .new { background: linear-gradient(142deg, rgba(255,116,116,1) 0%, rgba(255,30,220,1) 100%);\n}\ninput[type=radio]:checked + .comming { background: linear-gradient(142deg, rgba(255,251,116,1) 0%, rgba(255,97,30,1) 100%);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=radio] + label {\ndisplay: inline-block;\nbackground-color: #3730A3;\nline-height: 40px;\nwidth: 90px;\nheight: 40px;\n\ntransition: width 0.3s;\nmargin: 5px;\n}\ninput[type=radio]:checked + label { width: 120px;\n}\ninput[type=radio]:checked + .score { background: linear-gradient(142deg, rgba(116,167,255,1) 0%, rgba(30,43,255,1) 100%);\n}\ninput[type=radio]:checked + .new { background: linear-gradient(142deg, rgba(255,116,116,1) 0%, rgba(255,30,220,1) 100%);\n}\ninput[type=radio]:checked + .comming { background: linear-gradient(142deg, rgba(255,251,116,1) 0%, rgba(255,97,30,1) 100%);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41609,9 +41640,13 @@ var render = function() {
         "hooper",
         {
           ref: "carousel",
-          staticClass: "focus:outline-none h-80 my-5",
-          staticStyle: { height: "300px" },
-          attrs: { itemsToShow: 5, infiniteScroll: true }
+          staticClass: "focus:outline-none h-80 my-1 w-screen max-w-screen-2xl",
+          staticStyle: { height: "280px" },
+          attrs: {
+            settings: _vm.hooperSettings,
+            wheelControl: false,
+            infiniteScroll: true
+          }
         },
         _vm._l(_vm.moviesPrint, function(movie, index) {
           return _c("slide", { key: index, staticClass: "relative" }, [

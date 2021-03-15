@@ -12,10 +12,11 @@
         </div>
 
         <hooper
-        class="focus:outline-none h-80 my-5"
-        :itemsToShow="5"
+        class="focus:outline-none h-80 my-1 w-screen max-w-screen-2xl"
+        :settings="hooperSettings"
+        :wheelControl="false"
         :infiniteScroll="true"
-        style="height: 300px"
+        style="height: 280px"
         ref="carousel"
         >
 
@@ -41,21 +42,47 @@
             return {
                 moviesPrint: this.moviesPrint,
                 moviesList: this.movieslist,
+                hooperSettings: {
+                    breakpoints: {
+                        1500: {
+                            itemsToShow: 8
+                        },
+                        1300: {
+                            itemsToShow: 7
+                        },
+                        1100: {
+                            itemsToShow: 6
+                        },
+                        900: {
+                            itemsToShow: 5
+                        },
+                        700: {
+                            itemsToShow: 4
+                        },
+                        500: {
+                            itemsToShow: 3.1
+                        },
+                        300: {
+                            itemsToShow: 2.1
+                        },
+                        100: {
+                            itemsToShow: 1.1
+                        },
+                    }
+                }
             };
         },
         mounted() {
              axios.get('/movie-api')
             .then(response => {
-                this.moviesPrint = response.data.data.slice().reverse().slice(0,20);
+                this.moviesPrint = response.data.data.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date < new Date().getFullYear()).slice().reverse().slice(0,20);
                 this.moviesList = response.data.data;
             });
-            window.addEventListener("resize", this.resize);
         },
         methods: {
-            resize: function() { console.log(window.innerWidth) },
             search: function () { if (this.$refs.carousel.isSliding)  event.preventDefault() },
             scoreMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.top_rating - b.top_rating).slice().reverse().slice(0,20) },
-            newMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.id - b.id).slice().reverse().slice(0,20)},
+            newMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date < new Date().getFullYear()).slice().reverse().slice(0,20)},
             commingMovies: function (e) { this.moviesPrint = e.filter(movie =>  movie.release_date >= new Date().getFullYear()).slice().reverse().slice(0,20) }
         }
     };
@@ -66,14 +93,14 @@
     display: inline-block;
     background-color: #3730A3;
     line-height: 40px;
-    width: 100px;
+    width: 90px;
     height: 40px;
 
     transition: width 0.3s;
     margin: 5px;
     }
 
-    input[type=radio]:checked + label { width: 150px; }
+    input[type=radio]:checked + label { width: 120px; }
 
     input[type=radio]:checked + .score { background: linear-gradient(142deg, rgba(116,167,255,1) 0%, rgba(30,43,255,1) 100%); }
 
