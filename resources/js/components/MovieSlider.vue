@@ -1,44 +1,110 @@
 <template>
-    <div>
-        <flicking
-            class="h-80 my-5"
-            :options="{ circular: true, moveType: 'freeScroll'}"
+    <div class="flex flex-col justify-center items-center" >
+        <div>
+            <form>
+                <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">
+                <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score">Score</label>
+                <input type="radio" id="new" name="filter" value="new" v-on:click="newMovies(moviesList)" class="hidden" checked>
+                <label for="new" class="text-white font-medium  rounded-lg cursor-pointer text-center new">New</label>
+                <input type="radio" id="comming" name="filter" value="comming" v-on:click="commingMovies(moviesList)" class="hidden">
+                <label for="comming" class="text-white font-medium  rounded-lg cursor-pointer text-center comming">Comming</label>
+            </form>
+        </div>
 
-            @select="e => user(e)">
+        <hooper
+        class="focus:outline-none h-80 my-1 w-screen max-w-screen-2xl"
+        :settings="hooperSettings"
+        :wheelControl="false"
+        :infiniteScroll="true"
+        style="height: 280px"
+        ref="carousel"
+        >
 
-                <div v-for="(movie, index) in movies" :key="movie.id" class="h-80 w-56 p-2 relative panel text-white">
-                    <img  :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover">
-                    <button class="absolute top-5 right-5 rounded-full bg-white w-6 h-6 text-gray-900 transform hover:scale-110 hover:opacity-80">{{movie.id}}</button>
-                </div>
-
-        </flicking>
+            <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative">
+                <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover p-2"></a>
+                <button class="absolute top-5 right-5 rounded-full bg-white w-5 h-5 text-gray-900 transform hover:scale-110 hover:opacity-80"></button>
+            </slide>
+        </hooper>
     </div>
 </template>
 
 <script>
-    import { Flicking } from "@egjs/vue-flicking";
+    import { Hooper, Slide } from 'hooper';
+    import 'hooper/dist/hooper.css';
+
     export default {
+        name: 'App',
         components: {
-            Flicking: Flicking,
+        Hooper,
+        Slide
         },
         data() {
             return {
-                movies: this.movies,
+                moviesPrint: this.moviesPrint,
+                moviesList: this.movieslist,
+                hooperSettings: {
+                    breakpoints: {
+                        1500: {
+                            itemsToShow: 8
+                        },
+                        1300: {
+                            itemsToShow: 7
+                        },
+                        1100: {
+                            itemsToShow: 6
+                        },
+                        900: {
+                            itemsToShow: 5
+                        },
+                        700: {
+                            itemsToShow: 4
+                        },
+                        500: {
+                            itemsToShow: 3.1
+                        },
+                        300: {
+                            itemsToShow: 2.1
+                        },
+                        100: {
+                            itemsToShow: 1.1
+                        },
+                    }
+                }
             };
         },
         mounted() {
-            axios.get('/movie-api')
-            .then(response => this.movies = response.data.data.slice().reverse())
-
-            if (localStorage.getItem('reloaded')) {
-                localStorage.removeItem('reloaded');
-            } else {
-                localStorage.setItem('reloaded', '1');
-                location.reload();
-            }
+             axios.get('/movie-api')
+            .then(response => {
+                this.moviesPrint = response.data.data.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date < new Date().getFullYear()).slice().reverse().slice(0,20);
+                this.moviesList = response.data.data;
+            });
         },
         methods: {
-            user: function (e) { window.location.assign("/movies/" + this.movies[e.index].id) }
+            search: function () { if (this.$refs.carousel.isSliding)  event.preventDefault() },
+            scoreMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.top_rating - b.top_rating).slice().reverse().slice(0,20) },
+            newMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date < new Date().getFullYear()).slice().reverse().slice(0,20)},
+            commingMovies: function (e) { this.moviesPrint = e.filter(movie =>  movie.release_date >= new Date().getFullYear()).slice().reverse().slice(0,20) }
         }
     };
 </script>
+
+<style>
+    input[type=radio] + label {
+    display: inline-block;
+    background-color: #3730A3;
+    line-height: 40px;
+    width: 90px;
+    height: 40px;
+
+    transition: width 0.3s;
+    margin: 5px;
+    }
+
+    input[type=radio]:checked + label { width: 120px; }
+
+    input[type=radio]:checked + .score { background: linear-gradient(142deg, rgba(116,167,255,1) 0%, rgba(30,43,255,1) 100%); }
+
+    input[type=radio]:checked + .new { background: linear-gradient(142deg, rgba(255,116,116,1) 0%, rgba(255,30,220,1) 100%); }
+
+    input[type=radio]:checked + .comming { background: linear-gradient(142deg, rgba(255,251,116,1) 0%, rgba(255,97,30,1) 100%); }
+</style>

@@ -8,6 +8,11 @@ class GenreButton extends Component
 {
     public $link;
     public $color = array(
+    'bg-gradient-to-r from-blue-300 to-blue-400',
+    'bg-gradient-to-r from-yellow-200 to-red-500',
+    'bg-gradient-to-r from-purple-200 to-purple-500',
+    'bg-gradient-to-r from-red-400 to-pink-500',
+    'bg-gradient-to-r from-green-200 to-green-500',
     'bg-indigo-800');
 
     public $randomColor;
