@@ -1,9 +1,9 @@
 <template>
   <div>
     <img
-      class="bookmark w-12"
+      class="bookmark w-12 cursor-pointer"
       @click="addToWatchlist"
-      v-bind:src="'/storage/' + img_path"
+      :src="'/storage/' + img_path"
     />
   </div>
 </template>
@@ -18,12 +18,12 @@ export default {
   methods: {
     addToWatchlist() {
       axios.post("/watchlist/" + this.movieId).then((response) => {
-        console.log(response.data);
         this.status = !this.status;
+
         if(this.status) {
-          alert("Movie added to Watchlist")
+          console.log("Movie added to Watchlist", this.movieId)
         } else {
-          alert("Movie removed from Watchlist")
+          console.log("Movie removed from Watchlist", this.movieId)
         }
       });
     },
@@ -36,8 +36,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.bookmark {
-  cursor: pointer;
-}
-</style>
