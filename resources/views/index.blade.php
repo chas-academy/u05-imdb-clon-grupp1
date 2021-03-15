@@ -30,10 +30,6 @@
     </div>
 
     {{-- Move to user.blade --}}
-<<<<<<< Updated upstream
-    {{-- @if (Route::has('login'))
-=======
->>>>>>> Stashed changes
     @auth
         <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -43,9 +39,5 @@
             </x-dropdown-link>
         </form>
     @endauth
-<<<<<<< Updated upstream
-    @endif --}}
-=======
->>>>>>> Stashed changes
 
 </x-app-layout>
