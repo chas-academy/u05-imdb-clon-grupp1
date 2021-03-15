@@ -1,5 +1,8 @@
 <template>
     <div class="flex flex-col justify-center items-center" >
+
+        <p class="text-white">{{ profileId }}</p>
+
         <div>
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">
@@ -19,10 +22,11 @@
         style="height: 280px"
         ref="carousel"
         >
-
             <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative">
                 <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover p-2"></a>
                 <button class="absolute top-5 right-5 rounded-full bg-white w-5 h-5 text-gray-900 transform hover:scale-110 hover:opacity-80"></button>
+
+                <!--<watchlist-button></watchlist-button>-->
             </slide>
         </hooper>
     </div>
@@ -33,6 +37,7 @@
     import 'hooper/dist/hooper.css';
 
     export default {
+        props: ["profileId"],
         name: 'App',
         components: {
         Hooper,
