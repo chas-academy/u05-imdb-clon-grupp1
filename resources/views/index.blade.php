@@ -24,7 +24,7 @@
     </div>
 
     {{-- Move to user.blade --}}
-    {{-- @if (Route::has('login'))
+    @if (Route::has('login'))
     @auth
     <form method="POST" action="{{ route('logout') }}">
         @csrf
@@ -34,6 +34,6 @@
         </x-dropdown-link>
     </form>
     @endauth
-    @endif --}}
+    @endif
 
 </x-app-layout>
