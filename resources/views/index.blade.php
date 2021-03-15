@@ -16,7 +16,7 @@
 
     @if(auth()->user())
     @auth
-    <movie-slider profile-id={{ auth()->user()->profile->id }}></movie-slider>
+    <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} ></movie-slider>
     @endauth
     @else
     <movie-slider profile-id={{ null }}></movie-slider>
