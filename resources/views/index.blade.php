@@ -30,6 +30,8 @@
         @endforeach
     </div>
 
+    @if(auth()->user())
+    @auth
     <h2 class="text-white text-xl font-medium pt-2 pl-5 max-w-xl mx-auto">Watchlist</h2>
     @foreach ($profileWatchlist as $movie)
     <x-movie-item
@@ -40,6 +42,21 @@
     img="{{ $movie->img_path }}"
     />
     @endforeach
+    @endauth
+    @else
+    {{-- New Info --}}
+    @foreach ($movies as $movie)
+    <x-movie-item
+    id="{{ $movie->id }}"
+    title="{{ $movie->title }}"
+    relese-date="{{ $movie->release_date }}"
+    language="{{  $movie->language }}"
+    img="{{ $movie->img_path }}"
+    />
+    @endforeach
+    @endif
+
+
 
     {{-- Move to user.blade --}}
 @if (Route::has('login'))
