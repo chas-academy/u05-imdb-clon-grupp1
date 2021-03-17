@@ -1,7 +1,14 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;
+
+500;700&display=swap);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*

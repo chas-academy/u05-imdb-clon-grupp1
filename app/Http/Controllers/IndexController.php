@@ -12,14 +12,16 @@ class IndexController extends Controller
 
     public function index(Movie $movie, User $user)
     {
+
         $genres = Genre::all();
         $movies = Movie::all();
         //profile/movie
 
         if(auth()->user()){
+
             $watchlistStatus = array();
             foreach(auth()->user()->profile->movies as $key => $movie) {
-                    $watchlistStatus[$key] = $movie->id . ',';
+                $watchlistStatus[$key] = $movie->id . ',';
             };
             $watchlistStatus = ',' . implode($watchlistStatus);
 

@@ -14,15 +14,6 @@
         </form>
     </div>
 
-    @foreach ($profileWatchlist as $movie)
-    <x-movie-item
-    id="{{ $movie->id }}"
-    title="{{ $movie->title }}"
-    relese-date="{{ $movie->release_date }}"
-    language="{{  $movie->language }}"
-    img="{{ $movie->img_path }}"
-    ></x-movie-item>
-    @endforeach
 
     @if(auth()->user())
     @auth
@@ -38,6 +29,17 @@
         <x-genre-button link="/genres/{{$genre->id}}">{{ __($genre->name) }}</x-genre-button>
         @endforeach
     </div>
+
+    <h2 class="text-white text-xl font-medium pt-2 pl-5 max-w-xl mx-auto">Watchlist</h2>
+    @foreach ($profileWatchlist as $movie)
+    <x-movie-item
+    id="{{ $movie->id }}"
+    title="{{ $movie->title }}"
+    relese-date="{{ $movie->release_date }}"
+    language="{{  $movie->language }}"
+    img="{{ $movie->img_path }}"
+    />
+    @endforeach
 
     {{-- Move to user.blade --}}
 @if (Route::has('login'))

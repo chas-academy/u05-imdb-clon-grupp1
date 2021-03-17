@@ -41606,7 +41606,7 @@ var render = function() {
               _vm._v(" "),
               _vm.profileId
                 ? _c("watchlist-button", {
-                    staticClass: "absolute top-5 right-5 w-7 h-7",
+                    staticClass: "absolute top-5 right-5 w-6 h-6",
                     attrs: {
                       watchlist: _vm.watchlist.includes("," + movie.id + ","),
                       "movie-id": movie.id
