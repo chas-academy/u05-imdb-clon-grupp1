@@ -41583,7 +41583,7 @@ var render = function() {
         _vm._l(_vm.moviesPrint, function(movie, index) {
           return _c(
             "slide",
-            { key: movie.id, staticClass: "relative" },
+            { key: index, staticClass: "relative" },
             [
               _c(
                 "a",

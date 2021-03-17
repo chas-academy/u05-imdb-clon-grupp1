@@ -21,7 +21,7 @@
         style="height: 280px"
         ref="carousel"
         >
-            <slide v-for="(movie, index) in moviesPrint" :key="movie.id" class="relative">
+            <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative">
                 <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover p-2"></a>
                 <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-7 h-7"> </watchlist-button>
             </slide>

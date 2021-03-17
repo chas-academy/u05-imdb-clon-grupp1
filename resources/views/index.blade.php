@@ -14,6 +14,16 @@
         </form>
     </div>
 
+    @foreach ($profileWatchlist as $movie)
+    <x-movie-item
+    id="{{ $movie->id }}"
+    title="{{ $movie->title }}"
+    relese-date="{{ $movie->release_date }}"
+    language="{{  $movie->language }}"
+    img="{{ $movie->img_path }}"
+    ></x-movie-item>
+    @endforeach
+
     @if(auth()->user())
     @auth
     <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} ></movie-slider>
