@@ -15,12 +15,16 @@ class IndexController extends Controller
         $genres = Genre::all();
         $movies = Movie::all();
 
-        $watchlistStatus = array();
-        foreach(auth()->user()->profile->movies as $key => $movie) {
-                $watchlistStatus[$key] = $movie->id . ',';
-        };
+        if(auth()->user()){
+            $watchlistStatus = array();
+            foreach(auth()->user()->profile->movies as $key => $movie) {
+                    $watchlistStatus[$key] = $movie->id . ',';
+            };
 
-        $watchlistStatus = ',' . implode($watchlistStatus);
-        return view('index', compact('genres', 'movies', 'watchlistStatus'));
+            $watchlistStatus = ',' . implode($watchlistStatus);
+            return view('index', compact('genres', 'movies', 'watchlistStatus'));
+        }
+
+        return view('index', compact('genres', 'movies'));
     }
 }
