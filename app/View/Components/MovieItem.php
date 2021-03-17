@@ -11,14 +11,16 @@ class MovieItem extends Component
     public $releseDate;
     public $language;
     public $img;
+    public $genres;
 
-    public function __construct($id, $title, $releseDate ,$language, $img)
+    public function __construct($id, $title, $releseDate ,$language, $img, $genres)
     {
         $this->id = $id;
         $this->title = $title;
         $this->releseDate = $releseDate;
         $this->language = $language;
         $this->img = $img;
+        $this->genres = $genres;
     }
 
     public function render()

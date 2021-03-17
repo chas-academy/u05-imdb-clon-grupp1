@@ -28,6 +28,7 @@ class MovieController extends Controller
 
     public function show(Movie $movie, User $user)
     {
+
         $watchlistStatus = (auth()->user() ? auth()->user()->profile->movies->contains($movie->id) : false);
 
         $reviews = $movie->reviews()->paginate(3);
@@ -56,7 +57,7 @@ class MovieController extends Controller
             'release_date' => 'required',
             'img_path' => '',
             'trailer_path' => 'required',
-            
+
         ]);
 
         $genres = request()->validate([
@@ -70,13 +71,13 @@ class MovieController extends Controller
             $image->save();
         }
 
-        
+
 
         $movie = Movie::create(array_merge(
             $data,
             $imageArray ?? [],
         ));
-       
+
         $movie->genres()->attach($genres['genres']);
 
         // $movie->save(array_merge(
@@ -109,7 +110,7 @@ class MovieController extends Controller
             'release_date' => 'required',
             'img_path' => '',
             'trailer_path' => 'required',
-            
+
         ]);
 
         $genres = request()->validate([
@@ -131,13 +132,13 @@ class MovieController extends Controller
             $image->save();
         }
 
-        
+
 
         $movie->update(array_merge(
             $data,
             $imageArray ?? [],
         ));
-       
+
         $movie->genres()->attach($genres['genres']);
 
         return redirect("/movies/{$movie->id}");

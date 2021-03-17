@@ -33,4 +33,14 @@ class Movie extends Model
     {
         return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'movies_id', 'profile_id');
     }
+
+    public function getAllGenres($item)
+    {
+        $arr = array();
+        foreach($item->genres as $key => $genre) {
+            $arr[$key] = $genre->name . ', ';
+        };
+
+        return implode($arr);
+    }
 }

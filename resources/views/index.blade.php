@@ -14,7 +14,6 @@
         </form>
     </div>
 
-
     @if(auth()->user())
     @auth
     <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} ></movie-slider>
@@ -33,42 +32,41 @@
     @if(auth()->user())
     @auth
     <h2 class="text-white text-xl font-medium pt-2 pl-5 max-w-xl mx-auto">Watchlist</h2>
-    @foreach ($profileWatchlist as $movie)
+    @foreach ($profileWatchlist as $profileWatchlistMovie)
     <x-movie-item
-    id="{{ $movie->id }}"
-    title="{{ $movie->title }}"
-    relese-date="{{ $movie->release_date }}"
-    language="{{  $movie->language }}"
-    img="{{ $movie->img_path }}"
+    id="{{ $profileWatchlistMovie->id }}"
+    title="{{ $profileWatchlistMovie->title }}"
+    relese-date="{{ $profileWatchlistMovie->release_date }}"
+    language="{{  $profileWatchlistMovie->language }}"
+    img="{{ $profileWatchlistMovie->img_path }}"
+    genres="{{ $movie->getAllGenres($profileWatchlistMovie) }}"
     />
     @endforeach
     @endauth
     @else
-    {{-- New Info --}}
-    @foreach ($movies as $movie)
+    @foreach ($movies as $moviesMovie)
     <x-movie-item
-    id="{{ $movie->id }}"
-    title="{{ $movie->title }}"
-    relese-date="{{ $movie->release_date }}"
-    language="{{  $movie->language }}"
-    img="{{ $movie->img_path }}"
+    id="{{ $moviesMovie->id }}"
+    title="{{ $moviesMovie->title }}"
+    relese-date="{{ $moviesMovie->release_date }}"
+    language="{{  $moviesMovie->language }}"
+    img="{{ $moviesMovie->img_path }}"
+    genres="{{ $movie->getAllGenres($moviesMovie) }}"
     />
     @endforeach
     @endif
 
-
-
     {{-- Move to user.blade --}}
-@if (Route::has('login'))
-    @auth
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('Logout') }}
-            </x-dropdown-link>
-        </form>
-    @endauth
-@endif
+    @if (Route::has('login'))
+        @auth
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Logout') }}
+                </x-dropdown-link>
+            </form>
+        @endauth
+    @endif
 
 </x-app-layout>
