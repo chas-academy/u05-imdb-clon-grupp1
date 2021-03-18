@@ -14,7 +14,7 @@ class IndexController extends Controller
     {
 
         $genres = Genre::all();
-        $movies = Movie::latest()->paginate(5);
+        $movies = Movie::latest()->paginate(9);
 
         //profile/movie
         if(auth()->user()){

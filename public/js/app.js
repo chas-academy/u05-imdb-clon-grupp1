@@ -3831,6 +3831,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
 /* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3872,36 +3874,48 @@ __webpack_require__.r(__webpack_exports__);
     Slide: hooper__WEBPACK_IMPORTED_MODULE_0__.Slide
   },
   data: function data() {
+    var _breakpoints;
+
     return {
       moviesPrint: this.moviesPrint,
       moviesList: this.movieslist,
       hooperSettings: {
-        breakpoints: {
+        breakpoints: (_breakpoints = {
           1500: {
             itemsToShow: 8
           },
+          1400: {
+            itemsToShow: 7.5
+          },
           1300: {
             itemsToShow: 7
+          },
+          1200: {
+            itemsToShow: 6.5
           },
           1100: {
             itemsToShow: 6
           },
           900: {
-            itemsToShow: 5
-          },
-          700: {
-            itemsToShow: 4
-          },
-          500: {
-            itemsToShow: 3.1
-          },
-          300: {
-            itemsToShow: 2.1
-          },
-          100: {
-            itemsToShow: 1.1
+            itemsToShow: 5.5
           }
-        }
+        }, _defineProperty(_breakpoints, "900", {
+          itemsToShow: 5
+        }), _defineProperty(_breakpoints, 800, {
+          itemsToShow: 4.5
+        }), _defineProperty(_breakpoints, 700, {
+          itemsToShow: 4
+        }), _defineProperty(_breakpoints, 500, {
+          itemsToShow: 3.1
+        }), _defineProperty(_breakpoints, 300, {
+          itemsToShow: 2.6
+        }), _defineProperty(_breakpoints, "300", {
+          itemsToShow: 2.1
+        }), _defineProperty(_breakpoints, 200, {
+          itemsToShow: 1.6
+        }), _defineProperty(_breakpoints, 100, {
+          itemsToShow: 1.1
+        }), _breakpoints)
       }
     };
   },
@@ -8619,7 +8633,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=radio] + label {\ndisplay: inline-block;\nbackground-color: #3730A3;\nline-height: 40px;\nwidth: 90px;\nheight: 40px;\n\ntransition: width 0.3s;\nmargin: 5px;\n}\ninput[type=radio]:checked + label { width: 120px;\n}\ninput[type=radio]:checked + .score { background: linear-gradient(142deg, rgba(116,167,255,1) 0%, rgba(30,43,255,1) 100%);\n}\ninput[type=radio]:checked + .new { background: linear-gradient(142deg, rgba(255,116,116,1) 0%, rgba(255,30,220,1) 100%);\n}\ninput[type=radio]:checked + .comming { background: linear-gradient(142deg, rgba(255,251,116,1) 0%, rgba(255,97,30,1) 100%);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ninput[type=radio] + label {\ndisplay: inline-block;\nbackground-color: #3730A3;\nline-height: 40px;\nwidth: 90px;\nheight: 40px;\n\ntransition: width 0.3s;\nmargin: 5px;\n}\ninput[type=radio]:checked + label { width: 120px;\n}\ninput[type=radio]:checked + .score { background: linear-gradient(142deg, #8B5CF6 0%, #3B82F6 100%);\n}\ninput[type=radio]:checked + .new { background: linear-gradient(142deg, #F87171 0%, #F472B6 100%);\n}\ninput[type=radio]:checked + .comming { background: linear-gradient(142deg, #EF4444 0%, #FDE68A 100%);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

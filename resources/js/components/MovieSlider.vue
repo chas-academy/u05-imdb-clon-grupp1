@@ -49,14 +49,26 @@
                         1500: {
                             itemsToShow: 8
                         },
+                        1400: {
+                            itemsToShow: 7.5
+                        },
                         1300: {
                             itemsToShow: 7
+                        },
+                        1200: {
+                            itemsToShow: 6.5
                         },
                         1100: {
                             itemsToShow: 6
                         },
                         900: {
+                            itemsToShow: 5.5
+                        },
+                        900: {
                             itemsToShow: 5
+                        },
+                        800: {
+                            itemsToShow: 4.5
                         },
                         700: {
                             itemsToShow: 4
@@ -65,7 +77,13 @@
                             itemsToShow: 3.1
                         },
                         300: {
+                            itemsToShow: 2.6
+                        },
+                        300: {
                             itemsToShow: 2.1
+                        },
+                        200: {
+                            itemsToShow: 1.6
                         },
                         100: {
                             itemsToShow: 1.1
@@ -104,9 +122,9 @@
 
     input[type=radio]:checked + label { width: 120px; }
 
-    input[type=radio]:checked + .score { background: linear-gradient(142deg, rgba(116,167,255,1) 0%, rgba(30,43,255,1) 100%); }
+    input[type=radio]:checked + .score { background: linear-gradient(142deg, #8B5CF6 0%, #3B82F6 100%); }
 
-    input[type=radio]:checked + .new { background: linear-gradient(142deg, rgba(255,116,116,1) 0%, rgba(255,30,220,1) 100%); }
+    input[type=radio]:checked + .new { background: linear-gradient(142deg, #F87171 0%, #F472B6 100%); }
 
-    input[type=radio]:checked + .comming { background: linear-gradient(142deg, rgba(255,251,116,1) 0%, rgba(255,97,30,1) 100%); }
+    input[type=radio]:checked + .comming { background: linear-gradient(142deg, #EF4444 0%, #FDE68A 100%); }
 </style>
