@@ -26,7 +26,6 @@
     @else
     <a>Previous</a>
     @endif
-
     @for ($i = $movies->currentPage(); $i <= $movies->lastPage() &&  $i != $movies->currentPage() + 5; $i++)
         <a href="{{ 'http://127.0.0.1:8000/movies?page=' . $i }}">{{ $i }}</a>
     @endfor

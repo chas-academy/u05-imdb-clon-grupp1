@@ -1,27 +1,29 @@
 <template>
-    <div class="flex flex-col justify-center items-center" >
+    <div class="flex flex-col justify-center items-center px-5" >
         <div>
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">
-                <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score">Score</label>
+                <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score shadow-md">Score</label>
                 <input type="radio" id="new" name="filter" value="new" v-on:click="newMovies(moviesList)" class="hidden" checked>
-                <label for="new" class="text-white font-medium  rounded-lg cursor-pointer text-center new">New</label>
+                <label for="new" class="text-white font-medium  rounded-lg cursor-pointer text-center new shadow-md">New</label>
                 <input type="radio" id="comming" name="filter" value="comming" v-on:click="commingMovies(moviesList)" class="hidden">
-                <label for="comming" class="text-white font-medium  rounded-lg cursor-pointer text-center comming">Comming</label>
+                <label for="comming" class="text-white font-medium  rounded-lg cursor-pointer text-center comming shadow-md">Comming</label>
             </form>
         </div>
 
         <hooper
-        class="focus:outline-none h-80 my-1 w-screen max-w-screen-2xl"
+        class="focus:outline-none h-80 my-1 w-screen max-w-screen-2xl "
         :settings="hooperSettings"
         :wheelControl="false"
         :infiniteScroll="true"
-        style="height: 280px"
+        style="height: 300px"
         ref="carousel"
         >
-            <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative">
-                <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover p-2"></a>
-                <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"> </watchlist-button>
+            <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative ">
+                <div class="p-2 h-72">
+                    <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30"></a>
+                    <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"> </watchlist-button>
+                </div>
             </slide>
         </hooper>
     </div>

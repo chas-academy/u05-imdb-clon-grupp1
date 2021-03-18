@@ -25,7 +25,7 @@ class IndexController extends Controller
             };
             $watchlistStatus = ',' . implode($watchlistStatus);
 
-            $profileWatchlist = auth()->user()->profile->movies->paginate(2);
+            $profileWatchlist = auth()->user()->profile->movies->paginate(9);
 
             return view('index', compact('genres', 'watchlistStatus', 'profileWatchlist', 'movie'));
         }

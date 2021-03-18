@@ -1,7 +1,7 @@
 <div>
-    <div class="max-w-sm w-full m-10 lg:bg-gray-800 rounded-2xl">
+    <div class="max-w-sm w-full md:bg-gray-800 rounded-2xl my-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50">
             <div class="rounded-lg flex relative">
-                <a href="/movies/{{ $id }}"><img class="w-24 h-36 rounded-2xl object-cover" src="/storage/{{ $img }}" alt="{{ $title }}"></a>
+                <a href="/movies/{{ $id }}"><img class="w-24 h-36 rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50" src="/storage/{{ $img }}" alt="{{ $title }}"></a>
 
                 <div class="mt-5 ml-4">
                     @auth

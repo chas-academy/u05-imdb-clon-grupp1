@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      class="bookmark w-12 cursor-pointer"
+      class="bookmark w-12 cursor-pointer filter"
       @click="addToWatchlist"
       :src="'/storage/' + img_path"
     />
@@ -35,4 +35,10 @@ export default {
   },
 };
 </script>
+
+<style>
+    .filter{
+        filter: invert(1)
+    }
+</style>
 

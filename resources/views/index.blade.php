@@ -3,7 +3,7 @@
         <h1 class="text-white text-3xl font-medium p-7">Find, save and review movies</h1>
 
         <form class="w-4/5 max-w-screen-xl relative">
-            <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold border-none text-lg text-white focus:outline-none focus:shadow-outline" placeholder="Search movies...">
+            <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold border-none text-lg text-white focus:outline-none focus:shadow-outline shadow-lg border-r border-gray-700 border-opacity-50" placeholder="Search movies...">
             <button>
                 <svg xmlns="http://www.w3.org/2000/svg" height="136pt" version="1.1" viewBox="-1 0 136 136.21852" width="136pt" class="absolute w-5 h-5 right-6 top-5">
                     <g id="surface1">
@@ -22,74 +22,88 @@
     <movie-slider profile-id={{ null }}></movie-slider>
     @endif
 
-    <h2 class="text-white text-xl font-medium pt-2 pl-5 max-w-xl mx-auto">Genre</h2>
-    <div class=" flex flex-wrap px-3 max-w-xl mx-auto">
-        @foreach ($genres as $genre)
-        <x-genre-button link="/genres/{{$genre->id}}">{{ __($genre->name) }}</x-genre-button>
-        @endforeach
+    <div class="flex justify-center">
+        <div class="w-full max-w-screen-xl p-6">
+            <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5 md:w-4/5 lg:w-full">Genres</h2>
+            <div class="md:mx-auto w-full md:w-4/5 lg:w-full">
+                <div class=" flex flex-wrap px-3  max-w-xl">
+                    @foreach ($genres as $genre)
+                    <x-genre-button link="/genres/{{$genre->id}}">{{ __($genre->name) }}</x-genre-button>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 
     @if(auth()->user())
-    @auth
-    <h2 class="text-white text-xl font-medium pt-2 pl-5 max-w-xl mx-auto">Watchlist</h2>
-    <div class="">
-        @foreach ($profileWatchlist as $profileWatchlistMovie)
-        <x-movie-item
-        id="{{ $profileWatchlistMovie->id }}"
-        title="{{ $profileWatchlistMovie->title }}"
-        rating="{{ $profileWatchlistMovie->top_rating}}"
-        relese-date="{{ $profileWatchlistMovie->release_date }}"
-        language="{{  $profileWatchlistMovie->language }}"
-        img="{{ $profileWatchlistMovie->img_path }}"
-        genres="{{ $movie->getAllGenres($profileWatchlistMovie) }}"
-        watchlistStatus="{{ $watchlistStatus }}"
-        />
-        @endforeach
-        <div class="mt-10 text-blue-500">
-            @if ($profileWatchlist->currentPage() != 1)
-            <a href="{{ $profileWatchlist->previousPageUrl() }}">Previous</a>
+    <div class="flex justify-center">
+        <div class="w-full max-w-screen-xl p-6 ">
+            <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5  md:w-4/5 lg:w-full">Watchlist</h2>
+
+            @auth
+            <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
+                @foreach ($profileWatchlist as $profileWatchlistMovie)
+                <x-movie-item
+                id="{{ $profileWatchlistMovie->id }}"
+                title="{{ $profileWatchlistMovie->title }}"
+                rating="{{ $profileWatchlistMovie->top_rating}}"
+                relese-date="{{ $profileWatchlistMovie->release_date }}"
+                language="{{  $profileWatchlistMovie->language }}"
+                img="{{ $profileWatchlistMovie->img_path }}"
+                genres="{{ $movie->getAllGenres($profileWatchlistMovie) }}"
+                watchlistStatus="{{ $watchlistStatus }}"
+                />
+                @endforeach
+            </div>
+
+            <div class="mt-10 text-blue-500">
+                @if ($profileWatchlist->currentPage() != 1)
+                <a href="{{ $profileWatchlist->previousPageUrl() }}">Previous</a>
+                @else
+                <a>Previous</a>
+                @endif
+                @for ($i = $profileWatchlist->currentPage(); $i <= $profileWatchlist->lastPage() &&  $i != $profileWatchlist->currentPage() + 5; $i++)
+                    <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}">{{ $i }}</a>
+                @endfor
+                @if ($profileWatchlist->currentPage() != $profileWatchlist->lastPage())
+                <a href="{{ $profileWatchlist->nextPageUrl() }}">Next</a>
+                @else
+                <a>Next</a>
+                @endif
+            </div>
+            @endauth
+
             @else
-            <a>Previous</a>
-            @endif
-            @for ($i = $profileWatchlist->currentPage(); $i <= $profileWatchlist->lastPage() &&  $i != $profileWatchlist->currentPage() + 5; $i++)
-                <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}">{{ $i }}</a>
-            @endfor
-            @if ($profileWatchlist->currentPage() != $profileWatchlist->lastPage())
-            <a href="{{ $profileWatchlist->nextPageUrl() }}">Next</a>
-            @else
-            <a>Next</a>
+
+            @foreach ($movies as $moviesMovie)
+            <x-movie-item
+            id="{{ $moviesMovie->id }}"
+            title="{{ $moviesMovie->title }}"
+            rating="{{ $moviesMovie->top_rating}}"
+            relese-date="{{ $moviesMovie->release_date }}"
+            language="{{  $moviesMovie->language }}"
+            img="{{ $moviesMovie->img_path }}"
+            genres="{{ $movie->getAllGenres($moviesMovie) }}"
+            watchlistStatus={{ null }}
+            />
+            @endforeach
+            <div class="mt-10 text-blue-500">
+                @if ($movies->currentPage() != 1)
+                <a href="{{ $movies->previousPageUrl() }}">Previous</a>
+                @else
+                <a>Previous</a>
+                @endif
+                @for ($i = $movies->currentPage(); $i <= $movies->lastPage() &&  $i != $movies->currentPage() + 5; $i++)
+                    <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}">{{ $i }}</a>
+                @endfor
+                @if ($movies->currentPage() != $movies->lastPage())
+                <a href="{{ $movies->nextPageUrl() }}">Next</a>
+                @else
+                <a>Next</a>
+                @endif
+            </div>
             @endif
         </div>
-        @endauth
-        @else
-        @foreach ($movies as $moviesMovie)
-        <x-movie-item
-        id="{{ $moviesMovie->id }}"
-        title="{{ $moviesMovie->title }}"
-        rating="{{ $moviesMovie->top_rating}}"
-        relese-date="{{ $moviesMovie->release_date }}"
-        language="{{  $moviesMovie->language }}"
-        img="{{ $moviesMovie->img_path }}"
-        genres="{{ $movie->getAllGenres($moviesMovie) }}"
-        watchlistStatus={{ null }}
-        />
-        @endforeach
-        <div class="mt-10 text-blue-500">
-            @if ($movies->currentPage() != 1)
-            <a href="{{ $movies->previousPageUrl() }}">Previous</a>
-            @else
-            <a>Previous</a>
-            @endif
-            @for ($i = $movies->currentPage(); $i <= $movies->lastPage() &&  $i != $movies->currentPage() + 5; $i++)
-                <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}">{{ $i }}</a>
-            @endfor
-            @if ($movies->currentPage() != $movies->lastPage())
-            <a href="{{ $movies->nextPageUrl() }}">Next</a>
-            @else
-            <a>Next</a>
-            @endif
-        </div>
-        @endif
     </div>
 
     {{-- Move to user.blade --}}
