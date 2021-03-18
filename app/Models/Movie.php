@@ -40,7 +40,6 @@ class Movie extends Model
         foreach($item->genres as $key => $genre) {
             $arr[$key] = $genre->name . ', ';
         };
-
-        return implode($arr);
+        return rtrim(implode($arr), ", ");
     }
 }
