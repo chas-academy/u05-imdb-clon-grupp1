@@ -50,43 +50,43 @@
                             itemsToShow: 8
                         },
                         1400: {
-                            itemsToShow: 7.5
+                            itemsToShow: 6.9
                         },
                         1300: {
-                            itemsToShow: 7
+                            itemsToShow: 6.4
                         },
                         1200: {
-                            itemsToShow: 6.5
+                            itemsToShow: 5.9
                         },
                         1100: {
-                            itemsToShow: 6
+                            itemsToShow: 5.4
                         },
                         900: {
-                            itemsToShow: 5.5
+                            itemsToShow: 4.9
                         },
                         900: {
-                            itemsToShow: 5
+                            itemsToShow: 4.4
                         },
                         800: {
-                            itemsToShow: 4.5
+                            itemsToShow: 3.9
                         },
                         700: {
-                            itemsToShow: 4
+                            itemsToShow: 3.4
                         },
                         500: {
-                            itemsToShow: 3.1
+                            itemsToShow: 2.9
                         },
                         300: {
-                            itemsToShow: 2.6
+                            itemsToShow: 2.4
                         },
                         300: {
-                            itemsToShow: 2.1
+                            itemsToShow: 1.9
                         },
                         200: {
-                            itemsToShow: 1.6
+                            itemsToShow: 1.4
                         },
                         100: {
-                            itemsToShow: 1.1
+                            itemsToShow: 0.9
                         },
                     }
                 }

@@ -3885,36 +3885,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             itemsToShow: 8
           },
           1400: {
-            itemsToShow: 7.5
+            itemsToShow: 6.9
           },
           1300: {
-            itemsToShow: 7
+            itemsToShow: 6.4
           },
           1200: {
-            itemsToShow: 6.5
+            itemsToShow: 5.9
           },
           1100: {
-            itemsToShow: 6
+            itemsToShow: 5.4
           },
           900: {
-            itemsToShow: 5.5
+            itemsToShow: 4.9
           }
         }, _defineProperty(_breakpoints, "900", {
-          itemsToShow: 5
+          itemsToShow: 4.4
         }), _defineProperty(_breakpoints, 800, {
-          itemsToShow: 4.5
+          itemsToShow: 3.9
         }), _defineProperty(_breakpoints, 700, {
-          itemsToShow: 4
+          itemsToShow: 3.4
         }), _defineProperty(_breakpoints, 500, {
-          itemsToShow: 3.1
+          itemsToShow: 2.9
         }), _defineProperty(_breakpoints, 300, {
-          itemsToShow: 2.6
+          itemsToShow: 2.4
         }), _defineProperty(_breakpoints, "300", {
-          itemsToShow: 2.1
+          itemsToShow: 1.9
         }), _defineProperty(_breakpoints, 200, {
-          itemsToShow: 1.6
+          itemsToShow: 1.4
         }), _defineProperty(_breakpoints, 100, {
-          itemsToShow: 1.1
+          itemsToShow: 0.9
         }), _breakpoints)
       }
     };
