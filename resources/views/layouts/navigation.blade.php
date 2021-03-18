@@ -16,7 +16,7 @@
                 </x-nav-link>
                 @if (Route::has('login'))
                     @auth
-                        <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        <x-nav-link href="/profile/{{ auth()->user()->id }}" :active="request()->routeIs('profile.show')">
                             {{ __(Auth::user()->name) }}
                         </x-nav-link>
                     @else
