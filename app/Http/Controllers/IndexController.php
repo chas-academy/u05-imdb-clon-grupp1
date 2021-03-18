@@ -14,7 +14,7 @@ class IndexController extends Controller
     {
 
         $genres = Genre::all();
-        $movies = Movie::all();
+        $movies = Movie::latest()->paginate(5);
 
         //profile/movie
         if(auth()->user()){
@@ -25,7 +25,7 @@ class IndexController extends Controller
             };
             $watchlistStatus = ',' . implode($watchlistStatus);
 
-            $profileWatchlist = auth()->user()->profile->movies;
+            $profileWatchlist = auth()->user()->profile->movies->paginate(2);
 
             return view('index', compact('genres', 'watchlistStatus', 'profileWatchlist', 'movie'));
         }

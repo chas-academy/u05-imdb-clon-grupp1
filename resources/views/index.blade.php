@@ -45,6 +45,21 @@
         watchlistStatus="{{ $watchlistStatus }}"
         />
         @endforeach
+        <div class="mt-10 text-blue-500">
+            @if ($profileWatchlist->currentPage() != 1)
+            <a href="{{ $profileWatchlist->previousPageUrl() }}">Previous</a>
+            @else
+            <a>Previous</a>
+            @endif
+            @for ($i = $profileWatchlist->currentPage(); $i <= $profileWatchlist->lastPage() &&  $i != $profileWatchlist->currentPage() + 5; $i++)
+                <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}">{{ $i }}</a>
+            @endfor
+            @if ($profileWatchlist->currentPage() != $profileWatchlist->lastPage())
+            <a href="{{ $profileWatchlist->nextPageUrl() }}">Next</a>
+            @else
+            <a>Next</a>
+            @endif
+        </div>
         @endauth
         @else
         @foreach ($movies as $moviesMovie)
@@ -59,9 +74,23 @@
         watchlistStatus={{ null }}
         />
         @endforeach
+        <div class="mt-10 text-blue-500">
+            @if ($movies->currentPage() != 1)
+            <a href="{{ $movies->previousPageUrl() }}">Previous</a>
+            @else
+            <a>Previous</a>
+            @endif
+            @for ($i = $movies->currentPage(); $i <= $movies->lastPage() &&  $i != $movies->currentPage() + 5; $i++)
+                <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}">{{ $i }}</a>
+            @endfor
+            @if ($movies->currentPage() != $movies->lastPage())
+            <a href="{{ $movies->nextPageUrl() }}">Next</a>
+            @else
+            <a>Next</a>
+            @endif
+        </div>
         @endif
     </div>
-
 
     {{-- Move to user.blade --}}
     @if (Route::has('login'))
