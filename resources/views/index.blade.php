@@ -32,29 +32,36 @@
     @if(auth()->user())
     @auth
     <h2 class="text-white text-xl font-medium pt-2 pl-5 max-w-xl mx-auto">Watchlist</h2>
-    @foreach ($profileWatchlist as $profileWatchlistMovie)
-    <x-movie-item
-    id="{{ $profileWatchlistMovie->id }}"
-    title="{{ $profileWatchlistMovie->title }}"
-    relese-date="{{ $profileWatchlistMovie->release_date }}"
-    language="{{  $profileWatchlistMovie->language }}"
-    img="{{ $profileWatchlistMovie->img_path }}"
-    genres="{{ $movie->getAllGenres($profileWatchlistMovie) }}"
-    />
-    @endforeach
-    @endauth
-    @else
-    @foreach ($movies as $moviesMovie)
-    <x-movie-item
-    id="{{ $moviesMovie->id }}"
-    title="{{ $moviesMovie->title }}"
-    relese-date="{{ $moviesMovie->release_date }}"
-    language="{{  $moviesMovie->language }}"
-    img="{{ $moviesMovie->img_path }}"
-    genres="{{ $movie->getAllGenres($moviesMovie) }}"
-    />
-    @endforeach
-    @endif
+    <div class="">
+        @foreach ($profileWatchlist as $profileWatchlistMovie)
+        <x-movie-item
+        id="{{ $profileWatchlistMovie->id }}"
+        title="{{ $profileWatchlistMovie->title }}"
+        rating="{{ $profileWatchlistMovie->top_rating}}"
+        relese-date="{{ $profileWatchlistMovie->release_date }}"
+        language="{{  $profileWatchlistMovie->language }}"
+        img="{{ $profileWatchlistMovie->img_path }}"
+        genres="{{ $movie->getAllGenres($profileWatchlistMovie) }}"
+        watchlistStatus="{{ $watchlistStatus }}"
+        />
+        @endforeach
+        @endauth
+        @else
+        @foreach ($movies as $moviesMovie)
+        <x-movie-item
+        id="{{ $moviesMovie->id }}"
+        title="{{ $moviesMovie->title }}"
+        rating="{{ $moviesMovie->top_rating}}"
+        relese-date="{{ $moviesMovie->release_date }}"
+        language="{{  $moviesMovie->language }}"
+        img="{{ $moviesMovie->img_path }}"
+        genres="{{ $movie->getAllGenres($moviesMovie) }}"
+        watchlistStatus={{ null }}
+        />
+        @endforeach
+        @endif
+    </div>
+
 
     {{-- Move to user.blade --}}
     @if (Route::has('login'))

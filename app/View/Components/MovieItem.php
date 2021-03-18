@@ -12,8 +12,10 @@ class MovieItem extends Component
     public $language;
     public $img;
     public $genres;
+    public $rating;
+    public $watchlistStatus;
 
-    public function __construct($id, $title, $releseDate ,$language, $img, $genres)
+    public function __construct($id, $title, $releseDate ,$language, $img, $genres, $rating, $watchlistStatus)
     {
         $this->id = $id;
         $this->title = $title;
@@ -21,6 +23,8 @@ class MovieItem extends Component
         $this->language = $language;
         $this->img = $img;
         $this->genres = $genres;
+        $this->rating = $rating;
+        $this->watchlistStatus = $watchlistStatus;
     }
 
     public function render()
