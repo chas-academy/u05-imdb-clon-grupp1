@@ -46,19 +46,22 @@
                 moviesList: this.movieslist,
                 hooperSettings: {
                     breakpoints: {
-                        1500: {
+                        1400: {
                             itemsToShow: 8
                         },
                         1400: {
-                            itemsToShow: 6.9
+                            itemsToShow: 7.4
                         },
                         1300: {
-                            itemsToShow: 6.4
+                            itemsToShow: 6.9
                         },
                         1200: {
-                            itemsToShow: 5.9
+                            itemsToShow: 6.4
                         },
                         1100: {
+                            itemsToShow: 5.9
+                        },
+                        1000: {
                             itemsToShow: 5.4
                         },
                         900: {

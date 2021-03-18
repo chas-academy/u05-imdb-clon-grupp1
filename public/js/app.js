@@ -3881,25 +3881,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       moviesList: this.movieslist,
       hooperSettings: {
         breakpoints: (_breakpoints = {
-          1500: {
-            itemsToShow: 8
-          },
           1400: {
-            itemsToShow: 6.9
-          },
-          1300: {
-            itemsToShow: 6.4
-          },
-          1200: {
-            itemsToShow: 5.9
-          },
-          1100: {
-            itemsToShow: 5.4
-          },
-          900: {
-            itemsToShow: 4.9
+            itemsToShow: 8
           }
-        }, _defineProperty(_breakpoints, "900", {
+        }, _defineProperty(_breakpoints, "1400", {
+          itemsToShow: 7.4
+        }), _defineProperty(_breakpoints, 1300, {
+          itemsToShow: 6.9
+        }), _defineProperty(_breakpoints, 1200, {
+          itemsToShow: 6.4
+        }), _defineProperty(_breakpoints, 1100, {
+          itemsToShow: 5.9
+        }), _defineProperty(_breakpoints, 1000, {
+          itemsToShow: 5.4
+        }), _defineProperty(_breakpoints, 900, {
+          itemsToShow: 4.9
+        }), _defineProperty(_breakpoints, "900", {
           itemsToShow: 4.4
         }), _defineProperty(_breakpoints, 800, {
           itemsToShow: 3.9

@@ -37,7 +37,11 @@
 
     <div class="flex justify-center">
         <div class="w-full max-w-screen-xl p-6 ">
+            @if(auth()->user())
             <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5  md:w-4/5 lg:w-full">Watchlist</h2>
+            @else
+            <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5  md:w-4/5 lg:w-full">Movies</h2>
+            @endif
 
             @if(auth()->user())
             @auth
