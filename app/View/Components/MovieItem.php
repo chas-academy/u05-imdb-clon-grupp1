@@ -11,19 +11,20 @@ class MovieItem extends Component
     public $releseDate;
     public $language;
     public $img;
-    public $genres;
     public $rating;
+    public $movie;
     public $watchlistStatus;
+    public $genres;
 
-    public function __construct($id, $title, $releseDate ,$language, $img, $genres, $rating, $watchlistStatus)
+    public function __construct($genres, $watchlistStatus, $movie)
     {
-        $this->id = $id;
-        $this->title = $title;
-        $this->releseDate = $releseDate;
-        $this->language = $language;
-        $this->img = $img;
+        $this->id = $movie->id;
+        $this->title = $movie->title;
+        $this->releseDate = $movie->release_date;
+        $this->language = $movie->language;
+        $this->img = $movie->img_path;
+        $this->rating = $movie->top_rating;
         $this->genres = $genres;
-        $this->rating = $rating;
         $this->watchlistStatus = $watchlistStatus;
     }
 

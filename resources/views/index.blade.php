@@ -16,7 +16,7 @@
 
     @if(auth()->user())
     @auth
-    <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} ></movie-slider>
+    <movie-slider profile-id={{ auth()->user()->profile->id }}" watchlist={{ $watchlistStatus }}></movie-slider>
     @endauth
     @else
     <movie-slider profile-id={{ null }}></movie-slider>
@@ -28,7 +28,7 @@
             <div class="md:mx-auto w-full md:w-4/5 lg:w-full">
                 <div class=" flex flex-wrap px-3  max-w-xl">
                     @foreach ($genres as $genre)
-                    <x-genre-button link="/genres/{{$genre->id}}">{{ __($genre->name) }}</x-genre-button>
+                    <x-genre-button :link="'/genres/'.$genre->id">{{ __($genre->name) }}</x-genre-button>
                     @endforeach
                 </div>
             </div>
@@ -48,14 +48,9 @@
             <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
                 @foreach ($profileWatchlist as $profileWatchlistMovie)
                 <x-movie-item
-                id="{{ $profileWatchlistMovie->id }}"
-                title="{{ $profileWatchlistMovie->title }}"
-                rating="{{ $profileWatchlistMovie->top_rating}}"
-                relese-date="{{ $profileWatchlistMovie->release_date }}"
-                language="{{  $profileWatchlistMovie->language }}"
-                img="{{ $profileWatchlistMovie->img_path }}"
-                genres="{{ $movie->getAllGenres($profileWatchlistMovie) }}"
-                watchlistStatus="{{ $watchlistStatus }}"
+                :movie="$profileWatchlistMovie"
+                :genres="$movie->getAllGenres($profileWatchlistMovie)"
+                :watchlistStatus="$watchlistStatus"
                 />
                 @endforeach
             </div>
@@ -82,14 +77,9 @@
             <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
                 @foreach ($movies as $moviesMovie)
                 <x-movie-item
-                id="{{ $moviesMovie->id }}"
-                title="{{ $moviesMovie->title }}"
-                rating="{{ $moviesMovie->top_rating}}"
-                relese-date="{{ $moviesMovie->release_date }}"
-                language="{{  $moviesMovie->language }}"
-                img="{{ $moviesMovie->img_path }}"
-                genres="{{ $movie->getAllGenres($moviesMovie) }}"
-                watchlistStatus={{ null }}
+                :movie="$moviesMovie"
+                :genres="$movie->getAllGenres($moviesMovie)"
+                :watchlistStatus="null"
                 />
                 @endforeach
             </div>
