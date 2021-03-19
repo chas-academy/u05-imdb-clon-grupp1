@@ -12,12 +12,7 @@ class WatchlistController extends Controller
 
     public function index(Movie $movie)
     {
-        $watchlistStatus = array();
-        foreach(auth()->user()->profile->movies as $key => $movie) {
-            $watchlistStatus[$key] = $movie->id . ',';
-        };
-        $watchlistStatus = ',' . implode($watchlistStatus);
-
+        $watchlistStatus = $movie->watchlistStatus();
         $profileWatchlist = auth()->user()->profile->movies->paginate(9);
 
         return view('watchlist.index', compact( 'watchlistStatus', 'profileWatchlist', 'movie'));

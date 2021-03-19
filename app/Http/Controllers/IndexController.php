@@ -12,19 +12,11 @@ class IndexController extends Controller
 
     public function index(Movie $movie, User $user)
     {
-
         $genres = Genre::all();
         $movies = Movie::latest()->paginate(9);
 
-        //profile/movie
         if(auth()->user()){
-
-            $watchlistStatus = array();
-            foreach(auth()->user()->profile->movies as $key => $movie) {
-                $watchlistStatus[$key] = $movie->id . ',';
-            };
-            $watchlistStatus = ',' . implode($watchlistStatus);
-
+            $watchlistStatus = $movie->watchlistStatus();
             $profileWatchlist = auth()->user()->profile->movies->paginate(9);
 
             return view('index', compact('genres', 'watchlistStatus', 'profileWatchlist', 'movie'));

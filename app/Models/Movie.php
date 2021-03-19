@@ -42,4 +42,15 @@ class Movie extends Model
         };
         return rtrim(implode($arr), ", ");
     }
+
+    public function watchlistStatus(){
+
+        $watchlistStatus = array();
+        foreach(auth()->user()->profile->movies as $key => $movie) {
+            $watchlistStatus[$key] = $movie->id . ',';
+        };
+        $watchlistStatus = ',' . implode($watchlistStatus);
+
+        return $watchlistStatus;
+    }
 }

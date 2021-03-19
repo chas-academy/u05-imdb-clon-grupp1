@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      class="bookmark w-12 cursor-pointer filter"
+      class="bookmark w-12 cursor-pointer transform hover:scale-105"
       @click="addToWatchlist"
       :src="'/storage/' + img_path"
     />
@@ -19,12 +19,6 @@ export default {
     addToWatchlist() {
       axios.post("/watchlist/" + this.movieId).then((response) => {
         this.status = !this.status;
-
-        if(this.status) {
-          console.log("Movie added to Watchlist", this.movieId)
-        } else {
-          console.log("Movie removed from Watchlist", this.movieId)
-        }
       });
     },
   },
@@ -36,9 +30,4 @@ export default {
 };
 </script>
 
-<style>
-    .filter{
-        filter: invert(1)
-    }
-</style>
 

@@ -21,12 +21,7 @@ class MovieController extends Controller
 
     public function index(User $user, Movie $movie)
     {
-        $watchlistStatus = array();
-        foreach(auth()->user()->profile->movies as $key => $movie) {
-            $watchlistStatus[$key] = $movie->id . ',';
-        };
-        $watchlistStatus = ',' . implode($watchlistStatus);
-
+        $watchlistStatus = $movie->watchlistStatus();
         $movies = Movie::latest()->paginate(9);
 
         return view('movies.index', compact('movies', 'user', 'movie', 'watchlistStatus'));

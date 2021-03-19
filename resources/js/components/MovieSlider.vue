@@ -3,11 +3,11 @@
         <div>
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">
-                <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score shadow-md">Score</label>
+                <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score shadow-md transform hover:scale-105">Score</label>
                 <input type="radio" id="new" name="filter" value="new" v-on:click="newMovies(moviesList)" class="hidden" checked>
-                <label for="new" class="text-white font-medium  rounded-lg cursor-pointer text-center new shadow-md">New</label>
+                <label for="new" class="text-white font-medium  rounded-lg cursor-pointer text-center new shadow-md transform hover:scale-105">New</label>
                 <input type="radio" id="comming" name="filter" value="comming" v-on:click="commingMovies(moviesList)" class="hidden">
-                <label for="comming" class="text-white font-medium  rounded-lg cursor-pointer text-center comming shadow-md">Comming</label>
+                <label for="comming" class="text-white font-medium  rounded-lg cursor-pointer text-center comming shadow-md transform hover:scale-105">Comming</label>
             </form>
         </div>
 
@@ -46,7 +46,7 @@
                 moviesList: this.movieslist,
                 hooperSettings: {
                     breakpoints: {
-                        1400: {
+                        1500: {
                             itemsToShow: 8
                         },
                         1400: {
