@@ -7,7 +7,7 @@
             @csrf
             @method('PATCH')
 
-            <label for="title">Title</label>
+            <label for="title">Username</label>
 
             <input type="text" id="title" name="title" value="{{ old('title') ?? $user->profile->title }}"><br>
             @if ($errors->has('title'))

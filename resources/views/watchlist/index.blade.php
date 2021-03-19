@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex flex-col justify-center items-center">
-        <h1 class="text-white text-3xl font-medium p-7">Find, save and review movies</h1>
+        <h1 class="text-white text-3xl font-medium p-7">Watchlist</h1>
 
         <form class="w-4/5 max-w-screen-xl relative">
             <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold text-lg text-white focus:outline-none focus:shadow-outline shadow-lg border-l-0 border-b-0 border-gray-700 border-opacity-50" placeholder="Search movies...">
@@ -14,37 +14,9 @@
         </form>
     </div>
 
-    @if(auth()->user())
-    @auth
-    <movie-slider profile-id={{ auth()->user()->profile->id }}" watchlist={{ $watchlistStatus }}></movie-slider>
-    @endauth
-    @else
-    <movie-slider profile-id={{ null }}></movie-slider>
-    @endif
-
-    <div class="flex justify-center">
-        <div class="w-full max-w-screen-xl p-6">
-            <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5 md:w-4/5 lg:w-full">Genres</h2>
-            <div class="md:mx-auto w-full md:w-4/5 lg:w-full">
-                <div class=" flex flex-wrap px-3  max-w-xl">
-                    @foreach ($genres as $genre)
-                    <x-genre-button :link="'/genres/'.$genre->id">{{ __($genre->name) }}</x-genre-button>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="flex justify-center">
         <div class="w-full max-w-screen-xl p-6 ">
-            @if(auth()->user())
-            <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5  md:w-4/5 lg:w-full">Watchlist</h2>
-            @else
-            <h2 class="md:mx-auto text-white text-xl font-medium pb-2 pl-5  md:w-4/5 lg:w-full">Movies</h2>
-            @endif
 
-            @if(auth()->user())
-            @auth
             <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
                 @foreach ($profileWatchlist as $profileWatchlistMovie)
                 <x-movie-item
@@ -70,50 +42,6 @@
                 <a class="p-4 bg-gray-900 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 text-gray-500 ml-1">Next</a>
                 @endif
             </div>
-            @endauth
-
-            @else
-
-            <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
-                @foreach ($movies as $moviesMovie)
-                <x-movie-item
-                :movie="$moviesMovie"
-                :genres="$movie->getAllGenres($moviesMovie)"
-                :watchlistStatus="null"
-                />
-                @endforeach
-            </div>
-
-            <div class="text-white flex justify-center mt-2">
-                @if ($movies->currentPage() != 1)
-                <a href="{{ $movies->previousPageUrl() }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 mr-1">Prev</a>
-                @else
-                <a class="p-4 bg-gray-900 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 text-gray-500 mr-1">Prev</a>
-                @endif
-                @for ($i = $movies->currentPage(); $i <= $movies->lastPage() &&  $i != $movies->currentPage() + 5; $i++)
-                    <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 mx-1">{{ $i }}</a>
-                @endfor
-                @if ($movies->currentPage() != $movies->lastPage())
-                <a href="{{ $movies->nextPageUrl() }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 ml-1">Next</a>
-                @else
-                <a class="p-4 bg-gray-900 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 text-gray-500 ml-1">Next</a>
-                @endif
-            </div>
-            @endif
         </div>
     </div>
-
-    {{-- Move to user.blade --}}
-    @if (Route::has('login'))
-        @auth
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                    {{ __('Logout') }}
-                </x-dropdown-link>
-            </form>
-        @endauth
-    @endif
-
 </x-app-layout>

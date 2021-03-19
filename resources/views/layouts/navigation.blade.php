@@ -17,7 +17,11 @@
                 @if (Route::has('login'))
                     @auth
                         <x-nav-link href="/profile/{{ auth()->user()->id }}" :active="request()->routeIs('profile.show')">
-                            {{ __(Auth::user()->name) }}
+                            {{ __(Auth::user()->profile->title) }}
+                        </x-nav-link>
+
+                        <x-nav-link href="/watchlist/{{ auth()->user()->id }}" :active="request()->routeIs('watchlist.index')">
+                            {{ __('Watchlist') }}
                         </x-nav-link>
                     @else
                         <x-nav-link :href="route('login')" :active="request()->routeIs('login')">

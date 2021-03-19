@@ -13,7 +13,6 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\IndexController;
 
 
-
 require __DIR__ . '/auth.php';
 
 // Middleware Test Route
@@ -23,8 +22,6 @@ Route::get('/admin', function () {
 // End Test Route
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-
-
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,6 +35,7 @@ Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('revi
 
 Route::resource('movies', MovieController::class);
 
+Route::get('watchlist/{user}', [WatchlistController::class, 'index'])->name('watchlist.index');
 Route::post('watchlist/{movie}', [MovieController::class, 'addToWatchlist']);
 
 Route::apiResource('review-api', ApiReviewController::class);

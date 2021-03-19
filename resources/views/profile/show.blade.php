@@ -2,6 +2,17 @@
 
     <div class="flex flex-col justify-center items-center">
 
+        <div class="flex justify-between w-4/5 max-w-screen-xl  pr-1 py-5">
+            <h1 class="text-white text-3xl font-medium my-auto w-52">{{$user->profile->title}}</h1>
+            <img src="{{$user->profile->profileImage()}}" class="w-12 h-12 rounded-full ">
+        </div>
+
+        @can('update', $user->profile)
+            <div class="flex w-4/5 max-w-screen-xl pb-8">
+                <a href="/profile/{{$user->profile->id}}/edit" class="py-2 px-3 rounded-lg bg-indigo-900 text-white">Edit Profile</a>
+            </div>
+        @endcan
+
         <form class="w-4/5 max-w-screen-xl relative">
             <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold text-lg text-white focus:outline-none focus:shadow-outline shadow-lg border-l-0 border-b-0 border-gray-700 border-opacity-50" placeholder="Search movies...">
             <button>
@@ -12,17 +23,9 @@
                 </svg>
             </button>
         </form>
-
-        <h1 class="text-white text-3xl font-medium p-7">{{$user->name}}</h1>
     </div>
 
-    <img src="{{$user->profile->profileImage()}}" width="100px">
-
     {{$user->profile->title}}
-    @can('update', $user->profile)
-    <a href="/profile/{{$user->profile->id}}/edit">Edit Profile</a>
-    @endcan
-    <h2>Watchlist</h2>
     @foreach($user->profile->movies as $movie)
         {{$movie->title}}
     @endforeach
