@@ -15,11 +15,6 @@ class ProfileController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    // public function index()
-    // {
-
-    // }
-
     public function show(Profile $profile, User $user)
     {
         return view('profile.show', compact('user', 'profile'));
@@ -42,12 +37,6 @@ class ProfileController extends Controller
             'image' => ''
         ]);
 
-        if ($user->profile->image) {
-            if (File::exists("storage/{$user->profile->image}")) {
-            File::delete("storage/{$user->profile->image}");
-          }
-        }
-
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(1000, 1000); //Intervention Image Package
@@ -55,15 +44,12 @@ class ProfileController extends Controller
             $image->save();
         }
 
-
         // $profile->image = $request->image; //Lägg till senare
 
         $profile->update(array_merge(
             $data,
             $imageArray ?? [],
         ));
-
-
 
         return redirect("/profile/{$profile->user_id}");
     }

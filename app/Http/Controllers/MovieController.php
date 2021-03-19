@@ -19,11 +19,17 @@ class MovieController extends Controller
         $this->middleware('admin')->except(['index', 'show', 'addToWatchlist']);
     }
 
-    public function index(User $user)
+    public function index(User $user, Movie $movie)
     {
-        $movies = Movie::latest()->paginate(20);
+        $watchlistStatus = array();
+        foreach(auth()->user()->profile->movies as $key => $movie) {
+            $watchlistStatus[$key] = $movie->id . ',';
+        };
+        $watchlistStatus = ',' . implode($watchlistStatus);
 
-        return view('movies.index', compact('movies', 'user'));
+        $movies = Movie::latest()->paginate(9);
+
+        return view('movies.index', compact('movies', 'user', 'movie', 'watchlistStatus'));
     }
 
     public function show(Movie $movie, User $user)
