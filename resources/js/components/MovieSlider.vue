@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col justify-center items-center px-5" >
-        <div>
+        <div v-if="(!showWatchlist)">
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">
                 <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score shadow-md transform hover:scale-105">Score</label>
@@ -19,22 +19,24 @@
         style="height: 300px"
         ref="carousel"
         >
-            <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative ">
-                <div class="p-2 h-72">
-                    <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30"></a>
-                    <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"> </watchlist-button>
-                </div>
-            </slide>
+                <slide v-for="(movie, index) in moviesPrint" :key="index" class="relative">
+                    <div class="p-2 h-72">
+                        <a :href="'/movies/' + movie.id" v-on:click="search()"><img :src="'/storage/' + movie.img_path" class="h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30"></a>
+                        <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"> </watchlist-button>
+                    </div>
+                </slide>
         </hooper>
     </div>
 </template>
+
+
 
 <script>
     import { Hooper, Slide } from 'hooper';
     import 'hooper/dist/hooper.css';
 
     export default {
-        props: ["profileId", "watchlist"],
+        props: ["profileId", "watchlist", "showWatchlist"],
         name: 'App',
         components: {
         Hooper,
@@ -42,8 +44,11 @@
         },
         data() {
             return {
+                response: this.response,
+                watchlistArray: this.watchlistArray,
                 moviesPrint: this.moviesPrint,
                 moviesList: this.movieslist,
+
                 hooperSettings: {
                     breakpoints: {
                         1500: {
@@ -98,8 +103,21 @@
         mounted() {
              axios.get('/movie-api')
             .then(response => {
-                this.moviesPrint = response.data.data.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date < new Date().getFullYear()).slice().reverse().slice(0,20);
-                this.moviesList = response.data.data;
+                if(this.showWatchlist){
+                    this.watchlistArray = this.watchlist.slice(1, -1).split(",");
+                    this.response = response.data.data;
+                    this.moviesList = this.response.filter(movie => {
+                        if(this.watchlistArray.includes(movie.id.toString())){
+                            return movie
+                        }
+                    });
+
+                    this.newMovies(this.moviesList);
+                } else {
+                    this.moviesList = response.data.data;
+                    this.newMovies(this.moviesList);
+                }
+
             });
         },
         methods: {

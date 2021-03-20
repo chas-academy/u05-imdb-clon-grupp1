@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Movie;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
@@ -15,9 +16,10 @@ class ProfileController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function show(Profile $profile, User $user)
+    public function show(Profile $profile, User $user, Movie $movie)
     {
-        return view('profile.show', compact('user', 'profile'));
+        $watchlistStatus = $movie->watchlistStatus();
+        return view('profile.show', compact('user', 'profile', 'watchlistStatus'));
     }
 
     public function edit(User $user)

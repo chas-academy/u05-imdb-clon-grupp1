@@ -39,21 +39,12 @@
                     @endforeach
                 </div>
 
-                <div class="text-white flex justify-center mt-2">
-                    @if ($movies->currentPage() != 1)
-                    <a href="{{ $movies->previousPageUrl() }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 mr-1">Prev</a>
-                    @else
-                    <a class="p-4 bg-gray-900 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 text-gray-500 mr-1">Prev</a>
-                    @endif
-                    @for ($i = $movies->currentPage(); $i <= $movies->lastPage() &&  $i != $movies->currentPage() + 5; $i++)
-                        <a href="{{ 'http://127.0.0.1:8000?page=' . $i }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 mx-1">{{ $i }}</a>
-                    @endfor
-                    @if ($movies->currentPage() != $movies->lastPage())
-                    <a href="{{ $movies->nextPageUrl() }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 ml-1">Next</a>
-                    @else
-                    <a class="p-4 bg-gray-900 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 text-gray-500 ml-1">Next</a>
-                    @endif
-                </div>
+                <x-pagination
+                    :currentPage="$movies->currentPage()"
+                    :lastPage="$movies->lastPage()"
+                    :previousPageUrl="$movies->previousPageUrl()"
+                    :nextPageUrl="$movies->nextPageUrl()"
+                />
             </div>
         </div>
     </div>

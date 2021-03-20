@@ -3864,10 +3864,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["profileId", "watchlist"],
+  props: ["profileId", "watchlist", "showWatchlist"],
   name: 'App',
   components: {
     Hooper: hooper__WEBPACK_IMPORTED_MODULE_0__.Hooper,
@@ -3877,6 +3879,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _breakpoints;
 
     return {
+      response: this.response,
+      watchlistArray: this.watchlistArray,
       moviesPrint: this.moviesPrint,
       moviesList: this.movieslist,
       hooperSettings: {
@@ -3926,12 +3930,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     axios.get('/movie-api').then(function (response) {
-      _this.moviesPrint = response.data.data.sort(function (a, b) {
-        return a.id - b.id;
-      }).filter(function (movie) {
-        return movie.release_date < new Date().getFullYear();
-      }).slice().reverse().slice(0, 20);
-      _this.moviesList = response.data.data;
+      if (_this.showWatchlist) {
+        _this.watchlistArray = _this.watchlist.slice(1, -1).split(",");
+        _this.response = response.data.data;
+        _this.moviesList = _this.response.filter(function (movie) {
+          if (_this.watchlistArray.includes(movie.id.toString())) {
+            return movie;
+          }
+        });
+
+        _this.newMovies(_this.moviesList);
+      } else {
+        _this.moviesList = response.data.data;
+
+        _this.newMovies(_this.moviesList);
+      }
     });
   },
   methods: {
@@ -41499,85 +41512,87 @@ var render = function() {
     "div",
     { staticClass: "flex flex-col justify-center items-center px-5" },
     [
-      _c("div", [
-        _c("form", [
-          _c("input", {
-            staticClass: "hidden",
-            attrs: {
-              type: "radio",
-              id: "score",
-              name: "filter",
-              value: "score"
-            },
-            on: {
-              click: function($event) {
-                return _vm.scoreMovies(_vm.moviesList)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass:
-                "text-white font-medium rounded-lg cursor-pointer text-center score shadow-md transform hover:scale-105",
-              attrs: { for: "score" }
-            },
-            [_vm._v("Score")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "hidden",
-            attrs: {
-              type: "radio",
-              id: "new",
-              name: "filter",
-              value: "new",
-              checked: ""
-            },
-            on: {
-              click: function($event) {
-                return _vm.newMovies(_vm.moviesList)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass:
-                "text-white font-medium  rounded-lg cursor-pointer text-center new shadow-md transform hover:scale-105",
-              attrs: { for: "new" }
-            },
-            [_vm._v("New")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "hidden",
-            attrs: {
-              type: "radio",
-              id: "comming",
-              name: "filter",
-              value: "comming"
-            },
-            on: {
-              click: function($event) {
-                return _vm.commingMovies(_vm.moviesList)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass:
-                "text-white font-medium  rounded-lg cursor-pointer text-center comming shadow-md transform hover:scale-105",
-              attrs: { for: "comming" }
-            },
-            [_vm._v("Comming")]
-          )
-        ])
-      ]),
+      !_vm.showWatchlist
+        ? _c("div", [
+            _c("form", [
+              _c("input", {
+                staticClass: "hidden",
+                attrs: {
+                  type: "radio",
+                  id: "score",
+                  name: "filter",
+                  value: "score"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.scoreMovies(_vm.moviesList)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "text-white font-medium rounded-lg cursor-pointer text-center score shadow-md transform hover:scale-105",
+                  attrs: { for: "score" }
+                },
+                [_vm._v("Score")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "hidden",
+                attrs: {
+                  type: "radio",
+                  id: "new",
+                  name: "filter",
+                  value: "new",
+                  checked: ""
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.newMovies(_vm.moviesList)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "text-white font-medium  rounded-lg cursor-pointer text-center new shadow-md transform hover:scale-105",
+                  attrs: { for: "new" }
+                },
+                [_vm._v("New")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "hidden",
+                attrs: {
+                  type: "radio",
+                  id: "comming",
+                  name: "filter",
+                  value: "comming"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.commingMovies(_vm.moviesList)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "text-white font-medium  rounded-lg cursor-pointer text-center comming shadow-md transform hover:scale-105",
+                  attrs: { for: "comming" }
+                },
+                [_vm._v("Comming")]
+              )
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "hooper",
@@ -41593,7 +41608,7 @@ var render = function() {
           }
         },
         _vm._l(_vm.moviesPrint, function(movie, index) {
-          return _c("slide", { key: index, staticClass: "relative " }, [
+          return _c("slide", { key: index, staticClass: "relative" }, [
             _c(
               "div",
               { staticClass: "p-2 h-72" },
