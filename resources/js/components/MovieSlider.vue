@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center items-center px-5" >
+    <div class="flex flex-col justify-center items-center px-3" >
         <div v-if="(!showWatchlist)">
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">

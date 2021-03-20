@@ -41510,7 +41510,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex flex-col justify-center items-center px-5" },
+    { staticClass: "flex flex-col justify-center items-center px-3" },
     [
       !_vm.showWatchlist
         ? _c("div", [

@@ -20,6 +20,11 @@
         @else
             <movie-slider profile-id={{ null }}></movie-slider>
         @endif
+        <div class="flex justify-center">
+            <p class="w-screen max-w-screen-2xl pr-3">
+                <a href="/movies" class="float-right py-2 px-3 rounded-lg bg-indigo-900 text-white transform hover:scale-105">Movies</a>
+            </p>
+        </div>
 
         {{-- GENRES --}}
         <div class="flex justify-center">
@@ -45,7 +50,7 @@
                 @endif
 
                 @if(auth()->user())
-                    <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
+                    <div class="md:mx-auto md:grid md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
                         @auth
                             @foreach ($profileWatchlist as $profileWatchlistMovie)
                                 <x-movie-item
@@ -65,7 +70,7 @@
                 @endauth
 
                 @else
-                    <div class="md:mx-auto md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
+                    <div class="md:mx-auto md:grid md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
                         @foreach ($movies as $moviesMovie)
                             <x-movie-item
                             :movie="$moviesMovie"

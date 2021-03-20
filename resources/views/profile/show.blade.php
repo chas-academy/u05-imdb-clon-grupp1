@@ -2,6 +2,7 @@
 
     <div class="flex flex-col justify-center items-center">
 
+        {{-- USER INFO --}}
         <div class="flex justify-between w-4/5 max-w-screen-xl  pr-1 py-5">
             <h1 class="text-white text-3xl font-medium my-auto w-52">{{$user->profile->title}}</h1>
             <img src="{{$user->profile->profileImage()}}" class="w-11 h-11 rounded-full ">
@@ -13,6 +14,7 @@
             </div>
         @endcan
 
+        {{-- SEARCH --}}
         <form class="w-4/5 max-w-screen-xl relative">
             <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold text-lg text-white focus:outline-none focus:shadow-outline shadow-lg border-l-0 border-b-0 border-gray-700 border-opacity-50" placeholder="Search movies...">
             <button>
@@ -21,6 +23,7 @@
         </form>
     </div>
 
+    {{-- SLIDER --}}
     <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"></movie-slider>
     <div class="flex justify-center">
         <p class="w-screen max-w-screen-2xl pr-3">
