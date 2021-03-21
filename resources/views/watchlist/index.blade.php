@@ -13,26 +13,11 @@
             </form>
         </div>
 
-        {{-- WATCHLIST --}}
-        <div class="flex justify-center">
-            <div class="w-full max-w-screen-xl p-6 ">
-                <div class="md:mx-auto md:grid md:grid-cols-2 md:grid-rows-5 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 lg:grid-rows-3">
-                    @foreach ($profileWatchlist as $profileWatchlistMovie)
-                    <x-movie-item
-                    :movie="$profileWatchlistMovie"
-                    :genres="$movie->getAllGenres($profileWatchlistMovie)"
-                    :watchlistStatus="$watchlistStatus"
-                    />
-                    @endforeach
-                </div>
-
-                <x-pagination
-                :currentPage="$profileWatchlist->currentPage()"
-                :lastPage="$profileWatchlist->lastPage()"
-                :previousPageUrl="$profileWatchlist->previousPageUrl()"
-                :nextPageUrl="$profileWatchlist->nextPageUrl()"
-                />
-            </div>
-        </div>
+        {{-- Filter, Watchlist and Pagination --}}
+        @if(auth()->user())
+        @auth
+            <movie-list profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"  :show-filter="true" :pagination-number="18"></movie-list>
+        @endauth
+        @endif
     </div>
 </x-app-layout>

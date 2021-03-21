@@ -23,6 +23,7 @@ class CreateMoviesTable extends Migration
             $table->text('img_path');
             $table->text('trailer_path');
             $table->integer('top_rating')->default(0);
+            $table->string('movie_genres')->default(null);
             $table->timestamps();
         });
     }

@@ -13,9 +13,8 @@ class WatchlistController extends Controller
     public function index(Movie $movie)
     {
         $watchlistStatus = $movie->watchlistStatus();
-        $profileWatchlist = auth()->user()->profile->movies->paginate(9);
 
-        return view('watchlist.index', compact( 'watchlistStatus', 'profileWatchlist', 'movie'));
+        return view('watchlist.index', compact('watchlistStatus'));
     }
 
 }

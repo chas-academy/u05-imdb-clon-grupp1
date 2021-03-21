@@ -15,7 +15,7 @@ class GenreSeeder extends Seeder
      */
     public function run()
     {
-        $genre = [
+        $genres = [
             ['name' => 'Comedy'],
             ['name' => 'Action'],
             ['name' => 'Drama'],
@@ -27,8 +27,8 @@ class GenreSeeder extends Seeder
             ['name' => 'Sci-fi'],
         ];
 
-        foreach ($genre as $a) {
-            Genre::create($a);
+        foreach ($genres as $genre) {
+            Genre::create($genre);
         }
     }
 }

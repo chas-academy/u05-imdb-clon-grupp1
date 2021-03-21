@@ -4,32 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Genre;
 use App\Models\Movie;
-use App\Models\Review;
 use App\Models\User;
-use App\Models\Profile;
-use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
 class MovieController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('admin')->except(['index', 'show', 'addToWatchlist']);
     }
 
-    public function index(User $user, Movie $movie)
+    public function index(Movie $movie)
     {
-        $watchlistStatus = $movie->watchlistStatus();
-        $movies = Movie::latest()->paginate(9);
+        if(!auth()->user()) return view('movies.index');
 
-        return view('movies.index', compact('movies', 'user', 'movie', 'watchlistStatus'));
+        $watchlistStatus = $movie->watchlistStatus();
+        return view('movies.index', compact('watchlistStatus'));
     }
 
     public function show(Movie $movie, User $user)
     {
-
         $watchlistStatus = (auth()->user() ? auth()->user()->profile->movies->contains($movie->id) : false);
 
         $reviews = $movie->reviews()->paginate(3);
@@ -58,12 +53,15 @@ class MovieController extends Controller
             'release_date' => 'required',
             'img_path' => '',
             'trailer_path' => 'required',
-
         ]);
 
         $genres = request()->validate([
             'genres' => 'required'
         ]);
+
+        if(request('genres')){
+            $data['movie_genres'] = implode(',', request('genres'));
+        }
 
         if (request('img_path')) {
             $imagePath = request('img_path')->store('movieposter', 'public');
@@ -72,21 +70,12 @@ class MovieController extends Controller
             $image->save();
         }
 
-
-
         $movie = Movie::create(array_merge(
             $data,
             $imageArray ?? [],
         ));
 
         $movie->genres()->attach($genres['genres']);
-
-        // $movie->save(array_merge(
-        //     $data,
-        //     $imageArray ?? [],
-        // ));
-
-        // $movie->genres()->attach($data['genres']);
 
         return redirect("/movies");
     }
@@ -111,7 +100,7 @@ class MovieController extends Controller
             'release_date' => 'required',
             'img_path' => '',
             'trailer_path' => 'required',
-
+            'movie_genres' => 'required',
         ]);
 
         $genres = request()->validate([
@@ -132,8 +121,6 @@ class MovieController extends Controller
             $imageArray = ['img_path' => $imagePath];
             $image->save();
         }
-
-
 
         $movie->update(array_merge(
             $data,

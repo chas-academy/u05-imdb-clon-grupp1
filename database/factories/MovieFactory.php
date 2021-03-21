@@ -30,6 +30,7 @@ class MovieFactory extends Factory
             'img_path' => 'img/test.jpg',
             'trailer_path' => $this->faker->url,
             'top_rating' => $this->faker->numberBetween(1, 10),
+            'movie_genres' => '',
         ];
     }
 }

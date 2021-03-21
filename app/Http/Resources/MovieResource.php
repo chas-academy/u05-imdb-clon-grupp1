@@ -24,6 +24,7 @@ class MovieResource extends JsonResource
             'img_path' => $this->img_path,
             'trailer_path' => $this->trailer_path,
             'top_rating' => $this->top_rating,
+            'movie_genres' => $this->movie_genres,
         ];
     }
 }

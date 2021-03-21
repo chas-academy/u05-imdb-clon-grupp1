@@ -26,6 +26,7 @@ Vue.component('watchlist-button', require('./components/WatchlistButton.vue').de
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('moviestar-component', require('./components/MovieStarComponent.vue').default);
 Vue.component('movie-slider', require('./components/MovieSlider.vue').default);
+Vue.component('movie-list', require('./components/MovieList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

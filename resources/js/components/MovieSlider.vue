@@ -29,8 +29,6 @@
     </div>
 </template>
 
-
-
 <script>
     import { Hooper, Slide } from 'hooper';
     import 'hooper/dist/hooper.css';
@@ -123,7 +121,7 @@
         methods: {
             search: function () { if (this.$refs.carousel.isSliding)  event.preventDefault() },
             scoreMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.top_rating - b.top_rating).slice().reverse().slice(0,20) },
-            newMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date < new Date().getFullYear()).slice().reverse().slice(0,20)},
+            newMovies: function (e) { this.moviesPrint = e.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date <= new Date().getFullYear()).slice().reverse().slice(0,20)},
             commingMovies: function (e) { this.moviesPrint = e.filter(movie =>  movie.release_date >= new Date().getFullYear()).slice().reverse().slice(0,20) }
         }
     };

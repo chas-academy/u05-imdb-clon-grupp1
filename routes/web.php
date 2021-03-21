@@ -15,12 +15,6 @@ use App\Http\Controllers\IndexController;
 
 require __DIR__ . '/auth.php';
 
-// Middleware Test Route
-Route::get('/admin', function () {
-    return view('admin.admin');
-})->middleware('admin');
-// End Test Route
-
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
