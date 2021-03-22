@@ -61,8 +61,12 @@
             @if (Route::has('login'))
                 @auth
                     <x-responsive-nav-link :href="route('profile.show', Auth::user()->id)"
-                        :active="request()->routeIs('index')">
+                        :active="request()->routeIs('profile.show')">
                         {{ __(Auth::user()->name) }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link href="/watchlist/{{ auth()->user()->id }}" :active="request()->routeIs('watchlist.index')">
+                        {{ __('Watchlist') }}
                     </x-responsive-nav-link>
                 @else
                     <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
