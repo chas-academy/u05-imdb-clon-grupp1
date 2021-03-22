@@ -45,8 +45,6 @@ class MovieController extends Controller
 
     public function store()
     {
-
-
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
@@ -67,7 +65,7 @@ class MovieController extends Controller
 
         if (request('img_path')) {
             $imagePath = request('img_path')->store('movieposter', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(1000, 1000);
+            $image = Image::make(public_path("storage/{$imagePath}"));
             $imageArray = ['img_path' => $imagePath];
             $image->save();
         }
@@ -110,7 +108,6 @@ class MovieController extends Controller
             'release_date' => 'required',
             'img_path' => '',
             'trailer_path' => 'required',
-            'movie_genres' => 'required',
         ]);
 
         $genres = request()->validate([
@@ -125,6 +122,10 @@ class MovieController extends Controller
           }
         }
 
+        if(request('genres')){
+            $data['movie_genres'] = implode(',', request('genres'));
+        }
+
         if (request('img_path')) {
             $imagePath = request('img_path')->store('movieposter', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"));
@@ -137,7 +138,15 @@ class MovieController extends Controller
             $imageArray ?? [],
         ));
 
-        $movie->genres()->attach($genres['genres']);
+        $genres = Genre::all();
+        $genres_id = array();
+        foreach($genres as $genre){
+            foreach(request('genres') as $genresNameKey => $genre_name){
+                if($genre_name == $genre->name){  $genres_id[$genresNameKey] = $genre->id; }
+            }
+        }
+
+        $movie->genres()->attach($genres_id);
 
         return redirect("/movies/{$movie->id}");
     }

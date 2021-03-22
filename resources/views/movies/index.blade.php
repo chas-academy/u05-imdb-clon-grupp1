@@ -23,10 +23,20 @@
         {{-- Filter, Movies and Pagination --}}
         @if(auth()->user())
         @auth
-            <movie-list profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="false"  :show-filter="true" :pagination-number="18"></movie-list>
+            <movie-list
+            profile-id={{ auth()->user()->profile->id }}
+            watchlist={{ $watchlistStatus }}
+            :show-watchlist="false"
+            :show-filter="true"
+            :pagination-number="18"
+            role={{ Auth::user()->isRole() }} />
         @endauth
         @else
-            <movie-list :profile-id="null" :show-watchlist="false"  :show-filter="true" :pagination-number="18"></movie-list>
+            <movie-list
+            :profile-id="null"
+            :show-watchlist="false"
+            :show-filter="true"
+            :pagination-number="18" />
         @endif
 
 

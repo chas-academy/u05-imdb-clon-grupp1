@@ -76,4 +76,10 @@
         <input type="submit">
     </form>
 
+    <form method="POST" action="/movies/{{ $movie->id }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" name="delete">Delete movie</button>
+    </form>
+
 </div>

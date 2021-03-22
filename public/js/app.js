@@ -3876,8 +3876,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber', 'genreFilter'],
+  props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber', 'genreFilter', 'role'],
   data: function data() {
     return {
       response: this.response,
@@ -41950,7 +41951,17 @@ var render = function() {
                           _vm._v(
                             _vm._s(movie.movie_genres.replaceAll(",", ", "))
                           )
-                        ])
+                        ]),
+                        _vm._v(" "),
+                        _vm.role == "admin"
+                          ? _c(
+                              "a",
+                              {
+                                attrs: { href: "movies/" + movie.id + "/edit" }
+                              },
+                              [_vm._v("Edit Movie")]
+                            )
+                          : _vm._e()
                       ])
                     ])
                   ])

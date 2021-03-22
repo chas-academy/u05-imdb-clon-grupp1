@@ -25,6 +25,7 @@
                                         <p class="text-white">{{ movie.release_date }} - {{ movie.language }}</p>
                                         <p class="text-white text-sm">Rating: {{ movie.top_rating }}</p>
                                         <p class="text-gray-400 mt-2 text-sm">{{ movie.movie_genres.replaceAll(',', ', ') }}</p>
+                                        <a v-if="(role == 'admin')" :href="'movies/' + movie.id + '/edit'">Edit Movie</a>
                                     </div>
                                 </div>
                             </a>
@@ -47,7 +48,15 @@
 
 <script>
     export default {
-        props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber', 'genreFilter'],
+        props: [
+        "profileId",
+        "watchlist",
+        "showWatchlist",
+        'showFilter',
+        'paginationNumber',
+        'genreFilter',
+        'role'
+        ],
         data() {
                 return {
                     response: this.response,

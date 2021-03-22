@@ -8,6 +8,22 @@
   font-family: "Roboto", sans-serif;
 }
 
+.height {
+  height: 500px;
+}
+
+@media screen and (min-width: 600px) {
+  .height {
+    height: 600px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .height {
+    height: 700px;
+  }
+}
+
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 

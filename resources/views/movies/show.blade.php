@@ -1,10 +1,5 @@
 <x-app-layout>
-    <div class="relative text-white h-screen pt-10">
-        <div class="">
-            <img class="absolute top-36" src="{{$movie->moviePoster()}}"/>
-            <div class="w-screen h-full absolute top-24 bg-gradient-to-b from-gray-900"></div>
-        </div>
-
+    <div class="text-white h-screen">
         <div class="flex flex-col justify-center items-center">
             <form class="w-4/5 max-w-screen-xl relative">
                 <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold text-lg focus:outline-none shadow-lg border-l-0 border-b-0 border-gray-700 border-opacity-50" placeholder="Search movies...">
@@ -14,45 +9,48 @@
             </form>
         </div>
 
+        <div class="w-screen flex justify-center mt-5">
+            <div class="flex flex-col lg:flex-row-reverse justify-center w-10/12 max-w-screen-2xl">
+                <img class="height object-cover rounded-2xl lg:h-full lg:w-4/5 lg:max-w-md shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
 
-        <div class="w-screen flex justify-center mt-20">
-            <div class="z-10 w-4/5 max-w-screen-2xl flex justify-between">
-                {{-- Movie info --}}
-                <div>
-                    <h1 class="text-6xl font-medium mb-5">{{ $movie->title }}</h1>
+                <div class="flex justify-between w-full">
+                    <div class="mt-10">
+                        <h1 class="text-4xl lg:text-5xl font-medium mb-5">{{ $movie->title }}</h1>
 
-                    <p class="text-3xl mb-5">{{ $movie->release_date }} - {{ $movie->language }}</p>
+                        <p class="text-2xl lg:text-3xl mb-5">{{ $movie->release_date }} - {{ $movie->language }}</p>
 
-                    <div class="mb-5">
-                        @foreach ($movie->genres as $genre)
-                        <x-genre-button link="/genres/{{$genre->id}}">{{ $genre->name }}</x-genre-button>
-                        @endforeach
+                        <div class="mb-5">
+                            @foreach ($movie->genres as $genre)
+                            <x-genre-button link="/genres/{{$genre->id}}">{{ $genre->name }}</x-genre-button>
+                            @endforeach
+                        </div>
+
+
+                        <p class="mb-5">{{ $movie->description }}</p>
+
+                        <p class=""><b>Actors: </b>{{$movie->actors}}</p>
                     </div>
 
+                    <div class="mt-11 mr-10 flex flex-col items-center">
+                        <p class=" border-white border-4 rounded-full mb-5 text-2xl text-center px-4 py-2 lg:px-6 lg:py-4">{{$movie->top_rating}}</p>
 
-                    <p class="mb-5">{{ $movie->description }}</p>
-
-                    <p class=""><b>Actors: </b>{{$movie->actors}}</p>
-                </div>
-
-                {{-- Score/Watchlist-button --}}
-                <div class="flex flex-col">
-                    <div class="border-white border-4 rounded-full w-16 h-16 mb-6">
-                        <p class=" text-2xl text-center my-3">{{$movie->top_rating}}</p>
-                    </div>
-
-                    <div class="mx-auto">
-                        @if (Route::has('login'))
-                        @auth
-                            <watchlist-button  movie-id="{{ $movie->id }}" watchlist="{{ $watchlistStatus }}"></watchlist-button>
-                        @endauth
-                        @endif
+                        <div class="">
+                            @if (Route::has('login'))
+                            @auth
+                                <watchlist-button  movie-id="{{ $movie->id }}" watchlist="{{ $watchlistStatus }}" class="h-9 w-9"></watchlist-button>
+                            @endauth
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
 </x-app-layout>
+
+
+
 
 
 {{--
