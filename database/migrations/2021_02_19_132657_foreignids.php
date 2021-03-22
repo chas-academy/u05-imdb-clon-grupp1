@@ -19,7 +19,7 @@ class Foreignids extends Migration
 
         Schema::table('genre_movies_pivot', function (Blueprint $table) {
             $table->unsignedBigInteger('movies_id');
-            $table->string('genres_name');
+            $table->unsignedBigInteger('genres_id');
         });
 
         Schema::table('watchlist_pivot', function (Blueprint $table) {

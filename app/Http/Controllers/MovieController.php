@@ -45,6 +45,8 @@ class MovieController extends Controller
 
     public function store()
     {
+
+
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
@@ -75,7 +77,15 @@ class MovieController extends Controller
             $imageArray ?? [],
         ));
 
-        $movie->genres()->attach($genres['genres']);
+        $genres = Genre::all();
+        $genres_id = array();
+        foreach($genres as $genre){
+            foreach(request('genres') as $genresNameKey => $genre_name){
+                if($genre_name == $genre->name){  $genres_id[$genresNameKey] = $genre->id; }
+            }
+        }
+
+        $movie->genres()->attach($genres_id);
 
         return redirect("/movies");
     }
