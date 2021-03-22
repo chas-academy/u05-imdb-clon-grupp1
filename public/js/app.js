@@ -3877,7 +3877,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber'],
+  props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber', 'genreFilter'],
   data: function data() {
     return {
       response: this.response,
@@ -3900,6 +3900,13 @@ __webpack_require__.r(__webpack_exports__);
           if (_this.watchlistArray.includes(movie.id.toString())) {
             return movie;
           }
+        });
+
+        _this.filterButton();
+      } else if (_this.genreFilter) {
+        console.log(_this.genreFilter);
+        _this.moviesList = response.data.data.filter(function (movie) {
+          return movie.movie_genres.split(',').includes(_this.genreFilter);
         });
 
         _this.filterButton();

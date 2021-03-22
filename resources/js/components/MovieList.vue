@@ -47,7 +47,7 @@
 
 <script>
     export default {
-        props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber'],
+        props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber', 'genreFilter'],
         data() {
                 return {
                     response: this.response,
@@ -72,6 +72,12 @@
                     });
 
                     this.filterButton();
+                } else if(this.genreFilter){
+
+                    console.log(this.genreFilter);
+                    this.moviesList = response.data.data.filter(movie => movie.movie_genres.split(',').includes(this.genreFilter));
+                    this.filterButton();
+
                 } else {
                     this.moviesList = response.data.data;
                     this.filterButton();

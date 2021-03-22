@@ -47,7 +47,7 @@
             <movie-list profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"  :show-filter="false" :pagination-number="6"></movie-list>
         @endauth
         @else
-            <movie-list :profile-id="null" :show-watchlist="false"  :show-filter="false" :pagination-number="6"></movie-list>
+            <movie-list :profile-id="null" :show-watchlist="false"  :show-filter="false" :pagination-number="6" ></movie-list>
         @endif
 
 </x-app-layout>
