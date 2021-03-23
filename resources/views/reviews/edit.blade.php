@@ -1,32 +1,38 @@
-   <x-app-layout>
+<x-app-layout>
 
-       <h1>Edit review</h1>
-       <form action="/movies/{{$review->id}}" method="POST">
-           @csrf
-           @method('PATCH')
-           <label for="review">Review edit</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
+    <div class="relative z-10 col-start-1 row-start-1 sm:col-start-2 sm:row-span-3 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
+      <p class="text-sm font-medium text-white sm:mb-1 sm:text-gray-500">Edit review</p>
+      <h2 class="text-xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-white md:text-3xl"><a href="/movies/{{ $movie->id }}" class="hover:text-purple-500">{{$movie->title}}</a></h2>
+    </div>
+    <div class="col-start-1 row-start-2 sm:col-start-2 sm:row-span-3 px-4 sm:pb-16">
+      <div class="flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4">
+        <svg width="20" height="20" fill="currentColor" class="text-yellow-600">
+          <path d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
+        </svg>
+        <div class="ml-1 text-white">
+          <span>4.94</span>
+          <span class="sm:hidden md:inline">(128)</span>
+        </div>
+        <div class="text-base font-normal mx-2">·</div>
+        <div class="text-white">Collingwood, Ontario</div>
+      </div>
+      <hr class="w-16 border-gray-300 hidden sm:block mb-5">
+      <edit-review :review="{{ $review }}"></edit-review>
+    </div>
+    <div class="col-start-1 row-start-3 sm:col-start-2 sm:row-span-3 space-y-3 px-4">
+      <p class="flex items-center text-white text-sm font-medium">
+        <img src="\storage\images\avatar.jpg" alt="" class="w-6 h-6 rounded-full mr-2 bg-gray-100">
+        <a href="/profile/{{$profile->id}}" class="hover:text-purple-500 ">{{ $user->name }}</a>
+      </p>
+    </div>
+    <div class="col-start-1 row-start-1 flex sm:col-start-1 sm:row-span-6 sm:row-start-1">
+      <div class="w-full grid grid-cols-3 grid-rows-2 gap-2">
+        <div class="relative col-span-3 row-span-2 md:col-span-2">
+          <img src="" alt="" class="absolute inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg" />
+        </div>
+      </div>
+    </div>
+</div>
 
-           <input type="text" name="review" value="{{ old('review') ?? $review->review }}"><br>
-           @if ($errors->has('review'))
-           <span class="text-red-600" role="alert">
-               <strong>{{ $errors->first('review') }}</strong>
-           </span>
-           @endif
-           <moviestar-component></moviestar-component>
-           <!--
-           <select name="rating">
-               <option value="" hidden>Select a rating</option>
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-           </select>
-           @if ($errors->has('rating'))
-           <span class="text-red-600" role="alert">
-               <strong>{{ $errors->first('rating') }}</strong>
-           </span>
-           @endif -->
-           <button type="submit">Submit</button>
-       </form>
-   </x-app-layout>
+</x-app-layout>

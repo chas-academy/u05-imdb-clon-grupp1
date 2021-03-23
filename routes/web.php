@@ -21,11 +21,20 @@ Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
+
+
 Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
-Route::post('movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
-Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+Route::post('/reviews/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
+// Route::post('movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
+// Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
 Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
+
+Route::get('reviews/{review}', [ReviewController::class, 'showReview'])->name('reviews.show');
+Route::get('reviews/{review}/edit', [ReviewController::class, 'editReview'])->name('reviews.edit');
+Route::put('reviews/{id}', [ReviewController::class, 'updateReview'])->name('reviews.updateReview');
+Route::post('rating/{id}/update', [ReviewController::class, 'updateRating']);
+// Route::post('rating/{id}/create', [ReviewController::class, 'createReview']);
 
 Route::resource('movies', MovieController::class);
 

@@ -54,11 +54,11 @@
 </div>
 @if (Route::has('login'))
 @auth
-
-    <a href="/reviews/{{ $movie->id }}/create">Add review</a><br>
-
-
-
+    <?php if (auth()->user()->reviews->contains('movies_id', $movie->id)) { ?>
+    <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
+    <?php } else { ?>
+    <a href="/reviews/{{ $movie->id }}/create">Add Review</a><br>
+    <?php } ?>
 @else
     <p>Please <a href="/login">login</a> to add a review</p><br>
 @endauth
