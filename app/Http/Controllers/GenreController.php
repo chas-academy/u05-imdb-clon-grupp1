@@ -23,7 +23,10 @@ class GenreController extends Controller
 
     public function show(Genre $genre, Movie $movie)
     {
-        return view('genres.show', compact('genre', 'movie'));
+        if(!auth()->user()) return view('genres.show', compact('genre', 'movie'));
+
+        $watchlistStatus = $movie->watchlistStatus();
+        return view('genres.show', compact('genre', 'movie','watchlistStatus'));
     }
 
     public function create()
