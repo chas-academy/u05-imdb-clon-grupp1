@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         // DB::statement kolla foreign_key avstängd medans seeders körs
         //DB::statement('SET FOREIGN_KEY_CHECKS=0');
         User::factory(10)->create();
-        Movie::factory(1)->create();
+        Movie::factory(10)->create();
         // Profile::factory(10)->create();
         $this->call(GenreSeeder::class);
         //$this->call(MovieGenreSeeder::class);

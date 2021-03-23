@@ -54,3 +54,6 @@ Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
 Route::patch('/movies', [MovieController::class, 'update'])->name('movies.update');
 Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 */
+
+//Movies search
+Route::get('/search/',[SearchMoviesController::class,'search'])->name('search');
