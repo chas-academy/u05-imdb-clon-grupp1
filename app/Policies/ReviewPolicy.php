@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Movie;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -40,9 +41,9 @@ class ReviewPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user, Movie $movie)
     {
-        //
+       //
     }
 
     /**
@@ -54,7 +55,11 @@ class ReviewPolicy
      */
     public function update(User $user, Review $review)
     {
+        if ($user->role == 'admin') {
+            return true;
+        }
         return $user->id == $review->user_id;
+        // return $user->id == $review->user_id;
     }
 
     /**
@@ -66,7 +71,10 @@ class ReviewPolicy
      */
     public function delete(User $user, Review $review)
     {
-        //
+        if ($user->role == 'admin') {
+            return true;
+        }
+        return $user->id == $review->user_id;
     }
 
     /**

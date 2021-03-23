@@ -24,9 +24,14 @@ window.Vue = require('vue').default;
 
 Vue.component('watchlist-button', require('./components/WatchlistButton.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('moviestar-component', require('./components/MovieStarComponent.vue').default);
 Vue.component('movie-slider', require('./components/MovieSlider.vue').default);
 Vue.component('movie-list', require('./components/MovieList.vue').default);
+
+/* Rating */
+Vue.component('update-rating', require('./components/rating/updateRating.vue').default);
+Vue.component('edit-review', require('./components/rating/editReview.vue').default);
+Vue.component('create-review', require('./components/rating/createReview.vue').default);
+Vue.component('view-rating', require('./components/rating/viewRating.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

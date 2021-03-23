@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class MovieSeeder extends Seeder

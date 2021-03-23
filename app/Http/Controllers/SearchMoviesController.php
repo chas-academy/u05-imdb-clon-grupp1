@@ -21,5 +21,5 @@ class SearchMoviesController extends Controller
         return view('movies.search', compact('movies'));
 
     }
-//orWhere('description','like',"%$query%")
+//orWhere('actors','like',"%$query%")
 }
