@@ -3,7 +3,7 @@
         Create review
     </h1>
 
-    <moviestar-component></moviestar-component>
+    {{-- <moviestar-component></moviestar-component> --}}
 
     <form action="/movies/{{$movie->id}}" method="POST">
         @csrf
@@ -17,14 +17,15 @@
         </span>
         @endif
 
-        <!-- <select name="rating">
+        <select name="rating">
             <option value="" hidden>Select a rating</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-        </select> -->
+        </select>
+
         @if ($errors->has('rating'))
         <span class="text-red-600" role="alert">
             <strong>{{ $errors->first('rating') }}</strong>

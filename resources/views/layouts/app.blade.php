@@ -20,14 +20,14 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased bg-black">
-    <div class="min-h-screen bg-gray-900 bg-gradient-to-b from-gray-900 bg-opacity-75">
+<body class="font-sans antialiased bg-black h-screen">
+    <div class="min-h-screen bg-gray-900 bg-gradient-to-b from-gray-900 bg-opacity-75 overflow-x-hidden">
         <!-- Page Content -->
         <header>
             @include('layouts.navigation')
         </header>
         <!-- Page Content -->
-        <main id="app">
+        <main id="app" class="min-h-screen" >
             {{ $slot }}
         </main>
         <!-- Page Footer -->

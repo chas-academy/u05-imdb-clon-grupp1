@@ -9,8 +9,8 @@
             </form>
         </div>
 
-        <div class="w-screen flex justify-center mt-5">
-            <div class="flex flex-col lg:flex-row-reverse justify-center w-10/12 max-w-screen-2xl">
+        <div class="w-screen flex justify-center mt-5 bg-green-400">
+            <div class="flex flex-col lg:flex-row-reverse justify-center w-10/12 max-w-screen-2xl bg-green-600">
                 <img class="height object-cover rounded-2xl lg:h-full lg:w-4/5 lg:max-w-md shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
 
                 <div class="flex justify-between w-full">
@@ -25,13 +25,12 @@
                             @endforeach
                         </div>
 
-
                         <p class="mb-5">{{ $movie->description }}</p>
 
                         <p class=""><b>Actors: </b>{{$movie->actors}}</p>
                     </div>
 
-                    <div class="mt-11 mr-10 flex flex-col items-center">
+                    <div class="mt-11 mr-1 lg:mr-10 flex flex-col items-center">
                         <p class=" border-white border-4 rounded-full mb-5 text-2xl text-center px-4 py-2 lg:px-6 lg:py-4">{{$movie->top_rating}}</p>
 
                         <div class="">
@@ -46,48 +45,50 @@
             </div>
         </div>
 
+        <div class="flex justify-center">
+            <div class="w-10/12 max-w-screen-2xl bg-green-800">
+                <h2 class="md:mx-auto text-xl font-medium md:w-4/5 lg:w-full">Genres</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-y-6 bg-blue-500">
+                    @foreach ($reviews as $review)
 
+                        <div class="bg-indigo-900 rounded-2xl mx-auto w-72 py-6 px-2">
+                            <img class="mx-auto rounded-full h-10 w-10" src="{{ $review->user->profile->profileImage() }}" width="60px">
+                            <p class="text-center">{{ $review->review }}</p>
+                            <p><b>Score: </b>{{ $review->rating }}</p>
+                            <p> <b>By</b> {{ $review->user->username }}</p>
+                            @can('update', $review)
+                                <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
+                            @endcan
+                        </div>
+
+                            {{-- @can('update', $review)
+                                <form action="{{ route('reviews.destroy', $review->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" name="delete">Delete
+
+                                        review</button>
+                                </form>
+                            @endcan --}}
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
+        @if (Route::has('login'))
+        @auth
+
+        <a href="/reviews/{{ $movie->id }}/create">Add review</a><br>
+
+        @else
+        <p>Please <a href="/login">login</a> to add a review</p><br>
+        @endauth
+        @endif
+        <div class="pb-14">
+            {!! $reviews->links() !!}
+        </div>
+    </div>
 </x-app-layout>
 
 
-
-
-
-{{--
-<h2 class="mt-10 mb-4 text-4xl">Reviews</h2>
-<div class="grid lg:grid-cols-3 grid-cols-1 justify-items-center pb-16">
-@foreach ($reviews as $review)
-<div class="bg-blue-900 rounded-2xl xl:w-72 w-40 mx-16 py-6 px-2 mb-8">
-    <img class="mx-auto" src="{{ $review->user->profile->profileImage() }}" width="60px">
-    <p class="text-center">{{ $review->review }}</p>
-<p><b>Score: </b>{{ $review->rating }}</p>
-<p> <b>By</b> {{ $review->user->username }}</p>
-    @can('update', $review)
-        <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
-    @endcan
-</div>
-        @can('update', $review)
-            <form action="{{ route('reviews.destroy', $review->id) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" name="delete">Delete
-
-                    review</button>
-            </form>
-        @endcan
-@endforeach
-</div>
-@if (Route::has('login'))
-@auth
-
-    <a href="/reviews/{{ $movie->id }}/create">Add review</a><br>
-
-
-
-@else
-    <p>Please <a href="/login">login</a> to add a review</p><br>
-@endauth
-@endif
-<div class="pb-14">
-{!! $reviews->links() !!}
-</div> --}}
