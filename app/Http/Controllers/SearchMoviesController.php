@@ -16,7 +16,7 @@ class SearchMoviesController extends Controller
         $query = $request->input('query');
         //dd($query);
 
-        $movies = Movie::query()->where('title','like',"%$query%")->get();
+        $movies = Movie::query()->where('title','like',"%$query%")->orWhere('actors','like',"%$query%")->get();
         // dd($movies);
         return view('movies.search', compact('movies'));
 
