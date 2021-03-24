@@ -17,7 +17,7 @@ class MovieController extends Controller
 
     public function index(Movie $movie)
     {
-        if(!auth()->user()) return view('movies.index');
+        if (!auth()->user()) return view('movies.index');
 
         $watchlistStatus = $movie->watchlistStatus();
         return view('movies.index', compact('watchlistStatus'));
@@ -59,7 +59,7 @@ class MovieController extends Controller
             'genres' => 'required'
         ]);
 
-        if(request('genres')){
+        if (request('genres')) {
             $data['movie_genres'] = implode(',', request('genres'));
         }
 
@@ -77,9 +77,11 @@ class MovieController extends Controller
 
         $genres = Genre::all();
         $genres_id = array();
-        foreach($genres as $genre){
-            foreach(request('genres') as $genresNameKey => $genre_name){
-                if($genre_name == $genre->name){  $genres_id[$genresNameKey] = $genre->id; }
+        foreach ($genres as $genre) {
+            foreach (request('genres') as $genresNameKey => $genre_name) {
+                if ($genre_name == $genre->name) {
+                    $genres_id[$genresNameKey] = $genre->id;
+                }
             }
         }
 
@@ -118,11 +120,11 @@ class MovieController extends Controller
 
         if ($movie->img_path) {
             if (File::exists("storage/{$movie->img_path}")) {
-            File::delete("storage/{$movie->img_path}");
-          }
+                File::delete("storage/{$movie->img_path}");
+            }
         }
 
-        if(request('genres')){
+        if (request('genres')) {
             $data['movie_genres'] = implode(',', request('genres'));
         }
 
@@ -140,9 +142,11 @@ class MovieController extends Controller
 
         $genres = Genre::all();
         $genres_id = array();
-        foreach($genres as $genre){
-            foreach(request('genres') as $genresNameKey => $genre_name){
-                if($genre_name == $genre->name){  $genres_id[$genresNameKey] = $genre->id; }
+        foreach ($genres as $genre) {
+            foreach (request('genres') as $genresNameKey => $genre_name) {
+                if ($genre_name == $genre->name) {
+                    $genres_id[$genresNameKey] = $genre->id;
+                }
             }
         }
 
