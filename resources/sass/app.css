@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .height {
@@ -19,6 +19,18 @@
 @media screen and (min-width: 700px) {
   .height {
     height: 700px;
+  }
+}
+
+@media screen and (min-width: 470px) {
+  .xs\:w-96 {
+    width: 24rem;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .xs\:w-full {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=app.css.map */

@@ -15,9 +15,9 @@
 
                 <div class="flex justify-between w-full">
                     <div class="mt-10">
-                        <h1 class="text-4xl lg:text-5xl font-medium mb-5">{{ $movie->title }}</h1>
+                        <h1 class="text-4xl lg:text-5xl font-medium mb-5 w-11/12 bg-red-600">{{ $movie->title }}</h1>
 
-                        <p class="text-2xl lg:text-3xl mb-5">{{ $movie->release_date }} - {{ $movie->language }}</p>
+                        <p class="text-2xl lg:text-3xl mb-5 w-11/12 bg-red-600">{{ $movie->release_date }} - {{ $movie->language }}</p>
 
                         <div class="mb-5">
                             @foreach ($movie->genres as $genre)
@@ -25,9 +25,9 @@
                             @endforeach
                         </div>
 
-                        <p class="mb-5">{{ $movie->description }}</p>
+                        <p class="mb-5 bg-red-600">{{ $movie->description }}</p>
 
-                        <p class=""><b>Actors: </b>{{$movie->actors}}</p>
+                        <p class="bg-red-600"><b>Actors: </b>{{$movie->actors}}</p>
                     </div>
 
                     <div class="mt-11 mr-1 lg:mr-10 flex flex-col items-center">
@@ -45,18 +45,18 @@
             </div>
         </div>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-16">
             <div class="w-10/12 max-w-screen-2xl ">
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-y-6 my-10">
                     @foreach ($reviews as $review)
 
-                        <div class="bg-gray-800 rounded-2xl mx-auto w-72 py-6 px-2 shadow-md border-r border-gray-700 border-opacity-50">
-                            <img class="mx-auto rounded-full h-10 w-10" src="{{ $review->user->profile->profileImage() }}" width="60px">
-                            <p class="text-center">{{ $review->review }}</p>
-                            <p><b>Score: </b>{{ $review->rating }}</p>
-                            <p> <b>By</b> {{ $review->user->username }}</p>
+                        <div class="bg-gray-800 xs:w-full xs:w-96 md:w-11/12 py-4 px-4 rounded-3xl mx-auto shadow-md border-r border-gray-700 border-opacity-50 relative pb-10">
+                            <p class="float-right"> {{ $review->user->username }}</p>
+                            <img class=" rounded-full h-10 w-10" src="{{ $review->user->profile->profileImage() }}">
+                            <p class="w-full break-words mt-4">{{ $review->review }}</p>
+                            <p class="absolute bottom-3 left-4"><b>Score: </b>{{ $review->rating }}</p>
                             @can('update', $review)
-                                <a href="/reviews/{{ $review->id }}/edit">Edit review</a>
+                                <a class="absolute bottom-3 right-4" href="/reviews/{{ $review->id }}/edit">Edit review</a>
                             @endcan
                         </div>
 
@@ -83,6 +83,7 @@
         @endauth
         @endif
 
+        @if( $reviews->lastPage() != 1)
         <div class="flex justify-center mt-2">
             @if ($reviews->currentPage() != 1)
             <a href="{{ $reviews->previousPageUrl() }}" class="p-4 bg-gray-800 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 mr-1 hover:bg-gray-700">Prev</a>
@@ -98,5 +99,6 @@
             <a class="p-4 bg-gray-900 rounded-lg shadow-md border-r border-gray-700 border-opacity-50 text-gray-500 ml-1">Next</a>
             @endif
         </div>
+        @endif
     </div>
 </x-app-layout>
