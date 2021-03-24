@@ -21,7 +21,7 @@
 </head>
 
 <body class="font-sans antialiased bg-black min-w-screen min-h-screen">
-    <div class="min-h-screen bg-gray-900 bg-gradient-to-b from-gray-900 bg-opacity-75 overflow-x-hidden">
+    <div class="min-h-screen bg-gray-900 bg-gradient-to-b from-gray-900 bg-opacity-75 overflow-x-hidden ">
         <!-- Page Content -->
         <header>
             @include('layouts.navigation')

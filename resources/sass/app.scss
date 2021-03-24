@@ -17,6 +17,10 @@
     height: 500px;
 }
 
+.gradient{
+    background: linear-gradient(0deg, rgb(14, 19, 34) 0%, rgba(255,255,255,0) 70%);
+}
+
 @media screen and (min-width: 600px) {
     .height {
         height: 600px;
