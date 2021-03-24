@@ -43,4 +43,11 @@ class Movie extends Model
 
         return $watchlistStatus;
     }
+
+    public function updateTopRating($movie){
+
+        $data_rating = $movie->reviews()->avg('rating');
+        $data['top_rating'] =  $data_rating;
+        $movie->update($data);
+    }
 }

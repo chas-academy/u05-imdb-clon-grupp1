@@ -60,6 +60,8 @@ class ReviewController extends Controller
 
     public function store(Request $request, $id)
     {
+        $movie = Movie::findOrFail($id);
+
         if (auth()->user()->reviews->contains('movies_id', $id)) {
             return false;
         }
@@ -68,8 +70,6 @@ class ReviewController extends Controller
             'review' => 'required',
             'rating' => 'required',
         ]);
-
-        $movie = Movie::findOrFail($id);
 
         $review = new Review;
         $review->review = $request->review;
@@ -80,6 +80,8 @@ class ReviewController extends Controller
         // Log::info("Review ID {$request->id} created successfully.");
 
         $review->save();
+
+        $movie->updateTopRating($movie);
 
         return redirect("/movies/{$movie->id}");
     }
@@ -115,6 +117,8 @@ class ReviewController extends Controller
     public function editReview(Review $review, User $user, Movie $movie, Profile $profile)
     {
         $this->authorize('update', $review);
+
+
         return view('reviews.edit', compact('review', 'movie','user', 'profile'));
     }
 
@@ -123,6 +127,7 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->rating = $request->rating;
         $review->save();
+
     }
 
     /*public function createReview(Request $request, Review $review, User $user, Movie $movie, Profile $profile)
@@ -141,7 +146,6 @@ class ReviewController extends Controller
 
     public function updateReview(Request $request, Review $review, $id)
     {
-
         $this->validate($request, [
             'review' => 'required',
             'rating' => 'required',
@@ -151,6 +155,9 @@ class ReviewController extends Controller
         $review->review = $request->review;
         $review->rating = $request->rating;
         $review->save();
+
+        $movie = Movie::findOrFail($review->movies_id);
+        $movie->updateTopRating($movie);
     }
 
     public function destroy($id)
