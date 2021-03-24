@@ -27,6 +27,8 @@ class MovieController extends Controller
     {
         $watchlistStatus = (auth()->user() ? auth()->user()->profile->movies->contains($movie->id) : false);
 
+        // $rating = $movie->reviews()->avg('rating');
+        // dd($rating);
         $reviews = $movie->reviews()->latest()->paginate(4);
         return view('movies.show', compact('movie', 'reviews', 'user', 'watchlistStatus'));
     }

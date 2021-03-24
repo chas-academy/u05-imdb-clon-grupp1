@@ -11,8 +11,8 @@
 }
 
 .gradient {
-  background: -webkit-gradient(linear, left bottom, left top, from(#0e1322), color-stop(70%, rgba(255, 255, 255, 0)));
-  background: linear-gradient(0deg, #0e1322 0%, rgba(255, 255, 255, 0) 70%);
+  background: -webkit-gradient(linear, left bottom, left top, from(#0d131f), color-stop(70%, rgba(255, 255, 255, 0)));
+  background: linear-gradient(0deg, #0d131f 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 @media screen and (min-width: 600px) {

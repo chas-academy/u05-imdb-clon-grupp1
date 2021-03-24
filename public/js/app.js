@@ -42655,40 +42655,23 @@ var render = function() {
               "div",
               { staticClass: "m-2 h-72 rounded-3xl relative " },
               [
+                _c("img", {
+                  staticClass:
+                    "z-negative h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
+                  attrs: { src: "/storage/" + movie.img_path }
+                }),
+                _vm._v(" "),
                 _c(
                   "a",
                   {
+                    staticClass:
+                      "gradient absolute w-full h-full top-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500",
                     attrs: { href: "/movies/" + movie.id },
                     on: {
                       click: function($event) {
                         return _vm.search()
                       }
                     }
-                  },
-                  [
-                    _c("img", {
-                      staticClass:
-                        "z-negative h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
-                      attrs: { src: "/storage/" + movie.img_path }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.profileId
-                  ? _c("watchlist-button", {
-                      staticClass: "absolute top-5 right-5 w-6 h-6",
-                      attrs: {
-                        watchlist: _vm.watchlist.includes("," + movie.id + ","),
-                        "movie-id": movie.id
-                      }
-                    })
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "gradient absolute w-full h-full top-0 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-500"
                   },
                   [
                     _c(
@@ -42721,7 +42704,17 @@ var render = function() {
                       [_vm._v("4.94 (128)")]
                     )
                   ]
-                )
+                ),
+                _vm._v(" "),
+                _vm.profileId
+                  ? _c("watchlist-button", {
+                      staticClass: "absolute top-5 right-5 w-6 h-6",
+                      attrs: {
+                        watchlist: _vm.watchlist.includes("," + movie.id + ","),
+                        "movie-id": movie.id
+                      }
+                    })
+                  : _vm._e()
               ],
               1
             )

@@ -13,7 +13,7 @@
 }
 
 .gradient {
-  background: linear-gradient(0deg, #0e1322 0%, rgba(255, 255, 255, 0) 70%);
+  background: linear-gradient(0deg, #0d131f 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 @media screen and (min-width: 600px) {
