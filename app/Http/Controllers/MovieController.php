@@ -27,7 +27,7 @@ class MovieController extends Controller
     {
         $watchlistStatus = (auth()->user() ? auth()->user()->profile->movies->contains($movie->id) : false);
 
-        $reviews = $movie->reviews()->paginate(4);
+        $reviews = $movie->reviews()->latest()->paginate(4);
         return view('movies.show', compact('movie', 'reviews', 'user', 'watchlistStatus'));
     }
 
