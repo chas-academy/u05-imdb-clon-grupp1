@@ -65,7 +65,7 @@
         <label>Select Genres</label><br>
         @foreach ($genres as $genre)
             <label>{{ $genre->name }}</label>
-            <input name="genres[]" value="{{ $genre->id }}" type="checkbox"><br>
+            <input name="genres[]" value="{{ $genre->name }}" type="checkbox"><br>
         @endforeach
         @if ($errors->has('genres'))
             <span class="text-red-600" role="alert">
