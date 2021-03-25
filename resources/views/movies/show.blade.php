@@ -3,14 +3,14 @@
         <x-search-form :title="null"></x-search-form>
 
         <div class="w-screen flex justify-center mt-5">
-            <div class="flex flex-col lg:flex-row-reverse justify-center w-10/12 max-w-screen-2xl">
+            <div class="flex flex-col lg:flex-row justify-center w-10/12 max-w-screen-xl">
                 <img class="height object-cover rounded-2xl lg:h-full lg:w-4/5 lg:max-w-md shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
 
-                <div class="flex justify-between w-full">
-                    <div class="mt-10">
-                        <h1 class="text-4xl lg:text-5xl font-medium mb-5 w-11/12 ">{{ $movie->title }}</h1>
+                <div class="lg:ml-10 flex justify-between w-full">
+                    <div class="mt-10  w-full">
+                        <h1 class="text-4xl lg:text-5xl font-medium mb-5 w-10/12 ml-1">{{ $movie->title }}</h1>
 
-                        <p class="text-2xl lg:text-3xl mb-5 w-11/12 ">{{ $movie->release_date }} - {{ $movie->language }}</p>
+                        <p class="text-2xl lg:text-3xl mb-5 w-full ml-1">{{ $movie->release_date }} - {{ $movie->language }}</p>
 
                         <div class="mb-5">
                             @foreach ($movie->genres as $genre)
@@ -18,9 +18,9 @@
                             @endforeach
                         </div>
 
-                        <p class="mb-5">{{ $movie->description }}</p>
+                        <p class="mb-5 ml-1">{{ $movie->description }}</p>
 
-                        <p class="mb-5"><b>Actors: </b>{{$movie->actors}}</p>
+                        <p class="mb-10 ml-1"><b>Actors: </b>{{$movie->actors}}</p>
 
                         @if (Route::has('login'))
                         @auth
@@ -33,7 +33,7 @@
                         @endif
                     </div>
 
-                    <div class="mt-11 mr-1 lg:mr-10 flex flex-col items-center">
+                    <div class="mt-11 mr-2 flex flex-col items-center">
                         <p class=" border-white border-4 rounded-full mb-5 text-2xl text-center px-4 py-2 lg:px-6 lg:py-4">{{($movie->top_rating != null) ? $movie->top_rating : '0' }}</p>
 
                         <div class="">
@@ -49,7 +49,7 @@
         </div>
 
         <div class="flex justify-center mt-16">
-            <div class="w-10/12 max-w-screen-2xl bg-blue-400 flex flex-row-reverse">
+            <div class="w-10/12 max-w-screen-xl">
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-y-6 my-10">
                     @foreach ($reviews as $review)
 

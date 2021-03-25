@@ -36,6 +36,7 @@
         {{-- Filter, Movies/Watchlist and Pagination --}}
         @if(auth()->user())
         @auth
+
             <movie-list profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"  :show-filter="false" :pagination-number="6"></movie-list>
         @endauth
         @else

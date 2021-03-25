@@ -26,7 +26,10 @@ class ReviewController extends Controller
         $movie = Movie::findOrFail($id);
         $review = new Review;
 
-        return view('reviews.create', compact('movie', 'review', 'checkAuth'));
+        $totalReviews = $movie->reviews()->paginate()->total();
+
+
+        return view('reviews.create', compact('movie', 'review', 'checkAuth', 'totalReviews'));
     }
 
 
@@ -56,11 +59,14 @@ class ReviewController extends Controller
         return redirect("/movies/{$movie->id}");
     }
 
-    public function editReview(Review $review, User $user, Movie $movie, Profile $profile)
+    public function editReview(Review $review, User $user, Profile $profile)
     {
         $this->authorize('update', $review);
+        $movie = Movie::findOrFail($review->movies_id);
 
-        return view('reviews.edit', compact('review', 'movie','user', 'profile'));
+        $totalReviews = $movie->reviews()->paginate()->total();
+
+        return view('reviews.edit', compact('review', 'movie', 'user', 'profile', 'totalReviews'));
     }
 
     public function updateReview(Request $request, Review $review, $id)

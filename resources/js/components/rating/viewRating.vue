@@ -4,7 +4,7 @@
       <div class="col-md-8">
         <div class="card">
           <!-- <star-rating @rating-selected="create" v-model="rating"></star-rating>-->
-          <div v-for="(review, index) in reviews" :key="review.rating">
+          <div v-for="(review, index) in reviews" :key="index">
             <star-rating
               :show-rating="false"
               @rating-selected="store(review.rating)"
