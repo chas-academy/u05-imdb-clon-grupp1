@@ -12,13 +12,18 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'review',
+        'rating',
+    ];
+
     public function movie()
     {
-        return $this->hasOne(Movie::class);
+        return $this->belongsTo(Movie::class, 'movies_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
