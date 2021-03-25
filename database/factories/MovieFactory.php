@@ -31,8 +31,6 @@ class MovieFactory extends Factory
             'trailer_path' => $this->faker->url,
             'top_rating' => $this->faker->numberBetween(1, 10),
             'movie_genres' => '',
-
-
         ];
     }
 }

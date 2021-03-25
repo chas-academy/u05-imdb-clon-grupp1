@@ -18,9 +18,19 @@
                             @endforeach
                         </div>
 
-                        <p class="mb-5 ">{{ $movie->description }}</p>
+                        <p class="mb-5">{{ $movie->description }}</p>
 
-                        <p class=""><b>Actors: </b>{{$movie->actors}}</p>
+                        <p class="mb-5"><b>Actors: </b>{{$movie->actors}}</p>
+
+                        @if (Route::has('login'))
+                        @auth
+                            @if (!auth()->user()->reviews->contains('movies_id', $movie->id))
+                            <a class="py-2 px-3 rounded-lg bg-indigo-900 text-white transform hover:scale-105" href="/reviews/{{ $movie->id }}/create">Add Review</a>
+                            @endif
+                        @else
+                            <a class="py-2 px-3 rounded-lg bg-indigo-900 text-white transform hover:scale-105" href="/login">login to review</a>
+                        @endauth
+                        @endif
                     </div>
 
                     <div class="mt-11 mr-1 lg:mr-10 flex flex-col items-center">
@@ -39,42 +49,30 @@
         </div>
 
         <div class="flex justify-center mt-16">
-            <div class="w-10/12 max-w-screen-2xl ">
+            <div class="w-10/12 max-w-screen-2xl bg-blue-400 flex flex-row-reverse">
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-y-6 my-10">
                     @foreach ($reviews as $review)
 
-                        <div class="bg-gray-800 xs:w-full xs:w-96 md:w-11/12 py-4 px-4 rounded-3xl mx-auto shadow-md border-r border-gray-700 border-opacity-50 relative pb-10">
+                        <div class="bg-gray-800 xs:w-full xs:w-96 md:w-11/12 py-4 px-4 rounded-xl mx-auto shadow-md border-r border-gray-700 border-opacity-50 relative pb-10">
                             <p class="float-right"> {{ $review->user->username }}</p>
                             <img class=" rounded-full h-10 w-10" src="{{ $review->user->profile->profileImage() }}">
-                            <p class="w-full break-words mt-4">{{ $review->review }}</p>
+                            <p class="w-full break-words mt-4 mb-3">{{ $review->review }}</p>
                             <p class="absolute bottom-3 left-4"><b>Score: </b>{{ $review->rating }}</p>
                             @can('update', $review)
-                                <a class="absolute bottom-3 right-4" href="/reviews/{{ $review->id }}/edit">Edit review</a>
+                                <a class="absolute bottom-3 right-20 bg-gray-700 px-2 py-1 rounded-md" href="/reviews/{{ $review->id }}/edit">Edit</a>
                             @endcan
-                        </div>
-
-                            {{-- @can('update', $review)
-                                <form action="{{ route('reviews.destroy', $review->id) }}" method="post">
+                            @can('update', $review)
+                                <form class="absolute bottom-3 right-3 bg-gray-900 px-2 py-1 rounded-md" action="{{ route('reviews.destroy', $review->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" name="delete">Delete
-                                        review</button>
+                                    <button type="submit" name="delete">Delete</button>
                                 </form>
-                            @endcan --}}
+                            @endcan
+                        </div>
                     @endforeach
                 </div>
             </div>
         </div>
-
-        @if (Route::has('login'))
-        @auth
-            @if (!auth()->user()->reviews->contains('movies_id', $movie->id))
-            <a href="/reviews/{{ $movie->id }}/create">Add Review</a>
-            @endif
-        @else
-            <p>Please <a href="/login">login</a> to add a review</p>
-        @endauth
-        @endif
 
         @if( $reviews->lastPage() != 1)
         <div class="flex justify-center mt-2">

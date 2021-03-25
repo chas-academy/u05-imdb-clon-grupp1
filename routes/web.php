@@ -23,13 +23,13 @@ Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('pro
 
 
 
-Route::delete('/movies/{movie}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
 Route::post('/reviews/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
 // Route::post('movies/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
 // Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
 Route::patch('/movies/{movie}', [ReviewController::class, 'update'])->name('reviews.update');
 
+Route::delete('reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 Route::get('reviews/{review}', [ReviewController::class, 'showReview'])->name('reviews.show');
 Route::get('reviews/{review}/edit', [ReviewController::class, 'editReview'])->name('reviews.edit');
 Route::put('reviews/{id}', [ReviewController::class, 'updateReview'])->name('reviews.updateReview');
