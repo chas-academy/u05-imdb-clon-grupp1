@@ -15,13 +15,8 @@
             @endcan
 
             {{-- SEARCH --}}
-            <form class="w-4/5 max-w-screen-xl relative">
-                <input type="text" class="bg-gray-800 w-full rounded-2xl px-6 py-4 pl-4 font-bold text-lg focus:outline-none focus:shadow-outline shadow-lg border-l-0 border-b-0 border-gray-700 border-opacity-50" placeholder="Search movies...">
-                <button>
-                    <x-search-icon/>
-                </button>
-            </form>
         </div>
+        <x-search-form :title="null"></x-search-form>
 
         {{-- SLIDER --}}
         <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"></movie-slider>
