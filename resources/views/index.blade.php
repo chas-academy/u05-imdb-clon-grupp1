@@ -12,13 +12,6 @@
             </form>
         </div>
 
-
-
-
-
-
-
-
         {{-- SLIDER --}}
         @if(auth()->user())
             @auth
@@ -56,5 +49,4 @@
         @else
             <movie-list :profile-id="null" :show-watchlist="false"  :show-filter="false" :pagination-number="6"></movie-list>
         @endif
-
 </x-app-layout>

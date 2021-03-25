@@ -12,28 +12,28 @@
             </form>
     </div>
     {{-- MOVIES RESULT --}}
-    <div>
-         <div class="flex flex-col justify-center items-center">
-            <div class="w-full max-w-screen-xl p-6 ">
-                <div class="md:mx-auto md:grid md:grid-cols-2 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 ">
-                    @foreach ($movies as $movie)
-                        <div class="max-w-sm w-full md:bg-gray-800 rounded-2xl my-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative">
-                            <a href="/movies/{{ $movie->id }}">
-                                <div class="flex">
-                                    <img class="w-24 h-36 rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50" src="/storage/{{ $movie->img_path }}" alt="{{$movie->title}}">
-                                    <div class="mt-5 ml-4">
-                                        <p class="text-white font-bold text-md"> {{ $movie->title }}</p>
-                                        <p class="text-white">{{ $movie->release_date }} - {{ $movie->language }}</p>
-                                        <p class="text-white text-sm">Rating: {{ $movie->top_rating }}</p>
-                                        <p class="text-gray-400 mt-2 text-sm">{{ $movie->movie_genres}}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
+
+    @if(auth()->user())
+    @auth
+        <movie-list
+        profile-id={{ auth()->user()->profile->id }}
+        watchlist={{ $watchlistStatus }}
+        search-movies-id={{ $searchMoviesId }}
+        :show-watchlist="false"
+        :show-search="true"
+        :show-filter="true"
+        :pagination-number="18"
+        />
+    @endauth
+    @else
+        <movie-list
+        :profile-id="null"
+        search-movies-id={{ $searchMoviesId }}
+        :show-watchlist="false"
+        :show-search="true"
+        :show-filter="true"
+        :pagination-number="18"
+        />
+    @endif
 
 </x-app-layout>

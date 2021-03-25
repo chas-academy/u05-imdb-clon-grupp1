@@ -3878,11 +3878,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["profileId", "watchlist", "showWatchlist", 'showFilter', 'paginationNumber', 'genreFilter', 'role'],
+  props: ["profileId", "watchlist", "searchMoviesId", "showWatchlist", "showSearch", 'showFilter', 'paginationNumber', 'genreFilter', 'role'],
   data: function data() {
     return {
       response: this.response,
       watchlistArray: this.watchlistArray,
+      searchArray: this.searchArray,
       moviesPrint: this.moviesPrint,
       moviesList: this.moviesList,
       pageCount: this.pageCount,
@@ -3899,6 +3900,16 @@ __webpack_require__.r(__webpack_exports__);
         _this.response = response.data.data;
         _this.moviesList = _this.response.filter(function (movie) {
           if (_this.watchlistArray.includes(movie.id.toString())) {
+            return movie;
+          }
+        });
+
+        _this.filterButton();
+      } else if (_this.showSearch) {
+        _this.searchArray = _this.searchMoviesId.slice(1, -1).split(",");
+        _this.response = response.data.data;
+        _this.moviesList = _this.response.filter(function (movie) {
+          if (_this.searchArray.includes(movie.id.toString())) {
             return movie;
           }
         });

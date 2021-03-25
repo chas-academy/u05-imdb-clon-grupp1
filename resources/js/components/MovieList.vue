@@ -51,7 +51,9 @@
         props: [
         "profileId",
         "watchlist",
+        "searchMoviesId",
         "showWatchlist",
+        "showSearch",
         'showFilter',
         'paginationNumber',
         'genreFilter',
@@ -61,6 +63,7 @@
                 return {
                     response: this.response,
                     watchlistArray: this.watchlistArray,
+                    searchArray: this.searchArray,
                     moviesPrint: this.moviesPrint,
                     moviesList: this.moviesList,
                     pageCount: this.pageCount,
@@ -79,10 +82,19 @@
                             return movie
                         }
                     });
-
                     this.filterButton();
-                } else if(this.genreFilter){
 
+                } else if(this.showSearch){
+                    this.searchArray = this.searchMoviesId.slice(1, -1).split(",");
+                    this.response = response.data.data;
+                    this.moviesList = this.response.filter(movie => {
+                        if(this.searchArray.includes(movie.id.toString())){
+                            return movie
+                        }
+                    });
+                    this.filterButton();
+
+                } else if(this.genreFilter){
                     console.log(this.genreFilter);
                     this.moviesList = response.data.data.filter(movie => movie.movie_genres.split(',').includes(this.genreFilter));
                     this.filterButton();
