@@ -3939,9 +3939,11 @@ __webpack_require__.r(__webpack_exports__);
         }).filter(function (movie) {
           return movie.release_date <= new Date().getFullYear();
         }).slice().reverse();
-        if (document.getElementById('comming').checked) lists = lists.filter(function (movie) {
-          return movie.release_date >= new Date().getFullYear();
-        }).slice().reverse();
+        if (document.getElementById('comming').checked) lists = lists.sort(function (a, b) {
+          return a.release_date - b.release_date;
+        }).filter(function (movie) {
+          return movie.release_date > new Date().getFullYear();
+        }).slice();
       } else {
         lists = lists.sort(function (a, b) {
           return a.id - b.id;

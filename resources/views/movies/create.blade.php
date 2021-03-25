@@ -76,7 +76,7 @@
                         <strong>{{ $errors->first('genres') }}</strong>
                     </span>
                 @endif
-                <x-button class=" mt-3">
+                <x-button type="submit" class=" mt-3">
                     {{ __('Submit') }}
                 </x-button>
             </form>

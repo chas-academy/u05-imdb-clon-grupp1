@@ -106,7 +106,7 @@
                 if(this.showFilter){
                     if (document.getElementById('score').checked) lists = lists.sort((a,b) => a.top_rating - b.top_rating).slice().reverse();
                     if (document.getElementById('new').checked) lists = lists.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date <= new Date().getFullYear()).slice().reverse();
-                    if (document.getElementById('comming').checked) lists = lists.filter(movie =>  movie.release_date >= new Date().getFullYear()).slice().reverse();
+                    if (document.getElementById('comming').checked) lists = lists.sort((a,b) => a.release_date - b.release_date).filter(movie =>  movie.release_date > new Date().getFullYear()).slice();
                 } else
                 {
                     lists = lists.sort((a,b) => a.id - b.id).filter(movie =>  movie.release_date <= new Date().getFullYear()).slice().reverse();
