@@ -15,9 +15,9 @@
 
                 <div class="flex justify-between w-full">
                     <div class="mt-10">
-                        <h1 class="text-4xl lg:text-5xl font-medium mb-5 w-11/12 bg-red-600">{{ $movie->title }}</h1>
+                        <h1 class="text-4xl lg:text-5xl font-medium mb-5 w-11/12 ">{{ $movie->title }}</h1>
 
-                        <p class="text-2xl lg:text-3xl mb-5 w-11/12 bg-red-600">{{ $movie->release_date }} - {{ $movie->language }}</p>
+                        <p class="text-2xl lg:text-3xl mb-5 w-11/12 ">{{ $movie->release_date }} - {{ $movie->language }}</p>
 
                         <div class="mb-5">
                             @foreach ($movie->genres as $genre)
@@ -25,13 +25,13 @@
                             @endforeach
                         </div>
 
-                        <p class="mb-5 bg-red-600">{{ $movie->description }}</p>
+                        <p class="mb-5 ">{{ $movie->description }}</p>
 
-                        <p class="bg-red-600"><b>Actors: </b>{{$movie->actors}}</p>
+                        <p class=""><b>Actors: </b>{{$movie->actors}}</p>
                     </div>
 
                     <div class="mt-11 mr-1 lg:mr-10 flex flex-col items-center">
-                        <p class=" border-white border-4 rounded-full mb-5 text-2xl text-center px-4 py-2 lg:px-6 lg:py-4">{{$movie->top_rating}}</p>
+                        <p class=" border-white border-4 rounded-full mb-5 text-2xl text-center px-4 py-2 lg:px-6 lg:py-4">{{($movie->top_rating != null) ? $movie->top_rating : '0' }}</p>
 
                         <div class="">
                             @if (Route::has('login'))

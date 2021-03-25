@@ -26,7 +26,7 @@
                             <svg width="20" height="19" fill="currentColor" class="text-yellow-600 absolute bottom-3 left-3 ">
                                 <path d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
                             </svg>
-                            <p class="absolute bottom-2 left-9 text-sm leading-relaxed">4.94 (128)</p>
+                            <p class="absolute bottom-2 left-9 text-sm leading-relaxed">{{movie.top_rating}}</p>
                         </a>
                         <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"></watchlist-button>
                     </div>

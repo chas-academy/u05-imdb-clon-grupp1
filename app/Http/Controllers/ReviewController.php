@@ -51,6 +51,7 @@ class ReviewController extends Controller
             return redirect("/movies/{$id}");
         }
 
+
         $movie = Movie::findOrFail($id);
         $review = new Review;
 

@@ -42701,7 +42701,7 @@ var render = function() {
                         staticClass:
                           "absolute bottom-2 left-9 text-sm leading-relaxed"
                       },
-                      [_vm._v("4.94 (128)")]
+                      [_vm._v(_vm._s(movie.top_rating))]
                     )
                   ]
                 ),
