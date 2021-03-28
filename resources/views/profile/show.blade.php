@@ -11,6 +11,16 @@
             @can('update', $user->profile)
                 <div class="flex w-4/5 max-w-screen-xl pb-8">
                     <a href="/profile/{{$user->profile->id}}/edit" class="py-2 px-3 rounded-lg bg-indigo-900 transform hover:scale-105">Edit Profile</a>
+                    @if (Route::has('login'))
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}" class="py-2 px-3 ml-3 rounded-lg bg-indigo-900 transform hover:scale-105">
+                            @csrf
+                            <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                Logout
+                            </a>
+                        </form>
+                    @endauth
+                    @endif
                 </div>
             @endcan
 
@@ -19,24 +29,20 @@
         <x-search-form :title="null"></x-search-form>
 
         {{-- SLIDER --}}
-        <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"></movie-slider>
-        <div class="flex justify-center">
+        @if(count(auth()->user()->profile->movies) > 10)
+        <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true" :show-filter="false"></movie-slider>
+        <div class="flex justify-center mt-1">
             <p class="w-screen max-w-screen-2xl pr-3">
                 <a href="/watchlist/{{ auth()->user()->profile->id }}" class="float-right py-2 px-3 rounded-lg bg-indigo-900 transform hover:scale-105">Watchlist</a>
             </p>
         </div>
-
-        {{-- Move to user.blade --}}
-        @if (Route::has('login'))
-            @auth
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Logout') }}
-                    </x-dropdown-link>
-                </form>
-            @endauth
+        @else
+            <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="false" :show-filter="false"></movie-slider>
+            <div class="flex justify-center mt-1">
+                <p class="w-screen max-w-screen-2xl pr-3">
+                    <a href="/watchlist/{{ auth()->user()->profile->id }}" class="float-right py-2 px-3 rounded-lg bg-indigo-900 transform hover:scale-105">Watchlist</a>
+                </p>
+            </div>
         @endif
     </div>
 </x-app-layout>

@@ -7,13 +7,13 @@
         {{-- SLIDER --}}
         @if(auth()->user())
             @auth
-                <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="false" ></movie-slider>
+                <movie-slider profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="false" :show-filter="true"></movie-slider>
             @endauth
         @else
-            <movie-slider :profile-id="null" :show-watchlist="false"></movie-slider>
+            <movie-slider :profile-id="null" :show-watchlist="false" :show-filter="true"></movie-slider>
         @endif
 
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-1">
             <p class="w-screen max-w-screen-2xl pr-3">
                 <a href="/movies" class="float-right py-2 px-3 rounded-lg bg-indigo-900 text-white transform hover:scale-105">Movies</a>
             </p>

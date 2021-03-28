@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col justify-center items-center px-3" >
-        <div v-if="(!showWatchlist)">
+        <div v-if="(showFilter)">
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="scoreMovies(moviesList)" class="hidden">
                 <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score shadow-md transform hover:scale-105">Score</label>
@@ -40,7 +40,7 @@
     import 'hooper/dist/hooper.css';
 
     export default {
-        props: ["profileId", "watchlist", "showWatchlist"],
+        props: ["profileId", "watchlist", "showWatchlist", "showFilter"],
         name: 'App',
         components: {
         Hooper,
