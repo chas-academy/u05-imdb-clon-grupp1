@@ -2,9 +2,9 @@
     <div class="overflow-x-auto">
         <div class="min-w-screen min-h-screen flex items-center justify-center font-sans overflow-hidden">
             <div class="w-full lg:w-5/6">
-                <h1>Users</h1>
-                <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto">
+                <h1 class="text-3xl font-medium my-auto w-52 text-white">Users</h1>
+                <div class="shadow-md rounded my-6">
+                    <table class="border-solid border-4 min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-left">User ID</th>
@@ -16,9 +16,9 @@
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
+                        <tbody class="text-white">
                             @foreach ($users as $user)
-                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <tr class="border-b border-gray-200 hover:bg-gray-800">
 
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
@@ -86,10 +86,10 @@
                         </tbody>
                     </table>
                 </div>
-                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" href="admin/user/create">Create New User</a>
-                <h1>Reviews</h1>
-                <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto">
+                <a class="mb-8 float-left py-2 px-3 rounded-lg bg-indigo-900 text-white transform hover:scale-105" href="admin/user/create">Create New User</a>
+                <h1 class="text-3xl font-medium my-auto w-52 text-white">Reviews</h1>
+                <div class="shadow-md rounded my-6">
+                    <table class="border-solid border-4 min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-left">Review ID</th>
@@ -101,9 +101,9 @@
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
+                        <tbody class="text-white">
                             @foreach ($reviews as $review)
-                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <tr class="border-b border-gray-200 hover:bg-gray-800">
 
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
@@ -176,9 +176,9 @@
                         </tbody>
                     </table>
                 </div>
-                <h1>Movies</h1>
-                <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto">
+                <h1 class="text-3xl font-medium my-auto w-52 text-white">Movies</h1>
+                <div class="shadow-md rounded my-6">
+                    <table class="border-solid border-4 min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-left">Movie ID</th>
@@ -190,9 +190,9 @@
                                 <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
+                        <tbody class="text-white">
                             @foreach ($movies as $movie)
-                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <tr class="border-b border-gray-200 hover:bg-gray-800">
 
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
@@ -262,7 +262,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" href="movies/create">Create New Movie</a>
+                <a class="mb-8 float-left py-2 px-3 rounded-lg bg-indigo-900 text-white transform hover:scale-105" href="movies/create">Create New Movie</a>
             </div>
 
         </div>
