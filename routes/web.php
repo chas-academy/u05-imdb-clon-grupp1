@@ -17,7 +17,7 @@ require __DIR__ . '/auth.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/user/{id}/edit', [AdminController::class, 'edituser']);
 Route::get('/admin/user/create', [AdminController::class, 'createuser']);
 Route::post('/admin/user', [AdminController::class, 'store']);

@@ -120,9 +120,6 @@
                                 </td>
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
-                                        <div class="mr-2">
-                                            <img class="w-6 h-6 rounded-full" src="{{ $review->movie->img_path}}" />
-                                        </div>
                                         <span>{{ $review->movie->title }}</span>
                                     </div>
                                 </td>
@@ -201,9 +198,6 @@
                                 </td>
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
-                                        <div class="mr-2">
-                                            <img class="w-6 h-6 rounded-full" src="{{ $movie->img_path}} }}" />
-                                        </div>
                                         <span>{{ $movie->title }}</span>
                                     </div>
                                 </td>
