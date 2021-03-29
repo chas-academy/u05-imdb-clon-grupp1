@@ -13,12 +13,18 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth');
     }
 
     public function show(Profile $profile, User $user, Movie $movie)
     {
-        $reviews = auth()->user()->reviews->paginate(4);
+        $this->authorize('view', $user->profile);
+
+        $reviews = auth()->user()->reviews->map(function ($review) {
+            $review['title'] =  Movie::findOrFail($review->movies_id)->title;
+            return $review;
+        })->paginate(4);;
+
         $watchlistStatus = $movie->watchlistStatus();
 
         return view('profile.show', compact('user', 'profile', 'watchlistStatus', 'reviews'));

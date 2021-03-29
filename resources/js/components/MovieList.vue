@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="(showFilter)" class="flex justify-center">
+        <div v-if="(showFilter)" class="flex justify-center mb-3">
             <form>
                 <input type="radio" id="score" name="filter" value="score" v-on:click="filterButton()" class="hidden">
                 <label for="score" class="text-white font-medium rounded-lg cursor-pointer text-center score shadow-md transform hover:scale-105">Score</label>
@@ -12,15 +12,15 @@
         </div>
 
          <div class="flex flex-col justify-center items-center">
-            <div class="w-full max-w-screen-xl p-6 ">
+            <div class="w-full max-w-screen-xl px-6 ">
                 <div class="md:mx-auto md:grid md:grid-cols-2 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 ">
                     <div v-for="(movie, index) in moviesPrint" :key="index">
-                        <div class="max-w-sm w-full md:bg-gray-800 rounded-2xl my-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative">
+                        <div class="max-w-sm w-full md:bg-gray-800 rounded-2xl mb-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative">
                             <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"> </watchlist-button>
                             <a :href="'/movies/' + movie.id">
                                 <div class="flex">
                                     <img class="w-24 h-36 rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50" :src="'/storage/' + movie.img_path" :alt="movie.title">
-                                    <div class="mt-5 ml-4">
+                                    <div class="m-5 ml-4">
                                         <p class="text-white font-bold text-md"> {{ movie.title }}</p>
                                         <p class="text-white">{{ movie.release_date }} - {{ movie.language }}</p>
                                         <p class="text-white text-sm">Rating: {{ movie.top_rating }}</p>

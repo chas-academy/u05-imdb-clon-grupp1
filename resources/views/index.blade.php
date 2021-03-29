@@ -34,9 +34,18 @@
         </div>
 
         {{-- Filter, Movies/Watchlist and Pagination --}}
+        <div class="flex justify-center">
+            <div class="w-full max-w-screen-xl px-6 my-1">
+                @if(auth()->user())
+                <h2 class="md:mx-auto text-xl font-medium pb-2 pl-5 md:w-4/5 lg:w-full">Watchlist</h2>
+                @else
+                <h2 class="md:mx-auto text-xl font-medium pb-2 pl-5 md:w-4/5 lg:w-full">Movies</h2>
+                @endif
+            </div>
+        </div>
+
         @if(auth()->user())
         @auth
-
             <movie-list profile-id={{ auth()->user()->profile->id }} watchlist={{ $watchlistStatus }} :show-watchlist="true"  :show-filter="false" :pagination-number="6"></movie-list>
         @endauth
         @else

@@ -42250,7 +42250,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.showFilter
-      ? _c("div", { staticClass: "flex justify-center" }, [
+      ? _c("div", { staticClass: "flex justify-center mb-3" }, [
           _c("form", [
             _c("input", {
               staticClass: "hidden",
@@ -42332,7 +42332,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "flex flex-col justify-center items-center" }, [
-      _c("div", { staticClass: "w-full max-w-screen-xl p-6 " }, [
+      _c("div", { staticClass: "w-full max-w-screen-xl px-6 " }, [
         _c(
           "div",
           {
@@ -42345,7 +42345,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "max-w-sm w-full md:bg-gray-800 rounded-2xl my-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative"
+                    "max-w-sm w-full md:bg-gray-800 rounded-2xl mb-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative"
                 },
                 [
                   _vm.profileId
@@ -42371,7 +42371,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "mt-5 ml-4" }, [
+                      _c("div", { staticClass: "m-5 ml-4" }, [
                         _c(
                           "p",
                           { staticClass: "text-white font-bold text-md" },

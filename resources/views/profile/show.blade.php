@@ -45,16 +45,22 @@
             </div>
         @endif
 
-        <div class="flex justify-center mt-16">
+        <div class="flex justify-center">
+            <div class="w-96 mr-16 md:mr-0 md:w-10/12 max-w-screen-xl px-6 my-1">
+                <h2 class="text-xl font-medium pb-2 pl-5 w-4/5">Your reviews</h2>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
             <div class="w-10/12 max-w-screen-xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-y-6 my-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-y-6 mb-10">
                     @foreach ($reviews as $review)
 
                     <div class="bg-gray-800 xs:w-full xs:w-96 md:w-11/12 py-4 px-4 rounded-xl mx-auto shadow-md border-r border-gray-700 border-opacity-50 relative pb-10">
                         <p class="float-right"> {{ $review->user->username }}</p>
                         <img class=" rounded-full h-10 w-10" src="{{ $review->user->profile->profileImage() }}">
-                        <p class="w-full break-words mt-4 mb-3">{{ $review->review }}</p>
-                        <p class="absolute bottom-3 left-4"><b>Score: </b>{{ $review->rating }}</p>
+                        <p class="w-full break-words mt-4 mb-3 ">{{ $review->review }}</p>
+                        <p class="absolute bottom-3 left-4"><b>Score: </b>{{ $review->rating }} <a class="text-gray-400" href="/movies/{{ $review->movies_id }}">{{ $review->title }}</a></p>
                         @can('update', $review)
                         <a class="absolute bottom-3 right-20 bg-gray-700 px-2 py-1 rounded-md" href="/reviews/{{ $review->id }}/edit">Edit</a>
                         @endcan

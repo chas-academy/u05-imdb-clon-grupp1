@@ -60,8 +60,7 @@
                             <p class="absolute bottom-3 left-4"><b>Score: </b>{{ $review->rating }}</p>
                             @can('update', $review)
                                 <a class="absolute bottom-3 right-20 bg-gray-700 px-2 py-1 rounded-md" href="/reviews/{{ $review->id }}/edit">Edit</a>
-                            @endcan
-                            @can('update', $review)
+
                                 <form class="absolute bottom-3 right-3 bg-gray-900 px-2 py-1 rounded-md" action="{{ route('reviews.destroy', $review->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
