@@ -177,8 +177,8 @@ Distributed under the GNU GPLv3 License.
 
 ## Team Linkedin/GitHub
 <!--Insert team members-->
-Enzo Bomark* [GitHub](https://github.com/EnzoBomark) - [LinkedIn](https://www.linkedin.com/in/enzo-bomark-9046651b1/)
-Jamil Bariche* [GitHub](https://github.com/jamil-source) - [LinkedIn](https://www.linkedin.com/in/jamil-bariche-25561b189/)
+*Enzo Bomark* [GitHub](https://github.com/EnzoBomark) - [LinkedIn](https://www.linkedin.com/in/enzo-bomark-9046651b1/)
+*Jamil Bariche* [GitHub](https://github.com/jamil-source) - [LinkedIn](https://www.linkedin.com/in/jamil-bariche-25561b189/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
