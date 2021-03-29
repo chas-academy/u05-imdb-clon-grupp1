@@ -179,6 +179,7 @@ Distributed under the GNU GPLv3 License.
 <!--Insert team members-->
 *Enzo Bomark* [GitHub](https://github.com/EnzoBomark) - [LinkedIn](https://www.linkedin.com/in/enzo-bomark-9046651b1/)<br>
 *Jamil Bariche* [GitHub](https://github.com/jamil-source) - [LinkedIn](https://www.linkedin.com/in/jamil-bariche-25561b189/)<br>
+*Pernilla Hällgren* [GitHub](https://github.com/pernilla-hallgren) - [LinkedIn](www.linkedin.com/in/pernilla-hällgren-0a64aa25)<br>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
