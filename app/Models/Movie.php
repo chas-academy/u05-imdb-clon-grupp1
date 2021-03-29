@@ -33,10 +33,11 @@ class Movie extends Model
         return $this->belongsToMany(Profile::class, 'watchlist_pivot', 'movies_id', 'profile_name');
     }
 
-    public function watchlistStatus(){
+    public function watchlistStatus()
+    {
 
         $watchlistStatus = array();
-        foreach(auth()->user()->profile->movies as $key => $movie) {
+        foreach (auth()->user()->profile->movies as $key => $movie) {
             $watchlistStatus[$key] = $movie->id . ',';
         };
         $watchlistStatus = ',' . implode($watchlistStatus);
@@ -44,7 +45,8 @@ class Movie extends Model
         return $watchlistStatus;
     }
 
-    public function updateTopRating($movie){
+    public function updateTopRating($movie)
+    {
 
         $data_rating = $movie->reviews()->avg('rating');
         $data['top_rating'] =  $data_rating;

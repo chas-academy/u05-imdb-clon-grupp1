@@ -17,11 +17,21 @@ require __DIR__ . '/auth.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/user/{id}/edit', [AdminController::class, 'edituser']);
+Route::get('/admin/user/create', [AdminController::class, 'createuser']);
+Route::post('/admin/user', [AdminController::class, 'store']);
+Route::patch('/admin/user-update/{id}', [AdminController::class, 'updateuser']);
+Route::delete('/admin/user/{id}', [AdminController::class, 'destroyuser']);
+
+Route::get('/admin/review/{id}/edit', [AdminController::class, 'editreview']);
+Route::patch('/admin/review-update/{id}', [AdminController::class, 'updatereview']);
+Route::delete('/admin/review/{id}', [AdminController::class, 'destroyreview']);
+Route::delete('/admin/movie/{id}', [AdminController::class, 'destroymovie']);
+
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
-
-
 
 Route::get('/reviews/{movie}/create', [ReviewController::class, 'create'])->name('reviews.create');
 Route::post('/reviews/{movie}', [ReviewController::class, 'store'])->name('reviews.store');
@@ -65,4 +75,4 @@ Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('mov
 */
 
 //Movies search
-Route::get('/search/',[SearchMoviesController::class,'search'])->name('search');
+Route::get('/search/', [SearchMoviesController::class, 'search'])->name('search');
