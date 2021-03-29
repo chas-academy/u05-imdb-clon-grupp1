@@ -142,7 +142,7 @@ As a Admin, I want to be able to track what users of the website are doing in te
 ![Sitemap](/assets/Sitemap.png?raw=true)
 
 ### ER-diagram
-![Er-diagram](/assets/ERdiagram.png?raw=true)
+![Er-diagram](/assets/erdiagram.png?raw=true)
 
 ## Wireframes
 
