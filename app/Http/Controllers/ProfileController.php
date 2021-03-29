@@ -18,8 +18,10 @@ class ProfileController extends Controller
 
     public function show(Profile $profile, User $user, Movie $movie)
     {
+        $reviews = auth()->user()->reviews->paginate(4);
         $watchlistStatus = $movie->watchlistStatus();
-        return view('profile.show', compact('user', 'profile', 'watchlistStatus'));
+
+        return view('profile.show', compact('user', 'profile', 'watchlistStatus', 'reviews'));
     }
 
     public function edit(User $user)
