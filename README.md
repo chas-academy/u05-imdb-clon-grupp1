@@ -136,12 +136,12 @@ As a Admin, I want to be able to track what users of the website are doing in te
 
 
 
-## Sitemap
+## Sitemap (old)
 
 <!--Insert Sitemap-->
 ![Sitemap](/assets/Sitemap.png?raw=true)
 
-### ER-diagram
+### ER-diagram (old)
 ![Er-diagram](/assets/erdiagram.png?raw=true)
 
 ## Wireframes
@@ -177,7 +177,7 @@ Distributed under the GNU GPLv3 License.
 
 ## Team Linkedin/GitHub
 <!--Insert team members-->
-
+Enzo Bomark* [GitHub](https://github.com/EnzoBomark) - [LinkedIn](https://www.linkedin.com/in/enzo-bomark-9046651b1/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
