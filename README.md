@@ -6,7 +6,7 @@
 ![Mockup](/assets/Mockup.png?raw=true)
 
 <!-- TABLE OF CONTENTS -->
-# u05
+# u05-The movie hub
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
