@@ -14,8 +14,8 @@ class Movie extends Model
 
     public function moviePoster()
     {
-        $imagePath = ($this->img_path) ? $this->img_path : 'profile/noimage.png';
-        return '/storage/' . $imagePath;
+        $imagePath = ($this->img_path) ? $this->img_path : 'storage/movie-noimage.png';
+        return $imagePath;
     }
 
     public function genres()

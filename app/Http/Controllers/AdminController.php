@@ -20,9 +20,16 @@ class AdminController extends Controller
 
     public function index()
     {
-        $reviews = Review::all();
         $movies = Movie::all();
         $users = User::all();
+
+        $reviews = Review::all()->map(function ($review) {
+            $movie = Movie::findOrFail($review->movies_id)->title;
+            $review['title'] =  $movie;
+            return $review;
+        })->paginate(4);
+
+
         return view('admin.panel', compact('reviews', 'users', 'movies'));
     }
 
