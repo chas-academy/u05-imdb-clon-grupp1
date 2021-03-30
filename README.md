@@ -61,13 +61,12 @@
 ### Built With
 
 * [Sass](https://sass-lang.com)
+* [AWS s3](https://s3.console.aws.amazon.com/s3)
 * [Laravel](https://laravel.com)
 
 ### Code Standards
 * [Psr-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
 * [Psr-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
-* [Airbnb](https://github.com/airbnb/javascript)
-
 
 ## Goals and Context
 Our goal is to create a competent and smart website that gathers all relevant information about, and around movies.
