@@ -35,7 +35,6 @@
         <a href="#getting-started">Getting Started</a>
             <ul>
                 <li><a href="#installation">Installation</a></li>
-                <li><a href="#code-example">Code Example</a></li>
             </ul>
    </li>
     <li><a href="#user-Personas">User Personas</a></li>
@@ -86,23 +85,24 @@ By creating a modern user experience, there is the opportunity to enter the mark
 ### Installation
 <!--Insert Installation example. ex, npm install... -->
 
-
-### Code Example
-<!--Insert small code example-->
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+1. Run composer
 ```
+composer install
+```
+
+2. Install npm dependencies
+```
+npm install
+```
+3. Fix .env
+4. Run php artisan serve
+
+```
+php artisan serve
+```
+
+
+
 
 ## User Personas
 
