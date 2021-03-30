@@ -94,12 +94,29 @@ composer install
 ```
 npm install
 ```
-3. Fix .env
-4. Run php artisan serve
+3. Setup AWS s3 Bucket in .env
+```
+AWS_ACCESS_KEY_ID=xxxx-xxxx-xxxx
+AWS_SECRET_ACCESS_KEY=xxxx-xxxx-xxxx-xxxx
+AWS_DEFAULT_REGION=eu-north-1
+AWS_BUCKET=xxxx-xxxx-xxxx
+```
+4. Fix db in .env 
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=xxxx
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+5. Run php artisan serve
 
 ```
 php artisan serve
 ```
+6. You're **done**!
 
 
 
