@@ -37,6 +37,7 @@
                 <li><a href="#installation">Installation</a></li>
             </ul>
    </li>
+    <li><a href="#page-and-route-descriptions">Page And Route Descriptions</a></li>
     <li><a href="#user-Personas">User Personas</a></li>
     <li><a href="#user-stories">User Stories</a></li>
     <li>
@@ -46,7 +47,7 @@
             </ul>
     </li>
     <li><a href="#wireframes">Wireframes</a></li>
-    <li><a href="#page-and-route-descriptions">Page And Route Descriptions</a></li>
+    
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -118,7 +119,18 @@ php artisan serve
 ```
 6. You're **done**! 🎉
 
+## Page and Route Descriptions
 
+| Page        | Items       |
+| ----------- | ----------- |
+| **Landing page** <br /> <br /> /  | 1. Search <br /> 2. New releases <br /> 3. Top movies |  <br /> 4. Coming soon |
+| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
+| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/reviewlists <br /> /user/{user_id}/settings | Routes related to the user  |
+| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews | Routes related to movies |
+| **Top rated** <br /> <br /> /chart/top <br /> /chart/new| Top rated movies |
+| **Admin** <br /> <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
+
+| **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre |
 
 
 ## User Personas
@@ -169,21 +181,6 @@ As a Admin, I want to be able to track what users of the website are doing in te
 <!--Insert Adobe XD file download-->
 <!--Insert prototype Image-->
 ![Mockup](/assets/Mockup-grid.png?raw=true)
-
-
-## Page and Route Descriptions
-
-| Page        | Items       |
-| ----------- | ----------- |
-| **Landing page** <br /> <br /> /  | 1. Search <br /> 2. New releases <br /> 3. Top movies |  <br /> 4. Coming soon |
-| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
-| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/reviewlists <br /> /user/{user_id}/settings | Routes related to the user  |
-| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews | Routes related to movies |
-| **Top rated** <br /> <br /> /chart/top <br /> /chart/new| Top rated movies |
-| **Admin** <br /> <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
-
-<!-- | **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre | -->
-
 
 ## License
 
