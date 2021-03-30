@@ -3,9 +3,7 @@
 [![Issues][issues-shield]][issues-url]
 
 
-<br />
-  ![Mockup](/assets/Mockup.png?raw=true)
-</p>
+![Mockup](/assets/Mockup.png?raw=true)
 
 <!-- TABLE OF CONTENTS -->
 # u05
@@ -110,9 +108,9 @@ php artisan serve
 
 | Page        | Items       |
 | ----------- | ----------- |
-| **Landing page** <br /> <br /> /  | 1. Search <br /> 2. New releases <br /> 3. Top movies |  <br /> 4. Coming soon |
-| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
-| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/reviewlists <br /> /user/{user_id}/settings | Routes related to the user  |
+| **Landing page** <br /> <br /> /  | Start page |
+| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /forgot-password | Self-explanatory routes and methods for authentication  |
+| **User profile** <br /> <br /> /profile/{id} <br /> /watchlist{id} <br /> /profile/{id}/edit | Routes related to the user  |
 | **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews | Routes related to movies |
 | **Top rated** <br /> <br /> /chart/top <br /> /chart/new| Top rated movies |
 | **Admin** <br /> <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
