@@ -120,8 +120,8 @@ php artisan serve
 
 | Data        | Description |
 | ----------- | ----------- |
-| Usertype    | David Hult |
-| Name        | Active User  |
+| Usertype    | Active User |
+| Name        | David Hult  |
 | Gender      | Male        |
 | Age         | 20          |
 | Education   | Stockholms University of the Arts|
@@ -174,6 +174,7 @@ Distributed under the GNU GPLv3 License.
 *Jamil Bariche* [GitHub](https://github.com/jamil-source) - [LinkedIn](https://www.linkedin.com/in/jamil-bariche-25561b189/)<br>
 *Pernilla Hällgren* [GitHub](https://github.com/pernilla-hallgren) - [LinkedIn](www.linkedin.com/in/pernilla-hällgren-0a64aa25)<br>
 *Anna Pääjärvi* [GitHub](https://github.com/apaajarvi) - [LinkedIn](https://www.linkedin.com/in/anna-pääjärvi-71709a205/)<br>
+*Oskar Boström* [GitHub](https://github.com/oskar-mikael) - [LinkedIn](https://www.linkedin.com/in/oskar-bostr%C3%B6m-6462b81b5/)<br>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
