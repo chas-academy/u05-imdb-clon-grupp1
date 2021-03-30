@@ -6,6 +6,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
@@ -23,7 +24,7 @@ class ProfileController extends Controller
         $reviews = auth()->user()->reviews->map(function ($review) {
             $review['title'] =  Movie::findOrFail($review->movies_id)->title;
             return $review;
-        })->paginate(4);;
+        })->paginate(4);
 
         $watchlistStatus = $movie->watchlistStatus();
 
@@ -48,17 +49,14 @@ class ProfileController extends Controller
         ]);
 
         if (request('image')) {
-            $imagePath = request('image')->store('profile', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->orientate()->fit(1000, 1000); //Intervention Image Package
-            $imageArray = ['image' => $imagePath];
-            $image->save();
+            $imagePath = request('image')->store('profile', 's3');
+            Storage::disk('s3')->setVisibility($imagePath, 'public');
+            $image = ['image' => Storage::disk('s3')->url($imagePath)];
         }
-
-        // $profile->image = $request->image; //Lägg till senare
 
         $profile->update(array_merge(
             $data,
-            $imageArray ?? [],
+            $image ?? [],
         ));
 
         return redirect("/profile/{$profile->user_id}");

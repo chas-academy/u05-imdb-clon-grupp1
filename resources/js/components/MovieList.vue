@@ -15,17 +15,16 @@
             <div class="w-full max-w-screen-xl px-6 ">
                 <div class="md:mx-auto md:grid md:grid-cols-2 md:gap-x-11 md:w-4/5 lg:w-full lg:grid-cols-3 ">
                     <div v-for="(movie, index) in moviesPrint" :key="index">
-                        <div class="max-w-sm w-full md:bg-gray-800 rounded-2xl mb-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative">
+                        <div class="max-w-sm w-full h-36 md:bg-gray-800 rounded-2xl mb-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative">
                             <watchlist-button v-if="profileId" :watchlist="watchlist.includes(',' + movie.id + ',')" :movie-id="movie.id" class="absolute top-5 right-5 w-6 h-6"> </watchlist-button>
                             <a :href="'/movies/' + movie.id">
-                                <div class="flex">
-                                    <img class="w-24 h-36 rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50" :src="'/storage/' + movie.img_path" :alt="movie.title">
+                                <div class="flex h-full">
+                                    <img class="w-24 h-full rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50" :src="movie.img_path" :alt="movie.title">
                                     <div class="m-5 ml-4">
-                                        <p class="text-white font-bold text-md"> {{ movie.title }}</p>
+                                        <p class="text-white font-bold text-md"> {{ movie.title.length <= 10 ?  movie.title : movie.title.substring(0, 10) + '...' }}</p>
                                         <p class="text-white">{{ movie.release_date }} - {{ movie.language }}</p>
                                         <p class="text-white text-sm">Rating: {{ movie.top_rating }}</p>
                                         <p class="text-gray-400 mt-2 text-sm">{{ movie.movie_genres.replaceAll(',', ', ') }}</p>
-                                        <a v-if="(role == 'admin')" :href="'movies/' + movie.id + '/edit'">Edit Movie</a>
                                     </div>
                                 </div>
                             </a>
@@ -57,7 +56,6 @@
         'showFilter',
         'paginationNumber',
         'genreFilter',
-        'role'
         ],
         data() {
                 return {

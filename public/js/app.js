@@ -3876,9 +3876,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["profileId", "watchlist", "searchMoviesId", "showWatchlist", "showSearch", 'showFilter', 'paginationNumber', 'genreFilter', 'role'],
+  props: ["profileId", "watchlist", "searchMoviesId", "showWatchlist", "showSearch", 'showFilter', 'paginationNumber', 'genreFilter'],
   data: function data() {
     return {
       response: this.response,
@@ -42345,7 +42344,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "max-w-sm w-full md:bg-gray-800 rounded-2xl mb-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative"
+                    "max-w-sm w-full h-36 md:bg-gray-800 rounded-2xl mb-4 md:mb-7 md:shadow-lg md:border-r md:border-gray-700 md:border-opacity-50 relative"
                 },
                 [
                   _vm.profileId
@@ -42361,21 +42360,27 @@ var render = function() {
                     : _vm._e(),
                   _vm._v(" "),
                   _c("a", { attrs: { href: "/movies/" + movie.id } }, [
-                    _c("div", { staticClass: "flex" }, [
+                    _c("div", { staticClass: "flex h-full" }, [
                       _c("img", {
                         staticClass:
-                          "w-24 h-36 rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50",
-                        attrs: {
-                          src: "/storage/" + movie.img_path,
-                          alt: movie.title
-                        }
+                          "w-24 h-full rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50",
+                        attrs: { src: movie.img_path, alt: movie.title }
                       }),
                       _vm._v(" "),
                       _c("div", { staticClass: "m-5 ml-4" }, [
                         _c(
                           "p",
                           { staticClass: "text-white font-bold text-md" },
-                          [_vm._v(" " + _vm._s(movie.title))]
+                          [
+                            _vm._v(
+                              " " +
+                                _vm._s(
+                                  movie.title.length <= 10
+                                    ? movie.title
+                                    : movie.title.substring(0, 10) + "..."
+                                )
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c("p", { staticClass: "text-white" }, [
@@ -42394,17 +42399,7 @@ var render = function() {
                           _vm._v(
                             _vm._s(movie.movie_genres.replaceAll(",", ", "))
                           )
-                        ]),
-                        _vm._v(" "),
-                        _vm.role == "admin"
-                          ? _c(
-                              "a",
-                              {
-                                attrs: { href: "movies/" + movie.id + "/edit" }
-                              },
-                              [_vm._v("Edit Movie")]
-                            )
-                          : _vm._e()
+                        ])
                       ])
                     ])
                   ])
@@ -42633,7 +42628,7 @@ var render = function() {
                 _c("img", {
                   staticClass:
                     "z-negative h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
-                  attrs: { src: "/storage/" + movie.img_path }
+                  attrs: { src: movie.img_path }
                 }),
                 _vm._v(" "),
                 _c(

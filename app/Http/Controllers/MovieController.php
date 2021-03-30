@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
@@ -21,6 +22,7 @@ class MovieController extends Controller
 
         $watchlistStatus = $movie->watchlistStatus();
         return view('movies.index', compact('watchlistStatus'));
+
     }
 
     public function show(Movie $movie, User $user)
@@ -64,15 +66,14 @@ class MovieController extends Controller
         }
 
         if (request('img_path')) {
-            $imagePath = request('img_path')->store('movieposter', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"));
-            $imageArray = ['img_path' => $imagePath];
-            $image->save();
+            $imagePath = request('img_path')->store('movieposter', 's3');
+            Storage::disk('s3')->setVisibility($imagePath, 'public');
+            $image = ['img_path' => Storage::disk('s3')->url($imagePath)];
         }
 
         $movie = Movie::create(array_merge(
             $data,
-            $imageArray ?? [],
+            $image ?? [],
         ));
 
         $genres = Genre::all();
@@ -129,15 +130,14 @@ class MovieController extends Controller
         }
 
         if (request('img_path')) {
-            $imagePath = request('img_path')->store('movieposter', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"));
-            $imageArray = ['img_path' => $imagePath];
-            $image->save();
+            $imagePath = request('img_path')->store('movieposter', 's3');
+            Storage::disk('s3')->setVisibility($imagePath, 'public');
+            $image = ['img_path' => Storage::disk('s3')->url($imagePath)];
         }
 
         $movie->update(array_merge(
             $data,
-            $imageArray ?? [],
+            $image ?? [],
         ));
 
         $genres = Genre::all();

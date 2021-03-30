@@ -30,6 +30,10 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile)
     {
+        if ($user->role == 'admin') {
+            return true;
+        }
+
         return $user->id == $profile->user_id;
     }
 
