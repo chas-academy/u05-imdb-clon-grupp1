@@ -116,7 +116,7 @@ DB_PASSWORD=
 ```
 php artisan serve
 ```
-6. You're **done**!
+6. You're **done**! 🎉
 
 
 
