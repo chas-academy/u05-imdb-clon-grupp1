@@ -4,17 +4,11 @@
 
 
 <br />
-<p align="center">
-  <h3 align="center">u05</h3>
-
-  <p align="center">
-    Description...
-  </p>
-
   ![Mockup](/assets/Mockup.png?raw=true)
 </p>
 
 <!-- TABLE OF CONTENTS -->
+# u05
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
@@ -37,6 +31,7 @@
                 <li><a href="#installation">Installation</a></li>
             </ul>
    </li>
+    <li><a href="#page-and-route-descriptions">Page And Route Descriptions</a></li>
     <li><a href="#user-Personas">User Personas</a></li>
     <li><a href="#user-stories">User Stories</a></li>
     <li>
@@ -46,20 +41,16 @@
             </ul>
     </li>
     <li><a href="#wireframes">Wireframes</a></li>
-    <li><a href="#page-and-route-descriptions">Page And Route Descriptions</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
-
 ## About The Project
-
-<!--[![](Image link)-->
 
 ### Built With
 
 * [Sass](https://sass-lang.com)
+* [Tailwind](https://tailwindcss.com)
 * [AWS s3](https://s3.console.aws.amazon.com/s3)
 * [Laravel](https://laravel.com)
 
@@ -76,14 +67,10 @@ At present, information about movies and managing lists of movies that one would
 ### Our Vision?
 By creating a modern user experience, there is the opportunity to enter the market and thus get a large number of users. This in turn can in the long run create opportunities for advertising campaigns from various stakeholders such as product companies that offer sales of film-related products as well as service providers who may be interested in behavioral patterns and trends. Creating an exceptional experience, on mobile as well as in the browser can potentially create a viral reception of users.
 
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
-
 ### Installation
-<!--Insert Installation example. ex, npm install... -->
 
 1. Run composer
 ```
@@ -119,7 +106,17 @@ php artisan serve
 6. You're **done**! 🎉
 
 
+## Page and Route Descriptions
 
+| Page        | Items       |
+| ----------- | ----------- |
+| **Landing page** <br /> <br /> /  | 1. Search <br /> 2. New releases <br /> 3. Top movies |  <br /> 4. Coming soon |
+| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
+| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/reviewlists <br /> /user/{user_id}/settings | Routes related to the user  |
+| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews | Routes related to movies |
+| **Top rated** <br /> <br /> /chart/top <br /> /chart/new| Top rated movies |
+| **Admin** <br /> <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
+| **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre |
 
 ## User Personas
 
@@ -132,7 +129,6 @@ php artisan serve
 | Education   | Stockholms University of the Arts|
 | City        | Stockholm   |
 | Goal        | David is an active user on IMDb and mainly uses it to search for movie information and heavily relies on the search filter function. David would also love to see an improved trailer watching experience with a genre filter.|
-
 
 
 ## User Stories
@@ -170,26 +166,9 @@ As a Admin, I want to be able to track what users of the website are doing in te
 <!--Insert prototype Image-->
 ![Mockup](/assets/Mockup-grid.png?raw=true)
 
-
-## Page and Route Descriptions
-
-| Page        | Items       |
-| ----------- | ----------- |
-| **Landing page** <br /> <br /> /  | 1. Search <br /> 2. New releases <br /> 3. Top movies |  <br /> 4. Coming soon |
-| **Login, signup etc.** <br /> <br /> /login <br /> /logout <br /> /register <br /> /password/reset | Self-explanatory routes and methods for authentication  |
-| **User profile** <br /> <br /> /user/{user_id} <br /> /user/{user_id}/watchlist <br /> /user/{user_id}/reviewlists <br /> /user/{user_id}/settings | Routes related to the user  |
-| **Item page** <br /> <br /> /title/{title_id} <br /> /title/{title_id}/reviews | Routes related to movies |
-| **Top rated** <br /> <br /> /chart/top <br /> /chart/new| Top rated movies |
-| **Admin** <br /> <br /> /admin/dashboard <br /> /admin/users <br /> /admin/movies | Administrative related routes |
-
-<!-- | **Genre Page** <br /> <br /> /genre/{genre} | Route for showing movies and TV-shows by genre | -->
-
-
 ## License
 
 Distributed under the GNU GPLv3 License. 
-
-
 
 ## Team Linkedin/GitHub
 <!--Insert team members-->
