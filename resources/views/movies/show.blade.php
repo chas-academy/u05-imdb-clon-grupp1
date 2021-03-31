@@ -4,7 +4,17 @@
 
         <div class="w-screen flex justify-center mt-5">
             <div class="flex flex-col lg:flex-row justify-center w-10/12 max-w-screen-xl">
-                <img class="height object-cover rounded-2xl lg:h-full lg:w-4/5 lg:max-w-md shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
+                <div class="w-full h-full lg:h-full lg:w-full max-w-md relative">
+                    <a href= {{ $movie->trailer_path }} target="blank">
+                        <img class="w-full h-full object-cover rounded-2xl shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
+                        <div class="color rounded-2xl w-full h-full top-0 absolute z-50 opacity-0 hover:opacity-100 transition flex justify-center items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-16 h-16">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
 
                 <div class="lg:ml-10 flex justify-between w-full">
                     <div class="mt-10  w-full">

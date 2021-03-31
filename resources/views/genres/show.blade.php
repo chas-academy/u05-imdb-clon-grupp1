@@ -8,7 +8,7 @@
             <movie-list
             profile-id={{ auth()->user()->profile->id }}
             watchlist={{ $watchlistStatus }}
-            :show-watchlist="true"
+            :show-watchlist="false"
             :show-filter="true"
             :pagination-number="6"
             genre-filter={{ $genre->name }}

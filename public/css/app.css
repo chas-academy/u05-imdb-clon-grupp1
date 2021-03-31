@@ -8,6 +8,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.color {
+  background: #0000005f;
+}
+
 .height {
   height: 500px;
 }

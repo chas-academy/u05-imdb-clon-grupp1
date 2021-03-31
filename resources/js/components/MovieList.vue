@@ -21,7 +21,7 @@
                                 <div class="flex h-full">
                                     <img class="w-24 h-full rounded-2xl object-cover md:shadow-md md:border-r md:border-gray-900 md:border-opacity-50" :src="movie.img_path" :alt="movie.title">
                                     <div class="m-5 ml-4">
-                                        <p class="text-white font-bold text-md"> {{ movie.title.length <= 10 ?  movie.title : movie.title.substring(0, 10) + '...' }}</p>
+                                        <p class="text-white font-bold text-md h-6 overflow-hidden">{{ movie.title }}</p>
                                         <p class="text-white">{{ movie.release_date }} - {{ movie.language }}</p>
                                         <p class="text-white text-sm">Rating: {{ movie.top_rating }}</p>
                                         <p class="text-gray-400 mt-2 text-sm">{{ movie.movie_genres.replaceAll(',', ', ') }}</p>
@@ -154,7 +154,7 @@
     margin: 5px;
     }
 
-    input[type=radio]:checked + label { width: 120px; }
+    input[type=radio]:checked + label { width: 110px; }
 
     input[type=radio]:checked + .score { background: linear-gradient(142deg, #8B5CF6 0%, #3B82F6 100%); }
 
