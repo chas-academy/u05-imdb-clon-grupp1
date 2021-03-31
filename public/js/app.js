@@ -41351,84 +41351,75 @@ var render = function() {
             "focus:outline-none h-80 w-screen my-4 max-w-screen-2xl flex overflow-x-scroll container select-none ml-4"
         },
         _vm._l(_vm.moviesPrint, function(movie, index) {
-          return _c(
-            "div",
-            {
-              key: index,
-              staticClass: "relative",
-              on: {
-                mousedown: function($event) {
-                  return _vm.mouseStart(movie.id)
-                }
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "m-2 h-72 w-44 rounded-3xl relative " },
-                [
-                  _c("img", {
+          return _c("div", { key: index, staticClass: "relative" }, [
+            _c(
+              "div",
+              { staticClass: "m-2 h-72 w-44 rounded-3xl relative " },
+              [
+                _c("img", {
+                  staticClass:
+                    "h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
+                  attrs: { src: movie.img_path },
+                  on: {
+                    mousedown: function($event) {
+                      return _vm.mouseStart(movie.id)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
                     staticClass:
-                      "h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
-                    attrs: { src: movie.img_path }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "gradient absolute w-full h-full top-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500",
-                      attrs: { draggable: "false" }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass:
-                            "text-yellow-600 absolute bottom-3 left-3 ",
-                          attrs: {
-                            width: "20",
-                            height: "19",
-                            fill: "currentColor"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z"
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "p",
-                        {
-                          staticClass:
-                            "absolute bottom-2 left-9 text-sm leading-relaxed"
-                        },
-                        [_vm._v(_vm._s(movie.top_rating))]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.profileId
-                    ? _c("watchlist-button", {
-                        staticClass: "absolute top-5 right-5 w-6 h-6",
+                      "gradient absolute w-full h-full top-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500",
+                    attrs: { draggable: "false" }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass:
+                          "text-yellow-600 absolute bottom-3 left-3 ",
                         attrs: {
-                          watchlist: _vm.watchlist.includes(
-                            "," + movie.id + ","
-                          ),
-                          "movie-id": movie.id
+                          width: "20",
+                          height: "19",
+                          fill: "currentColor"
                         }
-                      })
-                    : _vm._e()
-                ],
-                1
-              )
-            ]
-          )
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "absolute bottom-2 left-9 text-sm leading-relaxed"
+                      },
+                      [_vm._v(_vm._s(movie.top_rating))]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.profileId
+                  ? _c("watchlist-button", {
+                      staticClass: "absolute top-5 right-5 w-6 h-6",
+                      attrs: {
+                        watchlist: _vm.watchlist.includes("," + movie.id + ","),
+                        "movie-id": movie.id
+                      }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+          ])
         }),
         0
       )
