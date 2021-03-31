@@ -12,6 +12,11 @@
   background: #0000005f;
 }
 
+.bg-color {
+  background: #111827;
+  background: linear-gradient(180deg, #111827 0%, #080c13 100%);
+}
+
 .height {
   height: 500px;
 }

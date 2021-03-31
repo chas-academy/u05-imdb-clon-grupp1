@@ -153,7 +153,7 @@
         width: 5px;
         height: 5px;
         border-radius: 10px;
-        background-color: #0f1524;
+        background-color: #ffffff00;
     }
     .container::-webkit-scrollbar-track {
         display: none;
