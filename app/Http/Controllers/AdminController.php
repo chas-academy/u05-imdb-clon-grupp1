@@ -3,23 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\Profile;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
-{
+class AdminController extends Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('admin');
     }
 
-    public function index()
-    {
+    public function index() {
         $movies = Movie::all();
         $users = User::all();
 
@@ -33,24 +29,16 @@ class AdminController extends Controller
         return view('admin.panel', compact('reviews', 'users', 'movies'));
     }
 
-    public function edituser($id)
-    {
+    public function edituser($id) {
         $user = User::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
 
-    public function showUsers()
-    {
-        //
-    }
-
-    public function createuser()
-    {
+    public function createuser() {
         return view('admin.users.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
@@ -72,14 +60,7 @@ class AdminController extends Controller
         return redirect("/admin");
     }
 
-    public function edit()
-    {
-        //
-    }
-
-    public function updateuser($id)
-    {
-
+    public function updateuser($id) {
         $user = User::findOrFail($id);
 
         $data = request()->validate([
@@ -96,8 +77,7 @@ class AdminController extends Controller
         return redirect("/admin");
     }
 
-    public function destroyuser($id)
-    {
+    public function destroyuser($id) {
         $user = User::findOrFail($id);
         $user->reviews()->delete();
         $user->profile()->delete();
@@ -106,8 +86,7 @@ class AdminController extends Controller
         return redirect("/admin");
     }
 
-    public function editreview($id)
-    {
+    public function editreview($id) {
         $review = Review::findOrFail($id);
         $movie = Movie::findOrFail($review->movies_id);
         $user = User::findOrFail($review->user_id);
@@ -116,8 +95,7 @@ class AdminController extends Controller
         return view('admin.reviews.edit', compact('review', 'movie', 'user'));
     }
 
-    public function updatereview($id)
-    {
+    public function updatereview($id) {
         $review = Review::findOrFail($id);
 
         $data = request()->validate([
@@ -131,15 +109,13 @@ class AdminController extends Controller
         return redirect("/admin");
     }
 
-    public function destroyreview($id)
-    {
+    public function destroyreview($id) {
         $review = Review::findOrFail($id);
         $review->delete();
         return redirect("/admin");
     }
 
-    public function destroymovie($id)
-    {
+    public function destroymovie($id) {
         $movie = Movie::findOrFail($id);
         $movie->reviews()->delete();
         $movie->genres()->detach();

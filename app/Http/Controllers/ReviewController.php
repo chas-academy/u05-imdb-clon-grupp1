@@ -7,16 +7,13 @@ use App\Models\Movie;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
-class ReviewController extends Controller
-{
+class ReviewController extends Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function create($id)
-    {
+    public function create($id) {
         $checkAuth = auth()->user()->reviews->contains('movies_id', $id);
 
         if(auth()->user()->reviews->contains('movies_id', $id)){
@@ -28,13 +25,11 @@ class ReviewController extends Controller
 
         $totalReviews = $movie->reviews()->paginate()->total();
 
-
         return view('reviews.create', compact('movie', 'review', 'checkAuth', 'totalReviews'));
     }
 
 
-    public function store(Request $request, $id)
-    {
+    public function store(Request $request, $id) {
         $movie = Movie::findOrFail($id);
 
         if (auth()->user()->reviews->contains('movies_id', $id)) {
@@ -51,7 +46,6 @@ class ReviewController extends Controller
         $review->rating = $request->rating;
         $review->user_id = auth()->user()->id;
         $review->movies_id = $movie->id;
-
         $review->save();
 
         $movie->updateTopRating($movie);
@@ -59,18 +53,15 @@ class ReviewController extends Controller
         return redirect("/movies/{$movie->id}");
     }
 
-    public function editReview(Review $review, User $user, Profile $profile)
-    {
+    public function editReview(Review $review, User $user, Profile $profile) {
         $this->authorize('update', $review);
         $movie = Movie::findOrFail($review->movies_id);
-
         $totalReviews = $movie->reviews()->paginate()->total();
 
         return view('reviews.edit', compact('review', 'movie', 'user', 'profile', 'totalReviews'));
     }
 
-    public function updateReview(Request $request, Review $review, $id)
-    {
+    public function updateReview(Request $request, Review $review, $id) {
         $this->validate($request, [
             'review' => 'required',
             'rating' => 'required',
@@ -85,8 +76,7 @@ class ReviewController extends Controller
         $movie->updateTopRating($movie);
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $review = Review::findOrFail($id);
         $review->delete();
         return back();

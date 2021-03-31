@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
-
-class SearchMoviesController extends Controller
-{
-    public function search(Request $request, Movie $movie)
-    {
+class SearchMoviesController extends Controller {
+    public function search(Request $request, Movie $movie) {
         $query = $request->input('query');
 
         $movies = Movie::query()->where('title', 'like', "%$query%")->orWhere('actors', 'like', "%$query%")->get();

@@ -3,22 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
-
-class ProfileController extends Controller
-{
-    public function __construct()
-    {
+class ProfileController extends Controller {
+    public function __construct() {
         $this->middleware('auth');
     }
 
-    public function show(Profile $profile, User $user, Movie $movie)
-    {
+    public function show(Profile $profile, User $user, Movie $movie) {
         $this->authorize('view', $user->profile);
 
         $reviews = auth()->user()->reviews->map(function ($review) {
@@ -31,15 +24,13 @@ class ProfileController extends Controller
         return view('profile.show', compact('user', 'profile', 'watchlistStatus', 'reviews'));
     }
 
-    public function edit(User $user)
-    {
+    public function edit(User $user) {
         $this->authorize('update', $user->profile);
 
         return view('profile.edit', compact('user'));
     }
 
-    public function update($id)
-    {
+    public function update($id) {
         $profile = Profile::findOrFail($id);
         $user = User::findOrFail($id);
 

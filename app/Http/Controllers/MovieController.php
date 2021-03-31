@@ -6,47 +6,37 @@ use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
-
-class MovieController extends Controller
-{
-    public function __construct()
-    {
+class MovieController extends Controller {
+    public function __construct() {
         $this->middleware('admin')->except(['index', 'show', 'addToWatchlist']);
     }
 
-    public function index(Movie $movie)
-    {
+    public function index(Movie $movie) {
         if (!auth()->user()) return view('movies.index');
 
         $watchlistStatus = $movie->watchlistStatus();
         return view('movies.index', compact('watchlistStatus'));
-
     }
 
-    public function show(Movie $movie, User $user)
-    {
+    public function show(Movie $movie, User $user) {
         $watchlistStatus = (auth()->user() ? auth()->user()->profile->movies->contains($movie->id) : false);
 
         $reviews = $movie->reviews()->latest()->paginate(4);
         return view('movies.show', compact('movie', 'reviews', 'user', 'watchlistStatus'));
     }
 
-    public function addToWatchlist(Movie $movie)
-    {
+    public function addToWatchlist(Movie $movie) {
         return auth()->user()->profile->movies()->toggle($movie);
     }
 
-    public function create()
-    {
+    public function create() {
         $genres = Genre::all();
 
         return view('movies.create', compact('genres'));
     }
 
-    public function store()
-    {
+    public function store() {
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
@@ -91,16 +81,14 @@ class MovieController extends Controller
         return redirect("/movies");
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         $genres = Genre::all();
         $movie = Movie::findOrFail($id);
 
         return view('movies.edit', compact('movie', 'genres'));
     }
 
-    public function update($id)
-    {
+    public function update($id) {
         $movie = Movie::findOrFail($id);
 
         $data = request()->validate([
@@ -155,8 +143,7 @@ class MovieController extends Controller
         return redirect("/movies/{$movie->id}");
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $movie = Movie::findOrFail($id);
         $movie->reviews()->delete();
         $movie->genres()->detach();
