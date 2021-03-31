@@ -41359,12 +41359,7 @@ var render = function() {
                 _c("img", {
                   staticClass:
                     "h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
-                  attrs: { src: movie.img_path },
-                  on: {
-                    mousedown: function($event) {
-                      return _vm.mouseStart(movie.id)
-                    }
-                  }
+                  attrs: { src: movie.img_path }
                 }),
                 _vm._v(" "),
                 _c(
@@ -41372,7 +41367,12 @@ var render = function() {
                   {
                     staticClass:
                       "gradient absolute w-full h-full top-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500",
-                    attrs: { draggable: "false" }
+                    attrs: { draggable: "false" },
+                    on: {
+                      mousedown: function($event) {
+                        return _vm.mouseStart(movie.id)
+                      }
+                    }
                   },
                   [
                     _c(
