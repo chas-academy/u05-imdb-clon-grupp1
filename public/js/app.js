@@ -4085,17 +4085,18 @@ __webpack_require__.r(__webpack_exports__);
     mouseStart: function mouseStart(id) {
       var hasMoved = false;
       var isMouseDown = false;
+      var e = event.target.parentElement.parentElement.parentElement;
 
-      document.onmousedown = function (e) {
+      e.onmousedown = function (e) {
         return isMouseDown = true;
       };
 
-      document.onmouseup = function (e) {
+      e.onmouseup = function (e) {
         isMouseDown = false;
         if (hasMoved == false) window.location.href = '/movies/' + id;
       };
 
-      document.onmousemove = function (e) {
+      e.onmousemove = function (e) {
         if (!isMouseDown) return;
         hasMoved = true;
       };
@@ -41366,7 +41367,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "gradient absolute w-full h-full top-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500",
+                      "gradient absolute w-full h-full top-0 rounded-2xl opacity-100 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-500",
                     attrs: { draggable: "false" },
                     on: {
                       mousedown: function($event) {
