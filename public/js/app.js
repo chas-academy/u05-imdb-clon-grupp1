@@ -4146,6 +4146,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["movieId", "watchlist"],
   data: function data() {
@@ -41453,7 +41454,7 @@ var render = function() {
   return _c("div", [
     _c("img", {
       staticClass: "bookmark w-12 cursor-pointer transform hover:scale-105",
-      attrs: { src: "/storage/" + _vm.img_path },
+      attrs: { src: "/storage/" + _vm.img_path, alt: _vm.movieId },
       on: { click: _vm.addToWatchlist }
     })
   ])

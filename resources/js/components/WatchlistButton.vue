@@ -4,6 +4,7 @@
       class="bookmark w-12 cursor-pointer transform hover:scale-105"
       @click="addToWatchlist"
       :src="'/storage/' + img_path"
+      :alt="movieId"
     />
   </div>
 </template>

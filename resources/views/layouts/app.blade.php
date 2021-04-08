@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta
+    name="description"
+    content="At present, information about movies and managing lists of movies that one would like to see is too cumbersome for many competitors.
+    By creating a more user-focused experience, this process can be facilitated and thus attract more visitors.
+    With an increased interest in the service can also publish and administer film content">
+    <meta name="keywords" content="meta tags, meta description, meta keywords, SEO, search engine optimization, movies, filters, categories, genres, film>
+
     <title>TheMovieHub</title>
 
     <!-- Fonts -->
