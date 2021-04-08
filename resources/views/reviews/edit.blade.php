@@ -1,9 +1,8 @@
 <x-app-layout>
     <div class="text-white">
-
         <div class="w-screen flex justify-center mt-5">
             <div class="flex flex-col lg:flex-row justify-center w-10/12 max-w-screen-xl">
-                <img class="height object-cover rounded-2xl lg:h-full lg:w-4/5 lg:max-w-md shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
+                <img class="height object-cover rounded-2xl lg:h-full lg:w-4/5 lg:max-w-md shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}" alt="{{ $movie->title }}"/>
 
                 <div class="lg:ml-10 flex justify-between w-full">
                     <div class="mt-10  w-full">

@@ -6,7 +6,7 @@
             <div class="flex flex-col lg:flex-row justify-center w-10/12 max-w-screen-xl">
                 <div class="w-full h-full lg:h-full lg:w-full max-w-md relative">
                     <a href= {{ $movie->trailer_path }} target="blank">
-                        <img class="w-full h-full object-cover rounded-2xl shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}"/>
+                        <img class="w-full h-full object-cover rounded-2xl shadow-md border-r border-t border-gray-800 border-opacity-50" src="{{$movie->moviePoster()}}" alt="{{ $movie->title }}"/>
                         <div class="color rounded-2xl w-full h-full top-0 absolute z-50 opacity-0 hover:opacity-100 transition flex justify-center items-center">
                             <svg class="h-10 w-10" fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="163.861px" height="163.861px" viewBox="0 0 163.861 163.861" style="enable-background:new 0 0 163.861 163.861;"

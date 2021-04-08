@@ -41360,11 +41360,11 @@ var render = function() {
                 _c("img", {
                   staticClass:
                     "h-full w-full rounded-3xl cursor-pointer object-cover shadow-md border-r border-gray-700 border-opacity-30",
-                  attrs: { src: movie.img_path }
+                  attrs: { src: movie.img_path, alt: movie.title }
                 }),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "div",
                   {
                     staticClass:
                       "gradient absolute w-full h-full top-0 rounded-2xl opacity-100 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-500",
