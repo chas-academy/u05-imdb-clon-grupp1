@@ -175,6 +175,7 @@ Distributed under the GNU GPLv3 License.
 *Pernilla Hällgren* [GitHub](https://github.com/pernilla-hallgren) - [LinkedIn](www.linkedin.com/in/pernilla-hällgren-0a64aa25)<br>
 *Anna Pääjärvi* [GitHub](https://github.com/apaajarvi) - [LinkedIn](https://www.linkedin.com/in/anna-pääjärvi-71709a205/)<br>
 *Oskar Boström* [GitHub](https://github.com/oskar-mikael) - [LinkedIn](https://www.linkedin.com/in/oskar-bostr%C3%B6m-6462b81b5/)<br>
+*Simon Lindelöf* [GitHub](https://github.com/reelode) - [LinkedIn](https://www.linkedin.com/in/simon-lindel%C3%B6f-522520179/)<br>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/chas-academy/u05-imdb-clon-grupp1.svg?style=for-the-badge
